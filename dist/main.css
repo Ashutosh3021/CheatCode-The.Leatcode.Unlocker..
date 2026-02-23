@@ -1,0 +1,424 @@
+/*
+ * style.css — Injected into every leetcode.com page by the content script.
+ * Uses LeetCode CSS custom properties for dark/light mode compatibility.
+ * 🟢 Fix: No hardcoded hex colors — uses var(--lc-*) tokens throughout.
+ */
+
+/* ── Modal Backdrop ──────────────────────────────────────────────────────── */
+.lc-unlock-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(3px);
+  align-items: center;
+  justify-content: center;
+}
+.lc-unlock-backdrop.visible {
+  display: flex;
+}
+
+/* ── Modal Box ───────────────────────────────────────────────────────────── */
+.lc-unlock-modal {
+  position: relative;
+  background: var(--lc-fill-primary, #1a1a1a);
+  border: 1px solid var(--lc-border-primary, #333);
+  border-radius: 12px;
+  width: min(860px, 96vw);
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+  animation: lc-slide-up 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@keyframes lc-slide-up {
+  from { opacity: 0; transform: translateY(20px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0)   scale(1); }
+}
+
+.lc-unlock-modal-content {
+  overflow-y: auto;
+  padding: 20px 24px 24px;
+  flex: 1;
+}
+
+/* ── Close Button ────────────────────────────────────────────────────────── */
+.lc-unlock-close-btn {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  z-index: 1;
+  background: none;
+  border: none;
+  color: var(--lc-text-secondary, #999);
+  font-size: 18px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+.lc-unlock-close-btn:hover {
+  background: var(--lc-fill-secondary, #2a2a2a);
+  color: var(--lc-text-primary, #fff);
+}
+
+/* ── Table ───────────────────────────────────────────────────────────────── */
+.lc-unlock-table-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.lc-unlock-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.lc-unlock-th {
+  text-align: left;
+  padding: 8px 10px;
+  color: var(--lc-text-secondary, #999);
+  border-bottom: 1px solid var(--lc-border-primary, #333);
+  font-weight: 500;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+}
+.lc-unlock-th:hover { color: var(--lc-text-primary, #fff); }
+
+.lc-unlock-prob-row td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--lc-border-primary, #2a2a2a);
+  vertical-align: middle;
+}
+.lc-unlock-prob-row:hover td {
+  background: var(--lc-fill-secondary, #222);
+}
+
+.lc-unlock-prob-name {
+  color: var(--lc-text-primary, #fff);
+  text-decoration: none;
+  font-weight: 500;
+}
+.lc-unlock-prob-name:hover { text-decoration: underline; }
+
+/* ── Frequency Bar ───────────────────────────────────────────────────────── */
+.lc-unlock-freq-bar-wrap {
+  width: 100%;
+  min-width: 80px;
+  height: 6px;
+  background: var(--lc-fill-tertiary, #333);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.lc-unlock-freq-bar-fill {
+  height: 100%;
+  background: var(--lc-brand-green, #2cbb5d);
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+/* ── Difficulty Badge ────────────────────────────────────────────────────── */
+.lc-unlock-difficulty {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* ── Tab Strip ───────────────────────────────────────────────────────────── */
+.lc-unlock-tab-strip {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.lc-unlock-tab {
+  padding: 5px 14px;
+  border: 1px solid var(--lc-border-primary, #444);
+  background: none;
+  color: var(--lc-text-secondary, #999);
+  border-radius: 20px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.lc-unlock-tab:hover {
+  border-color: var(--lc-brand-green, #2cbb5d);
+  color: var(--lc-brand-green, #2cbb5d);
+}
+.lc-unlock-tab.active {
+  background: var(--lc-brand-green, #2cbb5d);
+  border-color: var(--lc-brand-green, #2cbb5d);
+  color: #fff;
+}
+
+/* ── Search Input ────────────────────────────────────────────────────────── */
+.lc-unlock-search {
+  width: 100%;
+  padding: 8px 14px;
+  background: var(--lc-fill-secondary, #222);
+  border: 1px solid var(--lc-border-primary, #444);
+  border-radius: 8px;
+  color: var(--lc-text-primary, #fff);
+  font-size: 13px;
+  outline: none;
+  box-sizing: border-box;
+}
+.lc-unlock-search:focus {
+  border-color: var(--lc-brand-green, #2cbb5d);
+}
+.lc-unlock-search--sm { padding: 6px 12px; font-size: 12px; }
+
+/* ── Company Chips ───────────────────────────────────────────────────────── */
+.lc-unlock-company-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 8px 0;
+}
+.lc-unlock-company-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  background: var(--lc-fill-secondary, #222);
+  border: 1px solid var(--lc-border-primary, #444);
+  border-radius: 16px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.lc-unlock-company-chip:hover {
+  border-color: var(--lc-brand-green, #2cbb5d);
+  background: var(--lc-fill-tertiary, #2a2a2a);
+}
+.lc-unlock-chip-count {
+  background: var(--lc-brand-green, #2cbb5d);
+  color: #fff;
+  border-radius: 10px;
+  padding: 1px 7px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* ── Unlock Badge (study plan) ───────────────────────────────────────────── */
+.lc-unlock-badge {
+  margin-right: 6px;
+  font-size: 13px;
+}
+
+/* ── Count Badge (company swiper) ────────────────────────────────────────── */
+.lc-unlock-count-badge {
+  display: inline-block;
+  background: var(--lc-brand-orange, #ffb800);
+  color: #000;
+  border-radius: 10px;
+  padding: 1px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  margin-left: 6px;
+}
+
+/* ── Editorial ───────────────────────────────────────────────────────────── */
+.lc-unlock-editorial-wrap { display: flex; flex-direction: column; gap: 16px; }
+.lc-unlock-editorial-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid var(--lc-border-primary, #333);
+  padding-bottom: 12px;
+}
+.lc-unlock-editorial-title h2 {
+  margin: 0;
+  font-size: 18px;
+  color: var(--lc-text-primary, #fff);
+}
+.lc-unlock-editorial-body {
+  line-height: 1.7;
+  color: var(--lc-text-secondary, #ccc);
+  font-size: 14px;
+}
+.lc-unlock-editorial-body pre {
+  border-radius: 8px;
+  overflow: auto;
+}
+
+/* ── Unlock Prompt Button ────────────────────────────────────────────────── */
+.lc-unlock-editorial-prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 32px;
+  text-align: center;
+  color: var(--lc-text-secondary, #aaa);
+}
+.lc-unlock-btn {
+  padding: 10px 28px;
+  background: var(--lc-brand-green, #2cbb5d);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.lc-unlock-btn:hover { opacity: 0.85; }
+
+/* ── Loader / Spinner ────────────────────────────────────────────────────── */
+.lc-unlock-loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 48px;
+  color: var(--lc-text-secondary, #aaa);
+}
+.lc-unlock-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--lc-fill-tertiary, #333);
+  border-top-color: var(--lc-brand-green, #2cbb5d);
+  border-radius: 50%;
+  animation: lc-spin 0.8s linear infinite;
+}
+@keyframes lc-spin { to { transform: rotate(360deg); } }
+
+/* ── Misc ────────────────────────────────────────────────────────────────── */
+.lc-unlock-empty {
+  color: var(--lc-text-secondary, #777);
+  font-size: 13px;
+  padding: 16px 0;
+}
+.lc-unlock-modal-title {
+  margin: 0 0 12px;
+  font-size: 16px;
+  color: var(--lc-text-primary, #fff);
+}
+
+/**
+ * prism.js tomorrow night eighties for JavaScript, CoffeeScript, CSS and HTML
+ * Based on https://github.com/chriskempson/tomorrow-theme
+ * @author Rose Pritchard
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #ccc;
+	background: none;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #2d2d2d;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.block-comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #999;
+}
+
+.token.punctuation {
+	color: #ccc;
+}
+
+.token.tag,
+.token.attr-name,
+.token.namespace,
+.token.deleted {
+	color: #e2777a;
+}
+
+.token.function-name {
+	color: #6196cc;
+}
+
+.token.boolean,
+.token.number,
+.token.function {
+	color: #f08d49;
+}
+
+.token.property,
+.token.class-name,
+.token.constant,
+.token.symbol {
+	color: #f8c555;
+}
+
+.token.selector,
+.token.important,
+.token.atrule,
+.token.keyword,
+.token.builtin {
+	color: #cc99cd;
+}
+
+.token.string,
+.token.char,
+.token.attr-value,
+.token.regex,
+.token.variable {
+	color: #7ec699;
+}
+
+.token.operator,
+.token.entity,
+.token.url {
+	color: #67cdcc;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+
+.token.inserted {
+	color: green;
+}
+
