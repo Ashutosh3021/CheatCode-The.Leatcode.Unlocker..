@@ -1,1 +1,307 @@
-(()=>{var e={815(e,r){var s,g;"undefined"!=typeof globalThis?globalThis:"undefined"!=typeof self&&self,s=function(e){"use strict";if(!globalThis.chrome?.runtime?.id)throw new Error("This script should only be loaded in a browser extension.");if(void 0===globalThis.browser||Object.getPrototypeOf(globalThis.browser)!==Object.prototype){const r="The message port closed before a response was received.",s=e=>{const s={alarms:{clear:{minArgs:0,maxArgs:1},clearAll:{minArgs:0,maxArgs:0},get:{minArgs:0,maxArgs:1},getAll:{minArgs:0,maxArgs:0}},bookmarks:{create:{minArgs:1,maxArgs:1},get:{minArgs:1,maxArgs:1},getChildren:{minArgs:1,maxArgs:1},getRecent:{minArgs:1,maxArgs:1},getSubTree:{minArgs:1,maxArgs:1},getTree:{minArgs:0,maxArgs:0},move:{minArgs:2,maxArgs:2},remove:{minArgs:1,maxArgs:1},removeTree:{minArgs:1,maxArgs:1},search:{minArgs:1,maxArgs:1},update:{minArgs:2,maxArgs:2}},browserAction:{disable:{minArgs:0,maxArgs:1,fallbackToNoCallback:!0},enable:{minArgs:0,maxArgs:1,fallbackToNoCallback:!0},getBadgeBackgroundColor:{minArgs:1,maxArgs:1},getBadgeText:{minArgs:1,maxArgs:1},getPopup:{minArgs:1,maxArgs:1},getTitle:{minArgs:1,maxArgs:1},openPopup:{minArgs:0,maxArgs:0},setBadgeBackgroundColor:{minArgs:1,maxArgs:1,fallbackToNoCallback:!0},setBadgeText:{minArgs:1,maxArgs:1,fallbackToNoCallback:!0},setIcon:{minArgs:1,maxArgs:1},setPopup:{minArgs:1,maxArgs:1,fallbackToNoCallback:!0},setTitle:{minArgs:1,maxArgs:1,fallbackToNoCallback:!0}},browsingData:{remove:{minArgs:2,maxArgs:2},removeCache:{minArgs:1,maxArgs:1},removeCookies:{minArgs:1,maxArgs:1},removeDownloads:{minArgs:1,maxArgs:1},removeFormData:{minArgs:1,maxArgs:1},removeHistory:{minArgs:1,maxArgs:1},removeLocalStorage:{minArgs:1,maxArgs:1},removePasswords:{minArgs:1,maxArgs:1},removePluginData:{minArgs:1,maxArgs:1},settings:{minArgs:0,maxArgs:0}},commands:{getAll:{minArgs:0,maxArgs:0}},contextMenus:{remove:{minArgs:1,maxArgs:1},removeAll:{minArgs:0,maxArgs:0},update:{minArgs:2,maxArgs:2}},cookies:{get:{minArgs:1,maxArgs:1},getAll:{minArgs:1,maxArgs:1},getAllCookieStores:{minArgs:0,maxArgs:0},remove:{minArgs:1,maxArgs:1},set:{minArgs:1,maxArgs:1}},devtools:{inspectedWindow:{eval:{minArgs:1,maxArgs:2,singleCallbackArg:!1}},panels:{create:{minArgs:3,maxArgs:3,singleCallbackArg:!0},elements:{createSidebarPane:{minArgs:1,maxArgs:1}}}},downloads:{cancel:{minArgs:1,maxArgs:1},download:{minArgs:1,maxArgs:1},erase:{minArgs:1,maxArgs:1},getFileIcon:{minArgs:1,maxArgs:2},open:{minArgs:1,maxArgs:1,fallbackToNoCallback:!0},pause:{minArgs:1,maxArgs:1},removeFile:{minArgs:1,maxArgs:1},resume:{minArgs:1,maxArgs:1},search:{minArgs:1,maxArgs:1},show:{minArgs:1,maxArgs:1,fallbackToNoCallback:!0}},extension:{isAllowedFileSchemeAccess:{minArgs:0,maxArgs:0},isAllowedIncognitoAccess:{minArgs:0,maxArgs:0}},history:{addUrl:{minArgs:1,maxArgs:1},deleteAll:{minArgs:0,maxArgs:0},deleteRange:{minArgs:1,maxArgs:1},deleteUrl:{minArgs:1,maxArgs:1},getVisits:{minArgs:1,maxArgs:1},search:{minArgs:1,maxArgs:1}},i18n:{detectLanguage:{minArgs:1,maxArgs:1},getAcceptLanguages:{minArgs:0,maxArgs:0}},identity:{launchWebAuthFlow:{minArgs:1,maxArgs:1}},idle:{queryState:{minArgs:1,maxArgs:1}},management:{get:{minArgs:1,maxArgs:1},getAll:{minArgs:0,maxArgs:0},getSelf:{minArgs:0,maxArgs:0},setEnabled:{minArgs:2,maxArgs:2},uninstallSelf:{minArgs:0,maxArgs:1}},notifications:{clear:{minArgs:1,maxArgs:1},create:{minArgs:1,maxArgs:2},getAll:{minArgs:0,maxArgs:0},getPermissionLevel:{minArgs:0,maxArgs:0},update:{minArgs:2,maxArgs:2}},pageAction:{getPopup:{minArgs:1,maxArgs:1},getTitle:{minArgs:1,maxArgs:1},hide:{minArgs:1,maxArgs:1,fallbackToNoCallback:!0},setIcon:{minArgs:1,maxArgs:1},setPopup:{minArgs:1,maxArgs:1,fallbackToNoCallback:!0},setTitle:{minArgs:1,maxArgs:1,fallbackToNoCallback:!0},show:{minArgs:1,maxArgs:1,fallbackToNoCallback:!0}},permissions:{contains:{minArgs:1,maxArgs:1},getAll:{minArgs:0,maxArgs:0},remove:{minArgs:1,maxArgs:1},request:{minArgs:1,maxArgs:1}},runtime:{getBackgroundPage:{minArgs:0,maxArgs:0},getPlatformInfo:{minArgs:0,maxArgs:0},openOptionsPage:{minArgs:0,maxArgs:0},requestUpdateCheck:{minArgs:0,maxArgs:0},sendMessage:{minArgs:1,maxArgs:3},sendNativeMessage:{minArgs:2,maxArgs:2},setUninstallURL:{minArgs:1,maxArgs:1}},sessions:{getDevices:{minArgs:0,maxArgs:1},getRecentlyClosed:{minArgs:0,maxArgs:1},restore:{minArgs:0,maxArgs:1}},storage:{local:{clear:{minArgs:0,maxArgs:0},get:{minArgs:0,maxArgs:1},getBytesInUse:{minArgs:0,maxArgs:1},remove:{minArgs:1,maxArgs:1},set:{minArgs:1,maxArgs:1}},managed:{get:{minArgs:0,maxArgs:1},getBytesInUse:{minArgs:0,maxArgs:1}},sync:{clear:{minArgs:0,maxArgs:0},get:{minArgs:0,maxArgs:1},getBytesInUse:{minArgs:0,maxArgs:1},remove:{minArgs:1,maxArgs:1},set:{minArgs:1,maxArgs:1}}},tabs:{captureVisibleTab:{minArgs:0,maxArgs:2},create:{minArgs:1,maxArgs:1},detectLanguage:{minArgs:0,maxArgs:1},discard:{minArgs:0,maxArgs:1},duplicate:{minArgs:1,maxArgs:1},executeScript:{minArgs:1,maxArgs:2},get:{minArgs:1,maxArgs:1},getCurrent:{minArgs:0,maxArgs:0},getZoom:{minArgs:0,maxArgs:1},getZoomSettings:{minArgs:0,maxArgs:1},goBack:{minArgs:0,maxArgs:1},goForward:{minArgs:0,maxArgs:1},highlight:{minArgs:1,maxArgs:1},insertCSS:{minArgs:1,maxArgs:2},move:{minArgs:2,maxArgs:2},query:{minArgs:1,maxArgs:1},reload:{minArgs:0,maxArgs:2},remove:{minArgs:1,maxArgs:1},removeCSS:{minArgs:1,maxArgs:2},sendMessage:{minArgs:2,maxArgs:3},setZoom:{minArgs:1,maxArgs:2},setZoomSettings:{minArgs:1,maxArgs:2},update:{minArgs:1,maxArgs:2}},topSites:{get:{minArgs:0,maxArgs:0}},webNavigation:{getAllFrames:{minArgs:1,maxArgs:1},getFrame:{minArgs:1,maxArgs:1}},webRequest:{handlerBehaviorChanged:{minArgs:0,maxArgs:0}},windows:{create:{minArgs:0,maxArgs:1},get:{minArgs:1,maxArgs:2},getAll:{minArgs:0,maxArgs:1},getCurrent:{minArgs:0,maxArgs:1},getLastFocused:{minArgs:0,maxArgs:1},remove:{minArgs:1,maxArgs:1},update:{minArgs:2,maxArgs:2}}};if(0===Object.keys(s).length)throw new Error("api-metadata.json has not been included in browser-polyfill");class g extends WeakMap{constructor(e,r=void 0){super(r),this.createItem=e}get(e){return this.has(e)||this.set(e,this.createItem(e)),super.get(e)}}const a=(r,s)=>(...g)=>{e.runtime.lastError?r.reject(new Error(e.runtime.lastError.message)):s.singleCallbackArg||g.length<=1&&!1!==s.singleCallbackArg?r.resolve(g[0]):r.resolve(g)},n=e=>1==e?"argument":"arguments",t=(e,r,s)=>new Proxy(r,{apply:(r,g,a)=>s.call(g,e,...a)});let m=Function.call.bind(Object.prototype.hasOwnProperty);const o=(e,r={},s={})=>{let g=Object.create(null),i={has:(r,s)=>s in e||s in g,get(i,A,l){if(A in g)return g[A];if(!(A in e))return;let c=e[A];if("function"==typeof c)if("function"==typeof r[A])c=t(e,e[A],r[A]);else if(m(s,A)){let r=((e,r)=>function(s,...g){if(g.length<r.minArgs)throw new Error(`Expected at least ${r.minArgs} ${n(r.minArgs)} for ${e}(), got ${g.length}`);if(g.length>r.maxArgs)throw new Error(`Expected at most ${r.maxArgs} ${n(r.maxArgs)} for ${e}(), got ${g.length}`);return new Promise((n,t)=>{if(r.fallbackToNoCallback)try{s[e](...g,a({resolve:n,reject:t},r))}catch(a){console.warn(`${e} API method doesn't seem to support the callback parameter, falling back to call it without a callback: `,a),s[e](...g),r.fallbackToNoCallback=!1,r.noCallback=!0,n()}else r.noCallback?(s[e](...g),n()):s[e](...g,a({resolve:n,reject:t},r))})})(A,s[A]);c=t(e,e[A],r)}else c=c.bind(e);else if("object"==typeof c&&null!==c&&(m(r,A)||m(s,A)))c=o(c,r[A],s[A]);else{if(!m(s,"*"))return Object.defineProperty(g,A,{configurable:!0,enumerable:!0,get:()=>e[A],set(r){e[A]=r}}),c;c=o(c,r[A],s["*"])}return g[A]=c,c},set:(r,s,a,n)=>(s in g?g[s]=a:e[s]=a,!0),defineProperty:(e,r,s)=>Reflect.defineProperty(g,r,s),deleteProperty:(e,r)=>Reflect.deleteProperty(g,r)},A=Object.create(e);return new Proxy(A,i)},i=e=>({addListener(r,s,...g){r.addListener(e.get(s),...g)},hasListener:(r,s)=>r.hasListener(e.get(s)),removeListener(r,s){r.removeListener(e.get(s))}}),A=new g(e=>"function"!=typeof e?e:function(r){const s=o(r,{},{getContent:{minArgs:0,maxArgs:0}});e(s)}),l=new g(e=>"function"!=typeof e?e:function(r,s,g){let a,n,t=!1,m=new Promise(e=>{a=function(r){t=!0,e(r)}});try{n=e(r,s,a)}catch(e){n=Promise.reject(e)}const o=!0!==n&&((i=n)&&"object"==typeof i&&"function"==typeof i.then);var i;if(!0!==n&&!o&&!t)return!1;return(o?n:m).then(e=>{g(e)},e=>{let r;r=e&&(e instanceof Error||"string"==typeof e.message)?e.message:"An unexpected error occurred",g({__mozWebExtensionPolyfillReject__:!0,message:r})}).catch(e=>{console.error("Failed to send onMessage rejected reply",e)}),!0}),c=({reject:s,resolve:g},a)=>{e.runtime.lastError?e.runtime.lastError.message===r?g():s(new Error(e.runtime.lastError.message)):a&&a.__mozWebExtensionPolyfillReject__?s(new Error(a.message)):g(a)},x=(e,r,s,...g)=>{if(g.length<r.minArgs)throw new Error(`Expected at least ${r.minArgs} ${n(r.minArgs)} for ${e}(), got ${g.length}`);if(g.length>r.maxArgs)throw new Error(`Expected at most ${r.maxArgs} ${n(r.maxArgs)} for ${e}(), got ${g.length}`);return new Promise((e,r)=>{const a=c.bind(null,{resolve:e,reject:r});g.push(a),s.sendMessage(...g)})},d={devtools:{network:{onRequestFinished:i(A)}},runtime:{onMessage:i(l),onMessageExternal:i(l),sendMessage:x.bind(null,"sendMessage",{minArgs:1,maxArgs:3})},tabs:{sendMessage:x.bind(null,"sendMessage",{minArgs:2,maxArgs:3})}},u={clear:{minArgs:1,maxArgs:1},get:{minArgs:1,maxArgs:1},set:{minArgs:1,maxArgs:1}};return s.privacy={network:{"*":u},services:{"*":u},websites:{"*":u}},o(e,d,s)};e.exports=s(chrome)}else e.exports=globalThis.browser},void 0===(g=s.apply(r,[e]))||(e.exports=g)}},r={};function s(g){var a=r[g];if(void 0!==a)return a.exports;var n=r[g]={exports:{}};return e[g].call(n.exports,n,n.exports,s),n.exports}(()=>{"use strict";s(815);const e={PROBLEM_DATA:"lc_unlock_problems",COMPANY_DATA:"lc_unlock_companies",EDITORIAL:"lc_unlock_editorial",TOP_PROBLEMS:"lc_unlock_top",SETTINGS:"lc_unlock_settings",LAST_FETCH:"lc_unlock_last_fetch"},r={enableFrequencyBars:!0,enableCompanyTags:!0,enableEditorials:!0,enableTopProblems:!0,enableAnalytics:!1};chrome.runtime.onInstalled.addListener(async({reason:s})=>{if("install"===s&&(await chrome.storage.local.set({[e.SETTINGS]:r}),console.info("[LC-Unlock] Extension installed. Default settings written.")),"update"===s){const s=await new Promise(r=>{chrome.storage.local.get([e.SETTINGS],s=>r(s[e.SETTINGS]??{}))});await chrome.storage.local.set({[e.SETTINGS]:{...r,...s}}),console.info("[LC-Unlock] Extension updated. Settings merged.")}}),chrome.runtime.onMessage.addListener((s,g,a)=>{switch(s.type){case"GET_SETTINGS":return chrome.storage.local.get([e.SETTINGS],s=>{a({settings:{...r,...s[e.SETTINGS]??{}}})}),!0;case"SAVE_SETTINGS":return chrome.storage.local.set({[e.SETTINGS]:s.settings},()=>a({ok:!0})),!0;case"CLEAR_CACHE":return chrome.storage.local.clear(()=>{chrome.storage.local.set({[e.SETTINGS]:r}),a({ok:!0})}),!0;case"GET_CACHE_AGE":{const r=Object.values(e);return chrome.storage.local.get(r,e=>{const s={};for(const g of r){const r=e[g];s[g]=null!=r&&r.timestamp?Math.floor((Date.now()-r.timestamp)/1e3):null}a({ages:s})}),!0}}})})()})();
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
+
+/***/ 902
+(__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) {
+
+
+// EXTERNAL MODULE: ./node_modules/webextension-polyfill/dist/browser-polyfill.js
+var browser_polyfill = __webpack_require__(815);
+;// ./src/modules/Objects.js
+/**
+ * Objects.js — Shared constants, data models, and config used across all modules.
+ */
+
+// ─── Google Sheets Proxy Config ───────────────────────────────────────────────
+// 🔴 Fix: API key is NEVER in extension source — route all requests through a Cloudflare Worker.
+const SHEETS_CONFIG = {
+  PROXY_URL: 'https://lc-sheets-proxy.cheatcode23.workers.dev/sheets',
+  // Replace with your Cloudflare Worker URL
+  SPREADSHEET_ID: '17uIfHiWPFoHVnpy3Ps9KBccr5DG2Y3ZIUC9zODlg1Jo' // Your public Google Sheet
+};
+
+// ─── Sheet Tab Names ──────────────────────────────────────────────────────────
+const SHEETS = {
+  PROBLEM_DATA: 'problems',
+  COMPANY_TAGS: 'companies',
+  EDITORIALS: 'editorial',
+  TOP_PROBLEMS: 'top'
+};
+
+// ─── Cache TTLs ───────────────────────────────────────────────────────────────
+const TTL = {
+  TWO_WEEKS: 14 * 24 * 60 * 60 * 1000,
+  ONE_DAY: 1 * 24 * 60 * 60 * 1000,
+  ONE_HOUR: 60 * 60 * 1000
+};
+
+// ─── Storage Keys ────────────────────────────────────────────────────────────
+const STORAGE_KEYS = {
+  PROBLEM_DATA: 'lc_unlock_problems',
+  COMPANY_DATA: 'lc_unlock_companies',
+  EDITORIAL: 'lc_unlock_editorial',
+  TOP_PROBLEMS: 'lc_unlock_top',
+  SETTINGS: 'lc_unlock_settings',
+  LAST_FETCH: 'lc_unlock_last_fetch'
+};
+
+// ─── Default Settings ────────────────────────────────────────────────────────
+const DEFAULT_SETTINGS = {
+  enableFrequencyBars: true,
+  enableCompanyTags: true,
+  enableEditorials: true,
+  enableTopProblems: true,
+  enableAnalytics: false
+};
+
+// ─── Difficulty ───────────────────────────────────────────────────────────────
+const DIFFICULTY = {
+  EASY: 'Easy',
+  MEDIUM: 'Medium',
+  HARD: 'Hard'
+};
+
+// ─── Sort Fields ─────────────────────────────────────────────────────────────
+const SORT_FIELDS = {
+  FREQUENCY: 'frequency',
+  DIFFICULTY: 'difficulty',
+  NAME: 'name',
+  ID: 'id',
+  ACCEPTANCE: 'acceptance'
+};
+
+// ─── Time Windows ─────────────────────────────────────────────────────────────
+const TIME_WINDOWS = (/* unused pure expression or super */ null && (['6 Months', '1 Year', '2 Years', 'All Time']));
+
+// ─── URL Patterns ────────────────────────────────────────────────────────────
+const URL_PATTERNS = {
+  PROBLEM_SET: /leetcode\.com\/problemset\//,
+  PROBLEM_DETAIL: /leetcode\.com\/problems\/[^/]+\//,
+  COMPANY: /leetcode\.com\/company\//,
+  TAG: /leetcode\.com\/tag\//,
+  STUDY_PLAN: /leetcode\.com\/study-plan\//
+};
+;// ./src/background.js
+/**
+ * background.js — Manifest v3 Service Worker
+ * Handles extension install/update events and message passing.
+ * Runs in the background, separate from page content scripts.
+ */
+
+
+
+
+// ─── Install / Update ────────────────────────────────────────────────────────
+
+chrome.runtime.onInstalled.addListener(async ({
+  reason
+}) => {
+  if (reason === 'install') {
+    // Write default settings on first install
+    await chrome.storage.local.set({
+      [STORAGE_KEYS.SETTINGS]: DEFAULT_SETTINGS
+    });
+    console.info('[LC-Unlock] Extension installed. Default settings written.');
+  }
+  if (reason === 'update') {
+    // Merge new defaults without overwriting user prefs
+    const existing = await new Promise(resolve => {
+      chrome.storage.local.get([STORAGE_KEYS.SETTINGS], r => resolve(r[STORAGE_KEYS.SETTINGS] ?? {}));
+    });
+    await chrome.storage.local.set({
+      [STORAGE_KEYS.SETTINGS]: {
+        ...DEFAULT_SETTINGS,
+        ...existing
+      }
+    });
+    console.info('[LC-Unlock] Extension updated. Settings merged.');
+  }
+});
+
+// ─── Message Handling ────────────────────────────────────────────────────────
+
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  switch (message.type) {
+    case 'GET_SETTINGS':
+      chrome.storage.local.get([STORAGE_KEYS.SETTINGS], r => {
+        sendResponse({
+          settings: {
+            ...DEFAULT_SETTINGS,
+            ...(r[STORAGE_KEYS.SETTINGS] ?? {})
+          }
+        });
+      });
+      return true;
+    // async response
+
+    case 'SAVE_SETTINGS':
+      chrome.storage.local.set({
+        [STORAGE_KEYS.SETTINGS]: message.settings
+      }, () => sendResponse({
+        ok: true
+      }));
+      return true;
+    case 'CLEAR_CACHE':
+      {
+        const keysToRemove = [STORAGE_KEYS.PROBLEM_DATA, STORAGE_KEYS.COMPANY_DATA, STORAGE_KEYS.EDITORIAL, STORAGE_KEYS.TOP_PROBLEMS, STORAGE_KEYS.LAST_FETCH];
+        chrome.storage.local.remove(keysToRemove, () => {
+          sendResponse({
+            ok: true
+          });
+        });
+        return true;
+      }
+    case 'GET_CACHE_AGE':
+      {
+        const keys = Object.values(STORAGE_KEYS);
+        chrome.storage.local.get(keys, r => {
+          const ages = {};
+          for (const key of keys) {
+            const entry = r[key];
+            ages[key] = entry !== null && entry !== void 0 && entry.timestamp ? Math.floor((Date.now() - entry.timestamp) / 1000) : null;
+          }
+          sendResponse({
+            ages
+          });
+        });
+        return true;
+      }
+    default:
+      break;
+  }
+});
+
+/***/ }
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = __webpack_modules__;
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/chunk loaded */
+/******/ 	(() => {
+/******/ 		var deferred = [];
+/******/ 		__webpack_require__.O = (result, chunkIds, fn, priority) => {
+/******/ 			if(chunkIds) {
+/******/ 				priority = priority || 0;
+/******/ 				for(var i = deferred.length; i > 0 && deferred[i - 1][2] > priority; i--) deferred[i] = deferred[i - 1];
+/******/ 				deferred[i] = [chunkIds, fn, priority];
+/******/ 				return;
+/******/ 			}
+/******/ 			var notFulfilled = Infinity;
+/******/ 			for (var i = 0; i < deferred.length; i++) {
+/******/ 				var [chunkIds, fn, priority] = deferred[i];
+/******/ 				var fulfilled = true;
+/******/ 				for (var j = 0; j < chunkIds.length; j++) {
+/******/ 					if ((priority & 1 === 0 || notFulfilled >= priority) && Object.keys(__webpack_require__.O).every((key) => (__webpack_require__.O[key](chunkIds[j])))) {
+/******/ 						chunkIds.splice(j--, 1);
+/******/ 					} else {
+/******/ 						fulfilled = false;
+/******/ 						if(priority < notFulfilled) notFulfilled = priority;
+/******/ 					}
+/******/ 				}
+/******/ 				if(fulfilled) {
+/******/ 					deferred.splice(i--, 1)
+/******/ 					var r = fn();
+/******/ 					if (r !== undefined) result = r;
+/******/ 				}
+/******/ 			}
+/******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/jsonp chunk loading */
+/******/ 	(() => {
+/******/ 		// no baseURI
+/******/ 		
+/******/ 		// object to store loaded and loading chunks
+/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
+/******/ 		var installedChunks = {
+/******/ 			471: 0
+/******/ 		};
+/******/ 		
+/******/ 		// no chunk on demand loading
+/******/ 		
+/******/ 		// no prefetching
+/******/ 		
+/******/ 		// no preloaded
+/******/ 		
+/******/ 		// no HMR
+/******/ 		
+/******/ 		// no HMR manifest
+/******/ 		
+/******/ 		__webpack_require__.O.j = (chunkId) => (installedChunks[chunkId] === 0);
+/******/ 		
+/******/ 		// install a JSONP callback for chunk loading
+/******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
+/******/ 			var [chunkIds, moreModules, runtime] = data;
+/******/ 			// add "moreModules" to the modules object,
+/******/ 			// then flag all "chunkIds" as loaded and fire callback
+/******/ 			var moduleId, chunkId, i = 0;
+/******/ 			if(chunkIds.some((id) => (installedChunks[id] !== 0))) {
+/******/ 				for(moduleId in moreModules) {
+/******/ 					if(__webpack_require__.o(moreModules, moduleId)) {
+/******/ 						__webpack_require__.m[moduleId] = moreModules[moduleId];
+/******/ 					}
+/******/ 				}
+/******/ 				if(runtime) var result = runtime(__webpack_require__);
+/******/ 			}
+/******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
+/******/ 			for(;i < chunkIds.length; i++) {
+/******/ 				chunkId = chunkIds[i];
+/******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
+/******/ 					installedChunks[chunkId][0]();
+/******/ 				}
+/******/ 				installedChunks[chunkId] = 0;
+/******/ 			}
+/******/ 			return __webpack_require__.O(result);
+/******/ 		}
+/******/ 		
+/******/ 		var chunkLoadingGlobal = self["webpackChunklc_main"] = self["webpackChunklc_main"] || [];
+/******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
+/******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [815], () => (__webpack_require__(902)))
+/******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
+/******/ 	
+/******/ })()
+;
+//# sourceMappingURL=background.js.map

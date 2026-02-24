@@ -4,16 +4,16 @@
     "version": "1.0.0",
     "description": "Unlocks LeetCode Premium content: editorials, company tags, frequency data.",
     "icons": {
-        "16": "assets/logo.png",
-        "48": "assets/logo.png",
-        "128": "assets/logo.png"
+        "16": "Assets/Gemini_Generated_Image_a2l9ima2l9ima2l9.png",
+        "48": "Assets/Gemini_Generated_Image_a2l9ima2l9ima2l9.png",
+        "128": "Assets/Gemini_Generated_Image_a2l9ima2l9ima2l9.png"
     },
     "action": {
         "default_popup": "dist/index.html",
         "default_title": "LeetCode Unlock",
         "default_icon": {
-            "16": "assets/logo.png",
-            "48": "assets/logo.png"
+            "16": "Assets/Gemini_Generated_Image_a2l9ima2l9ima2l9.png",
+            "48": "Assets/Gemini_Generated_Image_a2l9ima2l9ima2l9.png"
         }
     },
     "content_scripts": [
@@ -25,7 +25,7 @@
                 "dist/main.js"
             ],
             "css": [
-                "dist/style.css"
+                "dist/main.css"
             ],
             "run_at": "document_idle"
         }
@@ -43,7 +43,7 @@
     "web_accessible_resources": [
         {
             "resources": [
-                "assets/*"
+                "Assets/*"
             ],
             "matches": [
                 "https://leetcode.com/*"

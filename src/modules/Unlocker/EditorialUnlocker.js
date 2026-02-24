@@ -51,7 +51,7 @@ export class EditorialUnlocker {
                 return;
             }
 
-            const contentEl = EditorialContentBuilder.build(editorial);
+            const contentEl = await EditorialContentBuilder.build(editorial);
             EditMod.showContent(contentEl);
         } catch (err) {
             console.error('[LC-Unlock] EditorialUnlocker load error:', err);

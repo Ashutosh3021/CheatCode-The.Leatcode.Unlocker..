@@ -1,2 +1,2284 @@
-/*! For license information please see main.js.LICENSE.txt */
-(()=>{var e={415(){!function(e){var t=/\b(?:alignas|alignof|asm|auto|bool|break|case|catch|char|char16_t|char32_t|char8_t|class|co_await|co_return|co_yield|compl|concept|const|const_cast|consteval|constexpr|constinit|continue|decltype|default|delete|do|double|dynamic_cast|else|enum|explicit|export|extern|final|float|for|friend|goto|if|import|inline|int|int16_t|int32_t|int64_t|int8_t|long|module|mutable|namespace|new|noexcept|nullptr|operator|override|private|protected|public|register|reinterpret_cast|requires|return|short|signed|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|try|typedef|typeid|typename|uint16_t|uint32_t|uint64_t|uint8_t|union|unsigned|using|virtual|void|volatile|wchar_t|while)\b/,n=/\b(?!<keyword>)\w+(?:\s*\.\s*\w+)*\b/.source.replace(/<keyword>/g,function(){return t.source});e.languages.cpp=e.languages.extend("c",{"class-name":[{pattern:RegExp(/(\b(?:class|concept|enum|struct|typename)\s+)(?!<keyword>)\w+/.source.replace(/<keyword>/g,function(){return t.source})),lookbehind:!0},/\b[A-Z]\w*(?=\s*::\s*\w+\s*\()/,/\b[A-Z_]\w*(?=\s*::\s*~\w+\s*\()/i,/\b\w+(?=\s*<(?:[^<>]|<(?:[^<>]|<[^<>]*>)*>)*>\s*::\s*\w+\s*\()/],keyword:t,number:{pattern:/(?:\b0b[01']+|\b0x(?:[\da-f']+(?:\.[\da-f']*)?|\.[\da-f']+)(?:p[+-]?[\d']+)?|(?:\b[\d']+(?:\.[\d']*)?|\B\.[\d']+)(?:e[+-]?[\d']+)?)[ful]{0,4}/i,greedy:!0},operator:/>>=?|<<=?|->|--|\+\+|&&|\|\||[?:~]|<=>|[-+*/%&|^!=<>]=?|\b(?:and|and_eq|bitand|bitor|not|not_eq|or|or_eq|xor|xor_eq)\b/,boolean:/\b(?:false|true)\b/}),e.languages.insertBefore("cpp","string",{module:{pattern:RegExp(/(\b(?:import|module)\s+)/.source+"(?:"+/"(?:\\(?:\r\n|[\s\S])|[^"\\\r\n])*"|<[^<>\r\n]*>/.source+"|"+/<mod-name>(?:\s*:\s*<mod-name>)?|:\s*<mod-name>/.source.replace(/<mod-name>/g,function(){return n})+")"),lookbehind:!0,greedy:!0,inside:{string:/^[<"][\s\S]+/,operator:/:/,punctuation:/\./}},"raw-string":{pattern:/R"([^()\\ ]{0,16})\([\s\S]*?\)\1"/,alias:"string",greedy:!0}}),e.languages.insertBefore("cpp","keyword",{"generic-function":{pattern:/\b(?!operator\b)[a-z_]\w*\s*<(?:[^<>]|<[^<>]*>)*>(?=\s*\()/i,inside:{function:/^\w+/,generic:{pattern:/<[\s\S]+/,alias:"class-name",inside:e.languages.cpp}}}}),e.languages.insertBefore("cpp","operator",{"double-colon":{pattern:/::/,alias:"punctuation"}}),e.languages.insertBefore("cpp","class-name",{"base-clause":{pattern:/(\b(?:class|struct)\s+\w+\s*:\s*)[^;{}"'\s]+(?:\s+[^;{}"'\s]+)*(?=\s*[;{])/,lookbehind:!0,greedy:!0,inside:e.languages.extend("cpp",{})}}),e.languages.insertBefore("inside","double-colon",{"class-name":/\b[a-z_]\w*\b(?!\s*::)/i},e.languages.cpp["base-clause"])}(Prism)},976(){!function(e){var t=/\b(?:abstract|assert|boolean|break|byte|case|catch|char|class|const|continue|default|do|double|else|enum|exports|extends|final|finally|float|for|goto|if|implements|import|instanceof|int|interface|long|module|native|new|non-sealed|null|open|opens|package|permits|private|protected|provides|public|record(?!\s*[(){}[\]<>=%~.:,;?+\-*/&|^])|requires|return|sealed|short|static|strictfp|super|switch|synchronized|this|throw|throws|to|transient|transitive|try|uses|var|void|volatile|while|with|yield)\b/,n=/(?:[a-z]\w*\s*\.\s*)*(?:[A-Z]\w*\s*\.\s*)*/.source,r={pattern:RegExp(/(^|[^\w.])/.source+n+/[A-Z](?:[\d_A-Z]*[a-z]\w*)?\b/.source),lookbehind:!0,inside:{namespace:{pattern:/^[a-z]\w*(?:\s*\.\s*[a-z]\w*)*(?:\s*\.)?/,inside:{punctuation:/\./}},punctuation:/\./}};e.languages.java=e.languages.extend("clike",{string:{pattern:/(^|[^\\])"(?:\\.|[^"\\\r\n])*"/,lookbehind:!0,greedy:!0},"class-name":[r,{pattern:RegExp(/(^|[^\w.])/.source+n+/[A-Z]\w*(?=\s+\w+\s*[;,=()]|\s*(?:\[[\s,]*\]\s*)?::\s*new\b)/.source),lookbehind:!0,inside:r.inside},{pattern:RegExp(/(\b(?:class|enum|extends|implements|instanceof|interface|new|record|throws)\s+)/.source+n+/[A-Z]\w*\b/.source),lookbehind:!0,inside:r.inside}],keyword:t,function:[e.languages.clike.function,{pattern:/(::\s*)[a-z_]\w*/,lookbehind:!0}],number:/\b0b[01][01_]*L?\b|\b0x(?:\.[\da-f_p+-]+|[\da-f_]+(?:\.[\da-f_p+-]+)?)\b|(?:\b\d[\d_]*(?:\.[\d_]*)?|\B\.\d[\d_]*)(?:e[+-]?\d[\d_]*)?[dfl]?/i,operator:{pattern:/(^|[^.])(?:<<=?|>>>?=?|->|--|\+\+|&&|\|\||::|[?:~]|[-+*/%&|^!=<>]=?)/m,lookbehind:!0},constant:/\b[A-Z][A-Z_\d]+\b/}),e.languages.insertBefore("java","string",{"triple-quoted-string":{pattern:/"""[ \t]*[\r\n](?:(?:"|"")?(?:\\.|[^"\\]))*"""/,greedy:!0,alias:"string"},char:{pattern:/'(?:\\.|[^'\\\r\n]){1,6}'/,greedy:!0}}),e.languages.insertBefore("java","class-name",{annotation:{pattern:/(^|[^.])@\w+(?:\s*\.\s*\w+)*/,lookbehind:!0,alias:"punctuation"},generics:{pattern:/<(?:[\w\s,.?]|&(?!&)|<(?:[\w\s,.?]|&(?!&)|<(?:[\w\s,.?]|&(?!&)|<(?:[\w\s,.?]|&(?!&))*>)*>)*>)*>/,inside:{"class-name":r,keyword:t,punctuation:/[<>(),.:]/,operator:/[?&|]/}},import:[{pattern:RegExp(/(\bimport\s+)/.source+n+/(?:[A-Z]\w*|\*)(?=\s*;)/.source),lookbehind:!0,inside:{namespace:r.inside.namespace,punctuation:/\./,operator:/\*/,"class-name":/\w+/}},{pattern:RegExp(/(\bimport\s+static\s+)/.source+n+/(?:\w+|\*)(?=\s*;)/.source),lookbehind:!0,alias:"static",inside:{namespace:r.inside.namespace,static:/\b\w+$/,punctuation:/\./,operator:/\*/,"class-name":/\w+/}}],namespace:{pattern:RegExp(/(\b(?:exports|import(?:\s+static)?|module|open|opens|package|provides|requires|to|transitive|uses|with)\s+)(?!<keyword>)[a-z]\w*(?:\.[a-z]\w*)*\.?/.source.replace(/<keyword>/g,function(){return t.source})),lookbehind:!0,inside:{punctuation:/\./}}})}(Prism)},723(){Prism.languages.javascript=Prism.languages.extend("clike",{"class-name":[Prism.languages.clike["class-name"],{pattern:/(^|[^$\w\xA0-\uFFFF])(?!\s)[_$A-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\.(?:constructor|prototype))/,lookbehind:!0}],keyword:[{pattern:/((?:^|\})\s*)catch\b/,lookbehind:!0},{pattern:/(^|[^.]|\.\.\.\s*)\b(?:as|assert(?=\s*\{)|async(?=\s*(?:function\b|\(|[$\w\xA0-\uFFFF]|$))|await|break|case|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally(?=\s*(?:\{|$))|for|from(?=\s*(?:['"]|$))|function|(?:get|set)(?=\s*(?:[#\[$\w\xA0-\uFFFF]|$))|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|static|super|switch|this|throw|try|typeof|undefined|var|void|while|with|yield)\b/,lookbehind:!0}],function:/#?(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*(?:\.\s*(?:apply|bind|call)\s*)?\()/,number:{pattern:RegExp(/(^|[^\w$])/.source+"(?:"+/NaN|Infinity/.source+"|"+/0[bB][01]+(?:_[01]+)*n?/.source+"|"+/0[oO][0-7]+(?:_[0-7]+)*n?/.source+"|"+/0[xX][\dA-Fa-f]+(?:_[\dA-Fa-f]+)*n?/.source+"|"+/\d+(?:_\d+)*n/.source+"|"+/(?:\d+(?:_\d+)*(?:\.(?:\d+(?:_\d+)*)?)?|\.\d+(?:_\d+)*)(?:[Ee][+-]?\d+(?:_\d+)*)?/.source+")"+/(?![\w$])/.source),lookbehind:!0},operator:/--|\+\+|\*\*=?|=>|&&=?|\|\|=?|[!=]==|<<=?|>>>?=?|[-+*/%&|^!=<>]=?|\.{3}|\?\?=?|\?\.?|[~:]/}),Prism.languages.javascript["class-name"][0].pattern=/(\b(?:class|extends|implements|instanceof|interface|new)\s+)[\w.\\]+/,Prism.languages.insertBefore("javascript","keyword",{regex:{pattern:RegExp(/((?:^|[^$\w\xA0-\uFFFF."'\])\s]|\b(?:return|yield))\s*)/.source+/\//.source+"(?:"+/(?:\[(?:[^\]\\\r\n]|\\.)*\]|\\.|[^/\\\[\r\n])+\/[dgimyus]{0,7}/.source+"|"+/(?:\[(?:[^[\]\\\r\n]|\\.|\[(?:[^[\]\\\r\n]|\\.|\[(?:[^[\]\\\r\n]|\\.)*\])*\])*\]|\\.|[^/\\\[\r\n])+\/[dgimyus]{0,7}v[dgimyus]{0,7}/.source+")"+/(?=(?:\s|\/\*(?:[^*]|\*(?!\/))*\*\/)*(?:$|[\r\n,.;:})\]]|\/\/))/.source),lookbehind:!0,greedy:!0,inside:{"regex-source":{pattern:/^(\/)[\s\S]+(?=\/[a-z]*$)/,lookbehind:!0,alias:"language-regex",inside:Prism.languages.regex},"regex-delimiter":/^\/|\/$/,"regex-flags":/^[a-z]+$/}},"function-variable":{pattern:/#?(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*[=:]\s*(?:async\s*)?(?:\bfunction\b|(?:\((?:[^()]|\([^()]*\))*\)|(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*)\s*=>))/,alias:"function"},parameter:[{pattern:/(function(?:\s+(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*)?\s*\(\s*)(?!\s)(?:[^()\s]|\s+(?![\s)])|\([^()]*\))+(?=\s*\))/,lookbehind:!0,inside:Prism.languages.javascript},{pattern:/(^|[^$\w\xA0-\uFFFF])(?!\s)[_$a-z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*=>)/i,lookbehind:!0,inside:Prism.languages.javascript},{pattern:/(\(\s*)(?!\s)(?:[^()\s]|\s+(?![\s)])|\([^()]*\))+(?=\s*\)\s*=>)/,lookbehind:!0,inside:Prism.languages.javascript},{pattern:/((?:\b|\s|^)(?!(?:as|async|await|break|case|catch|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally|for|from|function|get|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|set|static|super|switch|this|throw|try|typeof|undefined|var|void|while|with|yield)(?![$\w\xA0-\uFFFF]))(?:(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*\s*)\(\s*|\]\s*\(\s*)(?!\s)(?:[^()\s]|\s+(?![\s)])|\([^()]*\))+(?=\s*\)\s*\{)/,lookbehind:!0,inside:Prism.languages.javascript}],constant:/\b[A-Z](?:[A-Z_]|\dx?)*\b/}),Prism.languages.insertBefore("javascript","string",{hashbang:{pattern:/^#!.*/,greedy:!0,alias:"comment"},"template-string":{pattern:/`(?:\\[\s\S]|\$\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}|(?!\$\{)[^\\`])*`/,greedy:!0,inside:{"template-punctuation":{pattern:/^`|`$/,alias:"string"},interpolation:{pattern:/((?:^|[^\\])(?:\\{2})*)\$\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}/,lookbehind:!0,inside:{"interpolation-punctuation":{pattern:/^\$\{|\}$/,alias:"punctuation"},rest:Prism.languages.javascript}},string:/[\s\S]+/}},"string-property":{pattern:/((?:^|[,{])[ \t]*)(["'])(?:\\(?:\r\n|[\s\S])|(?!\2)[^\\\r\n])*\2(?=\s*:)/m,lookbehind:!0,greedy:!0,alias:"property"}}),Prism.languages.insertBefore("javascript","operator",{"literal-property":{pattern:/((?:^|[,{])[ \t]*)(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*:)/m,lookbehind:!0,alias:"property"}}),Prism.languages.markup&&(Prism.languages.markup.tag.addInlined("script","javascript"),Prism.languages.markup.tag.addAttribute(/on(?:abort|blur|change|click|composition(?:end|start|update)|dblclick|error|focus(?:in|out)?|key(?:down|up)|load|mouse(?:down|enter|leave|move|out|over|up)|reset|resize|scroll|select|slotchange|submit|unload|wheel)/.source,"javascript")),Prism.languages.js=Prism.languages.javascript},342(){Prism.languages.python={comment:{pattern:/(^|[^\\])#.*/,lookbehind:!0,greedy:!0},"string-interpolation":{pattern:/(?:f|fr|rf)(?:("""|''')[\s\S]*?\1|("|')(?:\\.|(?!\2)[^\\\r\n])*\2)/i,greedy:!0,inside:{interpolation:{pattern:/((?:^|[^{])(?:\{\{)*)\{(?!\{)(?:[^{}]|\{(?!\{)(?:[^{}]|\{(?!\{)(?:[^{}])+\})+\})+\}/,lookbehind:!0,inside:{"format-spec":{pattern:/(:)[^:(){}]+(?=\}$)/,lookbehind:!0},"conversion-option":{pattern:/![sra](?=[:}]$)/,alias:"punctuation"},rest:null}},string:/[\s\S]+/}},"triple-quoted-string":{pattern:/(?:[rub]|br|rb)?("""|''')[\s\S]*?\1/i,greedy:!0,alias:"string"},string:{pattern:/(?:[rub]|br|rb)?("|')(?:\\.|(?!\1)[^\\\r\n])*\1/i,greedy:!0},function:{pattern:/((?:^|\s)def[ \t]+)[a-zA-Z_]\w*(?=\s*\()/g,lookbehind:!0},"class-name":{pattern:/(\bclass\s+)\w+/i,lookbehind:!0},decorator:{pattern:/(^[\t ]*)@\w+(?:\.\w+)*/m,lookbehind:!0,alias:["annotation","punctuation"],inside:{punctuation:/\./}},keyword:/\b(?:_(?=\s*:)|and|as|assert|async|await|break|case|class|continue|def|del|elif|else|except|exec|finally|for|from|global|if|import|in|is|lambda|match|nonlocal|not|or|pass|print|raise|return|try|while|with|yield)\b/,builtin:/\b(?:__import__|abs|all|any|apply|ascii|basestring|bin|bool|buffer|bytearray|bytes|callable|chr|classmethod|cmp|coerce|compile|complex|delattr|dict|dir|divmod|enumerate|eval|execfile|file|filter|float|format|frozenset|getattr|globals|hasattr|hash|help|hex|id|input|int|intern|isinstance|issubclass|iter|len|list|locals|long|map|max|memoryview|min|next|object|oct|open|ord|pow|property|range|raw_input|reduce|reload|repr|reversed|round|set|setattr|slice|sorted|staticmethod|str|sum|super|tuple|type|unichr|unicode|vars|xrange|zip)\b/,boolean:/\b(?:False|None|True)\b/,number:/\b0(?:b(?:_?[01])+|o(?:_?[0-7])+|x(?:_?[a-f0-9])+)\b|(?:\b\d+(?:_\d+)*(?:\.(?:\d+(?:_\d+)*)?)?|\B\.\d+(?:_\d+)*)(?:e[+-]?\d+(?:_\d+)*)?j?(?!\w)/i,operator:/[-+%=]=?|!=|:=|\*\*?=?|\/\/?=?|<[<=>]?|>[=>]?|[&|^~]/,punctuation:/[{}[\];(),.:]/},Prism.languages.python["string-interpolation"].inside.interpolation.inside.rest=Prism.languages.python,Prism.languages.py=Prism.languages.python},848(e,t,n){var r=function(e){var t=/(?:^|\s)lang(?:uage)?-([\w-]+)(?=\s|$)/i,n=0,r={},a={manual:e.Prism&&e.Prism.manual,disableWorkerMessageHandler:e.Prism&&e.Prism.disableWorkerMessageHandler,util:{encode:function e(t){return t instanceof s?new s(t.type,e(t.content),t.alias):Array.isArray(t)?t.map(e):t.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).slice(8,-1)},objId:function(e){return e.__id||Object.defineProperty(e,"__id",{value:++n}),e.__id},clone:function e(t,n){var r,s;switch(n=n||{},a.util.type(t)){case"Object":if(s=a.util.objId(t),n[s])return n[s];for(var o in r={},n[s]=r,t)t.hasOwnProperty(o)&&(r[o]=e(t[o],n));return r;case"Array":return s=a.util.objId(t),n[s]?n[s]:(r=[],n[s]=r,t.forEach(function(t,a){r[a]=e(t,n)}),r);default:return t}},getLanguage:function(e){for(;e;){var n=t.exec(e.className);if(n)return n[1].toLowerCase();e=e.parentElement}return"none"},setLanguage:function(e,n){e.className=e.className.replace(RegExp(t,"gi"),""),e.classList.add("language-"+n)},currentScript:function(){if("undefined"==typeof document)return null;if(document.currentScript&&"SCRIPT"===document.currentScript.tagName)return document.currentScript;try{throw new Error}catch(r){var e=(/at [^(\r\n]*\((.*):[^:]+:[^:]+\)$/i.exec(r.stack)||[])[1];if(e){var t=document.getElementsByTagName("script");for(var n in t)if(t[n].src==e)return t[n]}return null}},isActive:function(e,t,n){for(var r="no-"+t;e;){var a=e.classList;if(a.contains(t))return!0;if(a.contains(r))return!1;e=e.parentElement}return!!n}},languages:{plain:r,plaintext:r,text:r,txt:r,extend:function(e,t){var n=a.util.clone(a.languages[e]);for(var r in t)n[r]=t[r];return n},insertBefore:function(e,t,n,r){var s=(r=r||a.languages)[e],o={};for(var i in s)if(s.hasOwnProperty(i)){if(i==t)for(var l in n)n.hasOwnProperty(l)&&(o[l]=n[l]);n.hasOwnProperty(i)||(o[i]=s[i])}var c=r[e];return r[e]=o,a.languages.DFS(a.languages,function(t,n){n===c&&t!=e&&(this[t]=o)}),o},DFS:function e(t,n,r,s){s=s||{};var o=a.util.objId;for(var i in t)if(t.hasOwnProperty(i)){n.call(t,i,t[i],r||i);var l=t[i],c=a.util.type(l);"Object"!==c||s[o(l)]?"Array"!==c||s[o(l)]||(s[o(l)]=!0,e(l,n,i,s)):(s[o(l)]=!0,e(l,n,null,s))}}},plugins:{},highlightAll:function(e,t){a.highlightAllUnder(document,e,t)},highlightAllUnder:function(e,t,n){var r={callback:n,container:e,selector:'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'};a.hooks.run("before-highlightall",r),r.elements=Array.prototype.slice.apply(r.container.querySelectorAll(r.selector)),a.hooks.run("before-all-elements-highlight",r);for(var s,o=0;s=r.elements[o++];)a.highlightElement(s,!0===t,r.callback)},highlightElement:function(t,n,r){var s=a.util.getLanguage(t),o=a.languages[s];a.util.setLanguage(t,s);var i=t.parentElement;i&&"pre"===i.nodeName.toLowerCase()&&a.util.setLanguage(i,s);var l={element:t,language:s,grammar:o,code:t.textContent};function c(e){l.highlightedCode=e,a.hooks.run("before-insert",l),l.element.innerHTML=l.highlightedCode,a.hooks.run("after-highlight",l),a.hooks.run("complete",l),r&&r.call(l.element)}if(a.hooks.run("before-sanity-check",l),(i=l.element.parentElement)&&"pre"===i.nodeName.toLowerCase()&&!i.hasAttribute("tabindex")&&i.setAttribute("tabindex","0"),!l.code)return a.hooks.run("complete",l),void(r&&r.call(l.element));if(a.hooks.run("before-highlight",l),l.grammar)if(n&&e.Worker){var u=new Worker(a.filename);u.onmessage=function(e){c(e.data)},u.postMessage(JSON.stringify({language:l.language,code:l.code,immediateClose:!0}))}else c(a.highlight(l.code,l.grammar,l.language));else c(a.util.encode(l.code))},highlight:function(e,t,n){var r={code:e,grammar:t,language:n};if(a.hooks.run("before-tokenize",r),!r.grammar)throw new Error('The language "'+r.language+'" has no grammar.');return r.tokens=a.tokenize(r.code,r.grammar),a.hooks.run("after-tokenize",r),s.stringify(a.util.encode(r.tokens),r.language)},tokenize:function(e,t){var n=t.rest;if(n){for(var r in n)t[r]=n[r];delete t.rest}var a=new l;return c(a,a.head,e),i(e,a,t,a.head,0),function(e){for(var t=[],n=e.head.next;n!==e.tail;)t.push(n.value),n=n.next;return t}(a)},hooks:{all:{},add:function(e,t){var n=a.hooks.all;n[e]=n[e]||[],n[e].push(t)},run:function(e,t){var n=a.hooks.all[e];if(n&&n.length)for(var r,s=0;r=n[s++];)r(t)}},Token:s};function s(e,t,n,r){this.type=e,this.content=t,this.alias=n,this.length=0|(r||"").length}function o(e,t,n,r){e.lastIndex=t;var a=e.exec(n);if(a&&r&&a[1]){var s=a[1].length;a.index+=s,a[0]=a[0].slice(s)}return a}function i(e,t,n,r,l,d){for(var g in n)if(n.hasOwnProperty(g)&&n[g]){var m=n[g];m=Array.isArray(m)?m:[m];for(var p=0;p<m.length;++p){if(d&&d.cause==g+","+p)return;var f=m[p],h=f.inside,b=!!f.lookbehind,A=!!f.greedy,y=f.alias;if(A&&!f.pattern.global){var w=f.pattern.toString().match(/[imsuy]*$/)[0];f.pattern=RegExp(f.pattern.source,w+"g")}for(var v=f.pattern||f,k=r.next,x=l;k!==t.tail&&!(d&&x>=d.reach);x+=k.value.length,k=k.next){var _=k.value;if(t.length>e.length)return;if(!(_ instanceof s)){var E,T=1;if(A){if(!(E=o(v,x,e,b))||E.index>=e.length)break;var S=E.index,F=E.index+E[0].length,C=x;for(C+=k.value.length;S>=C;)C+=(k=k.next).value.length;if(x=C-=k.value.length,k.value instanceof s)continue;for(var L=k;L!==t.tail&&(C<F||"string"==typeof L.value);L=L.next)T++,C+=L.value.length;T--,_=e.slice(x,C),E.index-=x}else if(!(E=o(v,0,_,b)))continue;S=E.index;var N=E[0],P=_.slice(0,S),R=_.slice(S+N.length),M=x+_.length;d&&M>d.reach&&(d.reach=M);var O=k.prev;if(P&&(O=c(t,O,P),x+=P.length),u(t,O,T),k=c(t,O,new s(g,h?a.tokenize(N,h):N,y,N)),R&&c(t,k,R),T>1){var D={cause:g+","+p,reach:M};i(e,t,n,k.prev,x,D),d&&D.reach>d.reach&&(d.reach=D.reach)}}}}}}function l(){var e={value:null,prev:null,next:null},t={value:null,prev:e,next:null};e.next=t,this.head=e,this.tail=t,this.length=0}function c(e,t,n){var r=t.next,a={value:n,prev:t,next:r};return t.next=a,r.prev=a,e.length++,a}function u(e,t,n){for(var r=t.next,a=0;a<n&&r!==e.tail;a++)r=r.next;t.next=r,r.prev=t,e.length-=a}if(e.Prism=a,s.stringify=function e(t,n){if("string"==typeof t)return t;if(Array.isArray(t)){var r="";return t.forEach(function(t){r+=e(t,n)}),r}var s={type:t.type,content:e(t.content,n),tag:"span",classes:["token",t.type],attributes:{},language:n},o=t.alias;o&&(Array.isArray(o)?Array.prototype.push.apply(s.classes,o):s.classes.push(o)),a.hooks.run("wrap",s);var i="";for(var l in s.attributes)i+=" "+l+'="'+(s.attributes[l]||"").replace(/"/g,"&quot;")+'"';return"<"+s.tag+' class="'+s.classes.join(" ")+'"'+i+">"+s.content+"</"+s.tag+">"},!e.document)return e.addEventListener?(a.disableWorkerMessageHandler||e.addEventListener("message",function(t){var n=JSON.parse(t.data),r=n.language,s=n.code,o=n.immediateClose;e.postMessage(a.highlight(s,a.languages[r],r)),o&&e.close()},!1),a):a;var d=a.util.currentScript();function g(){a.manual||a.highlightAll()}if(d&&(a.filename=d.src,d.hasAttribute("data-manual")&&(a.manual=!0)),!a.manual){var m=document.readyState;"loading"===m||"interactive"===m&&d&&d.defer?document.addEventListener("DOMContentLoaded",g):window.requestAnimationFrame?window.requestAnimationFrame(g):window.setTimeout(g,16)}return a}("undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{});e.exports&&(e.exports=r),void 0!==n.g&&(n.g.Prism=r),r.languages.markup={comment:{pattern:/<!--(?:(?!<!--)[\s\S])*?-->/,greedy:!0},prolog:{pattern:/<\?[\s\S]+?\?>/,greedy:!0},doctype:{pattern:/<!DOCTYPE(?:[^>"'[\]]|"[^"]*"|'[^']*')+(?:\[(?:[^<"'\]]|"[^"]*"|'[^']*'|<(?!!--)|<!--(?:[^-]|-(?!->))*-->)*\]\s*)?>/i,greedy:!0,inside:{"internal-subset":{pattern:/(^[^\[]*\[)[\s\S]+(?=\]>$)/,lookbehind:!0,greedy:!0,inside:null},string:{pattern:/"[^"]*"|'[^']*'/,greedy:!0},punctuation:/^<!|>$|[[\]]/,"doctype-tag":/^DOCTYPE/i,name:/[^\s<>'"]+/}},cdata:{pattern:/<!\[CDATA\[[\s\S]*?\]\]>/i,greedy:!0},tag:{pattern:/<\/?(?!\d)[^\s>\/=$<%]+(?:\s(?:\s*[^\s>\/=]+(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+(?=[\s>]))|(?=[\s/>])))+)?\s*\/?>/,greedy:!0,inside:{tag:{pattern:/^<\/?[^\s>\/]+/,inside:{punctuation:/^<\/?/,namespace:/^[^\s>\/:]+:/}},"special-attr":[],"attr-value":{pattern:/=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+)/,inside:{punctuation:[{pattern:/^=/,alias:"attr-equals"},{pattern:/^(\s*)["']|["']$/,lookbehind:!0}]}},punctuation:/\/?>/,"attr-name":{pattern:/[^\s>\/]+/,inside:{namespace:/^[^\s>\/:]+:/}}}},entity:[{pattern:/&[\da-z]{1,8};/i,alias:"named-entity"},/&#x?[\da-f]{1,8};/i]},r.languages.markup.tag.inside["attr-value"].inside.entity=r.languages.markup.entity,r.languages.markup.doctype.inside["internal-subset"].inside=r.languages.markup,r.hooks.add("wrap",function(e){"entity"===e.type&&(e.attributes.title=e.content.replace(/&amp;/,"&"))}),Object.defineProperty(r.languages.markup.tag,"addInlined",{value:function(e,t){var n={};n["language-"+t]={pattern:/(^<!\[CDATA\[)[\s\S]+?(?=\]\]>$)/i,lookbehind:!0,inside:r.languages[t]},n.cdata=/^<!\[CDATA\[|\]\]>$/i;var a={"included-cdata":{pattern:/<!\[CDATA\[[\s\S]*?\]\]>/i,inside:n}};a["language-"+t]={pattern:/[\s\S]+/,inside:r.languages[t]};var s={};s[e]={pattern:RegExp(/(<__[^>]*>)(?:<!\[CDATA\[(?:[^\]]|\](?!\]>))*\]\]>|(?!<!\[CDATA\[)[\s\S])*?(?=<\/__>)/.source.replace(/__/g,function(){return e}),"i"),lookbehind:!0,greedy:!0,inside:a},r.languages.insertBefore("markup","cdata",s)}}),Object.defineProperty(r.languages.markup.tag,"addAttribute",{value:function(e,t){r.languages.markup.tag.inside["special-attr"].push({pattern:RegExp(/(^|["'\s])/.source+"(?:"+e+")"+/\s*=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+(?=[\s>]))/.source,"i"),lookbehind:!0,inside:{"attr-name":/^[^\s=]+/,"attr-value":{pattern:/=[\s\S]+/,inside:{value:{pattern:/(^=\s*(["']|(?!["'])))\S[\s\S]*(?=\2$)/,lookbehind:!0,alias:[t,"language-"+t],inside:r.languages[t]},punctuation:[{pattern:/^=/,alias:"attr-equals"},/"|'/]}}}})}}),r.languages.html=r.languages.markup,r.languages.mathml=r.languages.markup,r.languages.svg=r.languages.markup,r.languages.xml=r.languages.extend("markup",{}),r.languages.ssml=r.languages.xml,r.languages.atom=r.languages.xml,r.languages.rss=r.languages.xml,function(e){var t=/(?:"(?:\\(?:\r\n|[\s\S])|[^"\\\r\n])*"|'(?:\\(?:\r\n|[\s\S])|[^'\\\r\n])*')/;e.languages.css={comment:/\/\*[\s\S]*?\*\//,atrule:{pattern:RegExp("@[\\w-](?:"+/[^;{\s"']|\s+(?!\s)/.source+"|"+t.source+")*?"+/(?:;|(?=\s*\{))/.source),inside:{rule:/^@[\w-]+/,"selector-function-argument":{pattern:/(\bselector\s*\(\s*(?![\s)]))(?:[^()\s]|\s+(?![\s)])|\((?:[^()]|\([^()]*\))*\))+(?=\s*\))/,lookbehind:!0,alias:"selector"},keyword:{pattern:/(^|[^\w-])(?:and|not|only|or)(?![\w-])/,lookbehind:!0}}},url:{pattern:RegExp("\\burl\\((?:"+t.source+"|"+/(?:[^\\\r\n()"']|\\[\s\S])*/.source+")\\)","i"),greedy:!0,inside:{function:/^url/i,punctuation:/^\(|\)$/,string:{pattern:RegExp("^"+t.source+"$"),alias:"url"}}},selector:{pattern:RegExp("(^|[{}\\s])[^{}\\s](?:[^{};\"'\\s]|\\s+(?![\\s{])|"+t.source+")*(?=\\s*\\{)"),lookbehind:!0},string:{pattern:t,greedy:!0},property:{pattern:/(^|[^-\w\xA0-\uFFFF])(?!\s)[-_a-z\xA0-\uFFFF](?:(?!\s)[-\w\xA0-\uFFFF])*(?=\s*:)/i,lookbehind:!0},important:/!important\b/i,function:{pattern:/(^|[^-a-z0-9])[-a-z0-9]+(?=\()/i,lookbehind:!0},punctuation:/[(){};:,]/},e.languages.css.atrule.inside.rest=e.languages.css;var n=e.languages.markup;n&&(n.tag.addInlined("style","css"),n.tag.addAttribute("style","css"))}(r),r.languages.clike={comment:[{pattern:/(^|[^\\])\/\*[\s\S]*?(?:\*\/|$)/,lookbehind:!0,greedy:!0},{pattern:/(^|[^\\:])\/\/.*/,lookbehind:!0,greedy:!0}],string:{pattern:/(["'])(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,greedy:!0},"class-name":{pattern:/(\b(?:class|extends|implements|instanceof|interface|new|trait)\s+|\bcatch\s+\()[\w.\\]+/i,lookbehind:!0,inside:{punctuation:/[.\\]/}},keyword:/\b(?:break|catch|continue|do|else|finally|for|function|if|in|instanceof|new|null|return|throw|try|while)\b/,boolean:/\b(?:false|true)\b/,function:/\b\w+(?=\()/,number:/\b0x[\da-f]+\b|(?:\b\d+(?:\.\d*)?|\B\.\d+)(?:e[+-]?\d+)?/i,operator:/[<>]=?|[!=]=?=?|--?|\+\+?|&&?|\|\|?|[?*/~^%]/,punctuation:/[{}[\];(),.:]/},r.languages.javascript=r.languages.extend("clike",{"class-name":[r.languages.clike["class-name"],{pattern:/(^|[^$\w\xA0-\uFFFF])(?!\s)[_$A-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\.(?:constructor|prototype))/,lookbehind:!0}],keyword:[{pattern:/((?:^|\})\s*)catch\b/,lookbehind:!0},{pattern:/(^|[^.]|\.\.\.\s*)\b(?:as|assert(?=\s*\{)|async(?=\s*(?:function\b|\(|[$\w\xA0-\uFFFF]|$))|await|break|case|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally(?=\s*(?:\{|$))|for|from(?=\s*(?:['"]|$))|function|(?:get|set)(?=\s*(?:[#\[$\w\xA0-\uFFFF]|$))|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|static|super|switch|this|throw|try|typeof|undefined|var|void|while|with|yield)\b/,lookbehind:!0}],function:/#?(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*(?:\.\s*(?:apply|bind|call)\s*)?\()/,number:{pattern:RegExp(/(^|[^\w$])/.source+"(?:"+/NaN|Infinity/.source+"|"+/0[bB][01]+(?:_[01]+)*n?/.source+"|"+/0[oO][0-7]+(?:_[0-7]+)*n?/.source+"|"+/0[xX][\dA-Fa-f]+(?:_[\dA-Fa-f]+)*n?/.source+"|"+/\d+(?:_\d+)*n/.source+"|"+/(?:\d+(?:_\d+)*(?:\.(?:\d+(?:_\d+)*)?)?|\.\d+(?:_\d+)*)(?:[Ee][+-]?\d+(?:_\d+)*)?/.source+")"+/(?![\w$])/.source),lookbehind:!0},operator:/--|\+\+|\*\*=?|=>|&&=?|\|\|=?|[!=]==|<<=?|>>>?=?|[-+*/%&|^!=<>]=?|\.{3}|\?\?=?|\?\.?|[~:]/}),r.languages.javascript["class-name"][0].pattern=/(\b(?:class|extends|implements|instanceof|interface|new)\s+)[\w.\\]+/,r.languages.insertBefore("javascript","keyword",{regex:{pattern:RegExp(/((?:^|[^$\w\xA0-\uFFFF."'\])\s]|\b(?:return|yield))\s*)/.source+/\//.source+"(?:"+/(?:\[(?:[^\]\\\r\n]|\\.)*\]|\\.|[^/\\\[\r\n])+\/[dgimyus]{0,7}/.source+"|"+/(?:\[(?:[^[\]\\\r\n]|\\.|\[(?:[^[\]\\\r\n]|\\.|\[(?:[^[\]\\\r\n]|\\.)*\])*\])*\]|\\.|[^/\\\[\r\n])+\/[dgimyus]{0,7}v[dgimyus]{0,7}/.source+")"+/(?=(?:\s|\/\*(?:[^*]|\*(?!\/))*\*\/)*(?:$|[\r\n,.;:})\]]|\/\/))/.source),lookbehind:!0,greedy:!0,inside:{"regex-source":{pattern:/^(\/)[\s\S]+(?=\/[a-z]*$)/,lookbehind:!0,alias:"language-regex",inside:r.languages.regex},"regex-delimiter":/^\/|\/$/,"regex-flags":/^[a-z]+$/}},"function-variable":{pattern:/#?(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*[=:]\s*(?:async\s*)?(?:\bfunction\b|(?:\((?:[^()]|\([^()]*\))*\)|(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*)\s*=>))/,alias:"function"},parameter:[{pattern:/(function(?:\s+(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*)?\s*\(\s*)(?!\s)(?:[^()\s]|\s+(?![\s)])|\([^()]*\))+(?=\s*\))/,lookbehind:!0,inside:r.languages.javascript},{pattern:/(^|[^$\w\xA0-\uFFFF])(?!\s)[_$a-z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*=>)/i,lookbehind:!0,inside:r.languages.javascript},{pattern:/(\(\s*)(?!\s)(?:[^()\s]|\s+(?![\s)])|\([^()]*\))+(?=\s*\)\s*=>)/,lookbehind:!0,inside:r.languages.javascript},{pattern:/((?:\b|\s|^)(?!(?:as|async|await|break|case|catch|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally|for|from|function|get|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|set|static|super|switch|this|throw|try|typeof|undefined|var|void|while|with|yield)(?![$\w\xA0-\uFFFF]))(?:(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*\s*)\(\s*|\]\s*\(\s*)(?!\s)(?:[^()\s]|\s+(?![\s)])|\([^()]*\))+(?=\s*\)\s*\{)/,lookbehind:!0,inside:r.languages.javascript}],constant:/\b[A-Z](?:[A-Z_]|\dx?)*\b/}),r.languages.insertBefore("javascript","string",{hashbang:{pattern:/^#!.*/,greedy:!0,alias:"comment"},"template-string":{pattern:/`(?:\\[\s\S]|\$\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}|(?!\$\{)[^\\`])*`/,greedy:!0,inside:{"template-punctuation":{pattern:/^`|`$/,alias:"string"},interpolation:{pattern:/((?:^|[^\\])(?:\\{2})*)\$\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}/,lookbehind:!0,inside:{"interpolation-punctuation":{pattern:/^\$\{|\}$/,alias:"punctuation"},rest:r.languages.javascript}},string:/[\s\S]+/}},"string-property":{pattern:/((?:^|[,{])[ \t]*)(["'])(?:\\(?:\r\n|[\s\S])|(?!\2)[^\\\r\n])*\2(?=\s*:)/m,lookbehind:!0,greedy:!0,alias:"property"}}),r.languages.insertBefore("javascript","operator",{"literal-property":{pattern:/((?:^|[,{])[ \t]*)(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*:)/m,lookbehind:!0,alias:"property"}}),r.languages.markup&&(r.languages.markup.tag.addInlined("script","javascript"),r.languages.markup.tag.addAttribute(/on(?:abort|blur|change|click|composition(?:end|start|update)|dblclick|error|focus(?:in|out)?|key(?:down|up)|load|mouse(?:down|enter|leave|move|out|over|up)|reset|resize|scroll|select|slotchange|submit|unload|wheel)/.source,"javascript")),r.languages.js=r.languages.javascript,function(){if(void 0!==r&&"undefined"!=typeof document){Element.prototype.matches||(Element.prototype.matches=Element.prototype.msMatchesSelector||Element.prototype.webkitMatchesSelector);var e={js:"javascript",py:"python",rb:"ruby",ps1:"powershell",psm1:"powershell",sh:"bash",bat:"batch",h:"c",tex:"latex"},t="data-src-status",n="loading",a="loaded",s="pre[data-src]:not(["+t+'="'+a+'"]):not(['+t+'="'+n+'"])';r.hooks.add("before-highlightall",function(e){e.selector+=", "+s}),r.hooks.add("before-sanity-check",function(o){var i=o.element;if(i.matches(s)){o.code="",i.setAttribute(t,n);var l=i.appendChild(document.createElement("CODE"));l.textContent="Loading…";var c=i.getAttribute("data-src"),u=o.language;if("none"===u){var d=(/\.(\w+)$/.exec(c)||[,"none"])[1];u=e[d]||d}r.util.setLanguage(l,u),r.util.setLanguage(i,u);var g=r.plugins.autoloader;g&&g.loadLanguages(u),function(e,n,s){var o=new XMLHttpRequest;o.open("GET",e,!0),o.onreadystatechange=function(){4==o.readyState&&(o.status<400&&o.responseText?function(e){i.setAttribute(t,a);var n=function(e){var t=/^\s*(\d+)\s*(?:(,)\s*(?:(\d+)\s*)?)?$/.exec(e||"");if(t){var n=Number(t[1]),r=t[2],a=t[3];return r?a?[n,Number(a)]:[n,void 0]:[n,n]}}(i.getAttribute("data-range"));if(n){var s=e.split(/\r\n?|\n/g),o=n[0],c=null==n[1]?s.length:n[1];o<0&&(o+=s.length),o=Math.max(0,Math.min(o-1,s.length)),c<0&&(c+=s.length),c=Math.max(0,Math.min(c,s.length)),e=s.slice(o,c).join("\n"),i.hasAttribute("data-start")||i.setAttribute("data-start",String(o+1))}l.textContent=e,r.highlightElement(l)}(o.responseText):o.status>=400?s("✖ Error "+o.status+" while fetching file: "+o.statusText):s("✖ Error: File does not exist or is empty"))},o.send(null)}(c,0,function(e){i.setAttribute(t,"failed"),l.textContent=e})}}),r.plugins.fileHighlight={highlight:function(e){for(var t,n=(e||document).querySelectorAll(s),a=0;t=n[a++];)r.highlightElement(t)}};var o=!1;r.fileHighlight=function(){o||(console.warn("Prism.fileHighlight is deprecated. Use `Prism.plugins.fileHighlight.highlight` instead."),o=!0),r.plugins.fileHighlight.highlight.apply(this,arguments)}}}()},815(e,t){var n,r;"undefined"!=typeof globalThis?globalThis:"undefined"!=typeof self&&self,n=function(e){"use strict";if(!globalThis.chrome?.runtime?.id)throw new Error("This script should only be loaded in a browser extension.");if(void 0===globalThis.browser||Object.getPrototypeOf(globalThis.browser)!==Object.prototype){const t="The message port closed before a response was received.",n=e=>{const n={alarms:{clear:{minArgs:0,maxArgs:1},clearAll:{minArgs:0,maxArgs:0},get:{minArgs:0,maxArgs:1},getAll:{minArgs:0,maxArgs:0}},bookmarks:{create:{minArgs:1,maxArgs:1},get:{minArgs:1,maxArgs:1},getChildren:{minArgs:1,maxArgs:1},getRecent:{minArgs:1,maxArgs:1},getSubTree:{minArgs:1,maxArgs:1},getTree:{minArgs:0,maxArgs:0},move:{minArgs:2,maxArgs:2},remove:{minArgs:1,maxArgs:1},removeTree:{minArgs:1,maxArgs:1},search:{minArgs:1,maxArgs:1},update:{minArgs:2,maxArgs:2}},browserAction:{disable:{minArgs:0,maxArgs:1,fallbackToNoCallback:!0},enable:{minArgs:0,maxArgs:1,fallbackToNoCallback:!0},getBadgeBackgroundColor:{minArgs:1,maxArgs:1},getBadgeText:{minArgs:1,maxArgs:1},getPopup:{minArgs:1,maxArgs:1},getTitle:{minArgs:1,maxArgs:1},openPopup:{minArgs:0,maxArgs:0},setBadgeBackgroundColor:{minArgs:1,maxArgs:1,fallbackToNoCallback:!0},setBadgeText:{minArgs:1,maxArgs:1,fallbackToNoCallback:!0},setIcon:{minArgs:1,maxArgs:1},setPopup:{minArgs:1,maxArgs:1,fallbackToNoCallback:!0},setTitle:{minArgs:1,maxArgs:1,fallbackToNoCallback:!0}},browsingData:{remove:{minArgs:2,maxArgs:2},removeCache:{minArgs:1,maxArgs:1},removeCookies:{minArgs:1,maxArgs:1},removeDownloads:{minArgs:1,maxArgs:1},removeFormData:{minArgs:1,maxArgs:1},removeHistory:{minArgs:1,maxArgs:1},removeLocalStorage:{minArgs:1,maxArgs:1},removePasswords:{minArgs:1,maxArgs:1},removePluginData:{minArgs:1,maxArgs:1},settings:{minArgs:0,maxArgs:0}},commands:{getAll:{minArgs:0,maxArgs:0}},contextMenus:{remove:{minArgs:1,maxArgs:1},removeAll:{minArgs:0,maxArgs:0},update:{minArgs:2,maxArgs:2}},cookies:{get:{minArgs:1,maxArgs:1},getAll:{minArgs:1,maxArgs:1},getAllCookieStores:{minArgs:0,maxArgs:0},remove:{minArgs:1,maxArgs:1},set:{minArgs:1,maxArgs:1}},devtools:{inspectedWindow:{eval:{minArgs:1,maxArgs:2,singleCallbackArg:!1}},panels:{create:{minArgs:3,maxArgs:3,singleCallbackArg:!0},elements:{createSidebarPane:{minArgs:1,maxArgs:1}}}},downloads:{cancel:{minArgs:1,maxArgs:1},download:{minArgs:1,maxArgs:1},erase:{minArgs:1,maxArgs:1},getFileIcon:{minArgs:1,maxArgs:2},open:{minArgs:1,maxArgs:1,fallbackToNoCallback:!0},pause:{minArgs:1,maxArgs:1},removeFile:{minArgs:1,maxArgs:1},resume:{minArgs:1,maxArgs:1},search:{minArgs:1,maxArgs:1},show:{minArgs:1,maxArgs:1,fallbackToNoCallback:!0}},extension:{isAllowedFileSchemeAccess:{minArgs:0,maxArgs:0},isAllowedIncognitoAccess:{minArgs:0,maxArgs:0}},history:{addUrl:{minArgs:1,maxArgs:1},deleteAll:{minArgs:0,maxArgs:0},deleteRange:{minArgs:1,maxArgs:1},deleteUrl:{minArgs:1,maxArgs:1},getVisits:{minArgs:1,maxArgs:1},search:{minArgs:1,maxArgs:1}},i18n:{detectLanguage:{minArgs:1,maxArgs:1},getAcceptLanguages:{minArgs:0,maxArgs:0}},identity:{launchWebAuthFlow:{minArgs:1,maxArgs:1}},idle:{queryState:{minArgs:1,maxArgs:1}},management:{get:{minArgs:1,maxArgs:1},getAll:{minArgs:0,maxArgs:0},getSelf:{minArgs:0,maxArgs:0},setEnabled:{minArgs:2,maxArgs:2},uninstallSelf:{minArgs:0,maxArgs:1}},notifications:{clear:{minArgs:1,maxArgs:1},create:{minArgs:1,maxArgs:2},getAll:{minArgs:0,maxArgs:0},getPermissionLevel:{minArgs:0,maxArgs:0},update:{minArgs:2,maxArgs:2}},pageAction:{getPopup:{minArgs:1,maxArgs:1},getTitle:{minArgs:1,maxArgs:1},hide:{minArgs:1,maxArgs:1,fallbackToNoCallback:!0},setIcon:{minArgs:1,maxArgs:1},setPopup:{minArgs:1,maxArgs:1,fallbackToNoCallback:!0},setTitle:{minArgs:1,maxArgs:1,fallbackToNoCallback:!0},show:{minArgs:1,maxArgs:1,fallbackToNoCallback:!0}},permissions:{contains:{minArgs:1,maxArgs:1},getAll:{minArgs:0,maxArgs:0},remove:{minArgs:1,maxArgs:1},request:{minArgs:1,maxArgs:1}},runtime:{getBackgroundPage:{minArgs:0,maxArgs:0},getPlatformInfo:{minArgs:0,maxArgs:0},openOptionsPage:{minArgs:0,maxArgs:0},requestUpdateCheck:{minArgs:0,maxArgs:0},sendMessage:{minArgs:1,maxArgs:3},sendNativeMessage:{minArgs:2,maxArgs:2},setUninstallURL:{minArgs:1,maxArgs:1}},sessions:{getDevices:{minArgs:0,maxArgs:1},getRecentlyClosed:{minArgs:0,maxArgs:1},restore:{minArgs:0,maxArgs:1}},storage:{local:{clear:{minArgs:0,maxArgs:0},get:{minArgs:0,maxArgs:1},getBytesInUse:{minArgs:0,maxArgs:1},remove:{minArgs:1,maxArgs:1},set:{minArgs:1,maxArgs:1}},managed:{get:{minArgs:0,maxArgs:1},getBytesInUse:{minArgs:0,maxArgs:1}},sync:{clear:{minArgs:0,maxArgs:0},get:{minArgs:0,maxArgs:1},getBytesInUse:{minArgs:0,maxArgs:1},remove:{minArgs:1,maxArgs:1},set:{minArgs:1,maxArgs:1}}},tabs:{captureVisibleTab:{minArgs:0,maxArgs:2},create:{minArgs:1,maxArgs:1},detectLanguage:{minArgs:0,maxArgs:1},discard:{minArgs:0,maxArgs:1},duplicate:{minArgs:1,maxArgs:1},executeScript:{minArgs:1,maxArgs:2},get:{minArgs:1,maxArgs:1},getCurrent:{minArgs:0,maxArgs:0},getZoom:{minArgs:0,maxArgs:1},getZoomSettings:{minArgs:0,maxArgs:1},goBack:{minArgs:0,maxArgs:1},goForward:{minArgs:0,maxArgs:1},highlight:{minArgs:1,maxArgs:1},insertCSS:{minArgs:1,maxArgs:2},move:{minArgs:2,maxArgs:2},query:{minArgs:1,maxArgs:1},reload:{minArgs:0,maxArgs:2},remove:{minArgs:1,maxArgs:1},removeCSS:{minArgs:1,maxArgs:2},sendMessage:{minArgs:2,maxArgs:3},setZoom:{minArgs:1,maxArgs:2},setZoomSettings:{minArgs:1,maxArgs:2},update:{minArgs:1,maxArgs:2}},topSites:{get:{minArgs:0,maxArgs:0}},webNavigation:{getAllFrames:{minArgs:1,maxArgs:1},getFrame:{minArgs:1,maxArgs:1}},webRequest:{handlerBehaviorChanged:{minArgs:0,maxArgs:0}},windows:{create:{minArgs:0,maxArgs:1},get:{minArgs:1,maxArgs:2},getAll:{minArgs:0,maxArgs:1},getCurrent:{minArgs:0,maxArgs:1},getLastFocused:{minArgs:0,maxArgs:1},remove:{minArgs:1,maxArgs:1},update:{minArgs:2,maxArgs:2}}};if(0===Object.keys(n).length)throw new Error("api-metadata.json has not been included in browser-polyfill");class r extends WeakMap{constructor(e,t=void 0){super(t),this.createItem=e}get(e){return this.has(e)||this.set(e,this.createItem(e)),super.get(e)}}const a=(t,n)=>(...r)=>{e.runtime.lastError?t.reject(new Error(e.runtime.lastError.message)):n.singleCallbackArg||r.length<=1&&!1!==n.singleCallbackArg?t.resolve(r[0]):t.resolve(r)},s=e=>1==e?"argument":"arguments",o=(e,t,n)=>new Proxy(t,{apply:(t,r,a)=>n.call(r,e,...a)});let i=Function.call.bind(Object.prototype.hasOwnProperty);const l=(e,t={},n={})=>{let r=Object.create(null),c={has:(t,n)=>n in e||n in r,get(c,u,d){if(u in r)return r[u];if(!(u in e))return;let g=e[u];if("function"==typeof g)if("function"==typeof t[u])g=o(e,e[u],t[u]);else if(i(n,u)){let t=((e,t)=>function(n,...r){if(r.length<t.minArgs)throw new Error(`Expected at least ${t.minArgs} ${s(t.minArgs)} for ${e}(), got ${r.length}`);if(r.length>t.maxArgs)throw new Error(`Expected at most ${t.maxArgs} ${s(t.maxArgs)} for ${e}(), got ${r.length}`);return new Promise((s,o)=>{if(t.fallbackToNoCallback)try{n[e](...r,a({resolve:s,reject:o},t))}catch(a){console.warn(`${e} API method doesn't seem to support the callback parameter, falling back to call it without a callback: `,a),n[e](...r),t.fallbackToNoCallback=!1,t.noCallback=!0,s()}else t.noCallback?(n[e](...r),s()):n[e](...r,a({resolve:s,reject:o},t))})})(u,n[u]);g=o(e,e[u],t)}else g=g.bind(e);else if("object"==typeof g&&null!==g&&(i(t,u)||i(n,u)))g=l(g,t[u],n[u]);else{if(!i(n,"*"))return Object.defineProperty(r,u,{configurable:!0,enumerable:!0,get:()=>e[u],set(t){e[u]=t}}),g;g=l(g,t[u],n["*"])}return r[u]=g,g},set:(t,n,a,s)=>(n in r?r[n]=a:e[n]=a,!0),defineProperty:(e,t,n)=>Reflect.defineProperty(r,t,n),deleteProperty:(e,t)=>Reflect.deleteProperty(r,t)},u=Object.create(e);return new Proxy(u,c)},c=e=>({addListener(t,n,...r){t.addListener(e.get(n),...r)},hasListener:(t,n)=>t.hasListener(e.get(n)),removeListener(t,n){t.removeListener(e.get(n))}}),u=new r(e=>"function"!=typeof e?e:function(t){const n=l(t,{},{getContent:{minArgs:0,maxArgs:0}});e(n)}),d=new r(e=>"function"!=typeof e?e:function(t,n,r){let a,s,o=!1,i=new Promise(e=>{a=function(t){o=!0,e(t)}});try{s=e(t,n,a)}catch(e){s=Promise.reject(e)}const l=!0!==s&&((c=s)&&"object"==typeof c&&"function"==typeof c.then);var c;if(!0!==s&&!l&&!o)return!1;return(l?s:i).then(e=>{r(e)},e=>{let t;t=e&&(e instanceof Error||"string"==typeof e.message)?e.message:"An unexpected error occurred",r({__mozWebExtensionPolyfillReject__:!0,message:t})}).catch(e=>{console.error("Failed to send onMessage rejected reply",e)}),!0}),g=({reject:n,resolve:r},a)=>{e.runtime.lastError?e.runtime.lastError.message===t?r():n(new Error(e.runtime.lastError.message)):a&&a.__mozWebExtensionPolyfillReject__?n(new Error(a.message)):r(a)},m=(e,t,n,...r)=>{if(r.length<t.minArgs)throw new Error(`Expected at least ${t.minArgs} ${s(t.minArgs)} for ${e}(), got ${r.length}`);if(r.length>t.maxArgs)throw new Error(`Expected at most ${t.maxArgs} ${s(t.maxArgs)} for ${e}(), got ${r.length}`);return new Promise((e,t)=>{const a=g.bind(null,{resolve:e,reject:t});r.push(a),n.sendMessage(...r)})},p={devtools:{network:{onRequestFinished:c(u)}},runtime:{onMessage:c(d),onMessageExternal:c(d),sendMessage:m.bind(null,"sendMessage",{minArgs:1,maxArgs:3})},tabs:{sendMessage:m.bind(null,"sendMessage",{minArgs:2,maxArgs:3})}},f={clear:{minArgs:1,maxArgs:1},get:{minArgs:1,maxArgs:1},set:{minArgs:1,maxArgs:1}};return n.privacy={network:{"*":f},services:{"*":f},websites:{"*":f}},l(e,p,n)};e.exports=n(chrome)}else e.exports=globalThis.browser},void 0===(r=n.apply(t,[e]))||(e.exports=r)}},t={};function n(r){var a=t[r];if(void 0!==a)return a.exports;var s=t[r]={exports:{}};return e[r].call(s.exports,s,s.exports,n),s.exports}n.n=e=>{var t=e&&e.__esModule?()=>e.default:()=>e;return n.d(t,{a:t}),t},n.d=(e,t)=>{for(var r in t)n.o(t,r)&&!n.o(e,r)&&Object.defineProperty(e,r,{enumerable:!0,get:t[r]})},n.g=function(){if("object"==typeof globalThis)return globalThis;try{return this||new Function("return this")()}catch(e){if("object"==typeof window)return window}}(),n.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t),(()=>{"use strict";n(815);const e="problems",t="companies",r="editorial",a="top",s=12096e5,o="lc_unlock_settings",i={enableFrequencyBars:!0,enableCompanyTags:!0,enableEditorials:!0,enableTopProblems:!0,enableAnalytics:!1},l="Easy",c="Medium",u="Hard",d="frequency",g=["6 Months","1 Year","2 Years","All Time"],m={PROBLEM_SET:/leetcode\.com\/problemset\//,PROBLEM_DETAIL:/leetcode\.com\/problems\/[^/]+\//,COMPANY:/leetcode\.com\/company\//,TAG:/leetcode\.com\/tag\//,STUDY_PLAN:/leetcode\.com\/study-plan\//};class p{constructor(e,t){this.storageKey=e,this.ttl=t}async get(){return new Promise(e=>{chrome.storage.local.get([this.storageKey],t=>{const n=t[this.storageKey];if(!n)return e(null);const{data:r,timestamp:a}=n;if(Date.now()-a>this.ttl)return chrome.storage.local.remove(this.storageKey),e(null);e(r)})})}async set(e){return new Promise(t=>{chrome.storage.local.set({[this.storageKey]:{data:e,timestamp:Date.now()}},t)})}async clear(){return new Promise(e=>{chrome.storage.local.remove(this.storageKey,e)})}async has(){return null!==await this.get()}async getAge(){return new Promise(e=>{chrome.storage.local.get([this.storageKey],t=>{const n=t[this.storageKey];if(!n)return e(null);e(Math.floor((Date.now()-n.timestamp)/1e3))})})}}const f=new class{constructor(){this.isFetching=!1}async fetchRange(e,t=""){if(this.isFetching)return console.warn("[LC-Unlock] Fetch in progress, request dropped."),null;this.isFetching=!0;try{const n=t?`${e}!${t}`:e,r=new URL("https://your-worker.workers.dev/sheets");r.searchParams.set("spreadsheetId","YOUR_SPREADSHEET_ID_HERE"),r.searchParams.set("range",n);const a=await fetch(r.toString());if(!a.ok)throw new Error(`Proxy error ${a.status}: ${a.statusText}`);return(await a.json()).values??[]}catch(e){throw console.error("[LC-Unlock] GoogleSheetsDataFetcher:",e),e}finally{this.isFetching=!1}}async fetchAll(e){return this.fetchRange(e)}},h={[e]:new p("lc_unlock_problems",s),[t]:new p("lc_unlock_companies",864e5),[r]:new p("lc_unlock_editorial",s),[a]:new p("lc_unlock_top",s)};class b{static async getData(e){const t=h[e];if(!t)throw new Error(`[LC-Unlock] No buffer registered for: ${e}`);const n=await t.get();if(n)return console.info(`[LC-Unlock] Cache hit for "${e}"`),n;console.info(`[LC-Unlock] Cache miss for "${e}" — fetching…`);const r=await f.fetchAll(e);return r&&r.length>0&&await t.set(r),r}static async refresh(e){const t=h[e];return t&&await t.clear(),b.getData(e)}static async getAge(e){const t=h[e];return t?t.getAge():null}}class A{static create(e,t={},...n){const r=document.createElement(e);for(const[e,n]of Object.entries(t))"class"===e?r.className=n:"style"===e&&"object"==typeof n?Object.assign(r.style,n):e.startsWith("on")&&"function"==typeof n?r.addEventListener(e.slice(2).toLowerCase(),n):r.setAttribute(e,n);for(const e of n)null!=e&&r.appendChild("string"==typeof e?document.createTextNode(e):e);return r}static qs(e,t=document){return t.querySelector(e)}static qsa(e,t=document){return t.querySelectorAll(e)}static addClass(e,...t){e.classList.add(...t)}static removeClass(e,...t){e.classList.remove(...t)}static remove(e){var t;null==e||null===(t=e.parentNode)||void 0===t||t.removeChild(e)}static hide(e){e&&(e.style.display="none")}static show(e,t=""){e&&(e.style.display=t)}static observeDOM(e){const t=new MutationObserver(e);return t.observe(document.body,{childList:!0,subtree:!0}),t}static waitForElement(e,t=1e4){return new Promise((n,r)=>{const a=document.querySelector(e);if(a)return n(a);const s=setTimeout(()=>{o.disconnect(),r(new Error(`[LC-Unlock] Timeout waiting for: ${e}`))},t),o=new MutationObserver(()=>{const t=document.querySelector(e);t&&(clearTimeout(s),o.disconnect(),n(t))});o.observe(document.body,{childList:!0,subtree:!0})})}}class y{static injectFrequencyBar(e,t){if(e.querySelector(".lc-unlock-freq-bar-wrap"))return;const n=A.create("div",{class:"lc-unlock-freq-bar-wrap"},A.create("div",{class:"lc-unlock-freq-bar-fill",style:{width:`${Math.min(100,Math.round(t))}%`}})),r=e.querySelectorAll("td"),a=r[r.length-1];a&&a.appendChild(n)}static removeLock(e){e.querySelectorAll('[class*="lock"], [class*="blur"], [class*="premium"]').forEach(e=>e.remove()),e.querySelectorAll('[style*="blur"]').forEach(e=>{e.style.filter="none",e.style.opacity="1",e.style.pointerEvents="auto"})}static rewireLink(e,t){var n;const r=e.cloneNode(!0);r.setAttribute("href","javascript:void(0)"),r.addEventListener("click",e=>{e.preventDefault(),e.stopPropagation(),t()}),null===(n=e.parentNode)||void 0===n||n.replaceChild(r,e)}}const w={[l]:"var(--lc-difficulty-easy,   #00b8a3)",[c]:"var(--lc-difficulty-medium, #ffc01e)",[u]:"var(--lc-difficulty-hard,   #ef4743)"};class v{static buildRow(e,t){const{id:n,name:r,slug:a,difficulty:s,acceptance:o,frequency:i}=e,l=A.create("div",{class:"lc-unlock-freq-bar-wrap"},A.create("div",{class:"lc-unlock-freq-bar-fill",style:{width:`${Math.round(i)}%`}})),c=A.create("span",{class:"lc-unlock-difficulty",style:{color:w[s]??"inherit"}},s),u=A.create("a",{class:"lc-unlock-prob-name",href:`https://leetcode.com/problems/${a}/`,target:"_blank"},`${n}. ${r}`),d=A.create("tr",{class:"lc-unlock-prob-row","data-slug":a},A.create("td",{},String(n)),A.create("td",{},u),A.create("td",{},c),A.create("td",{},`${o}%`),A.create("td",{},l));return"function"==typeof t&&d.addEventListener("click",()=>t(e)),d}static buildHeader(e){const t=[{label:"#",key:"id"},{label:"Title",key:"name"},{label:"Difficulty",key:"difficulty"},{label:"Acceptance",key:"acceptance"},{label:"Frequency",key:"frequency"}],n=document.createElement("thead"),r=document.createElement("tr");for(const{label:n,key:a}of t){const t=A.create("th",{class:"lc-unlock-th","data-sort":a},n);"function"==typeof e&&t.addEventListener("click",()=>e(a)),r.appendChild(t)}return n.appendChild(r),n}}class k{static buildChip(e,t,n){const r=A.create("span",{class:"lc-unlock-company-chip"},A.create("span",{class:"lc-unlock-chip-name"},e),A.create("span",{class:"lc-unlock-chip-count"},String(t)));return"function"==typeof n&&r.addEventListener("click",t=>{t.stopPropagation(),n(e)}),r}static buildChipContainer(e,t){const n=A.create("div",{class:"lc-unlock-company-chips"});for(const{company:r,count:a}of e)n.appendChild(k.buildChip(r,a,t));return n}static buildTabStrip(e,t,n){const r=A.create("div",{class:"lc-unlock-tab-strip"});return e.forEach((e,a)=>{const s=A.create("button",{class:"lc-unlock-tab"+(a===t?" active":""),"data-index":String(a)},e);s.addEventListener("click",()=>{r.querySelectorAll(".lc-unlock-tab").forEach(e=>e.classList.remove("active")),s.classList.add("active"),"function"==typeof n&&n(a)}),r.appendChild(s)}),r}}const x={[l]:1,[c]:2,[u]:3};class _{constructor(e=d,t="desc"){this.field=e,this.dir=t}toggleDir(){this.dir="asc"===this.dir?"desc":"asc"}sort(e){const t="desc"===this.dir?-1:1;return e.sort((e,n)=>{var r,a;let s,o;switch(this.field){case d:s=e.frequency??0,o=n.frequency??0;break;case"difficulty":s=x[e.difficulty]??0,o=x[n.difficulty]??0;break;case"name":s=(null===(r=e.name)||void 0===r?void 0:r.toLowerCase())??"",o=(null===(a=n.name)||void 0===a?void 0:a.toLowerCase())??"";break;case"id":s=e.id??0,o=n.id??0;break;case"acceptance":s=e.acceptance??0,o=n.acceptance??0;break;default:return 0}return s<o?-1*t:s>o?1*t:0})}}class E{static build(e,t){const n=new _(d,"desc");let r=0;const a=A.create("div",{class:"lc-unlock-table-wrap"}),s=A.create("input",{class:"lc-unlock-search",type:"text",placeholder:"Search problems…",id:"lc-unlock-search-input"}),o=k.buildTabStrip(g,r,e=>{r=e,l()}),i=A.create("table",{class:"lc-unlock-table"}),l=()=>{const a=s.value.trim().toLowerCase();let o=[...e[r]??[]];a&&(o=o.filter(e=>{var t;return(null===(t=e.name)||void 0===t?void 0:t.toLowerCase().includes(a))||String(e.id).includes(a)})),n.sort(o),i.innerHTML="";const c=v.buildHeader(e=>{n.field===e?n.toggleDir():(n.field=e,n.dir="desc"),l()}),u=document.createElement("tbody");for(const e of o)u.appendChild(v.buildRow(e,t));i.appendChild(c),i.appendChild(u)};return s.addEventListener("input",l),l(),a.appendChild(s),a.appendChild(o),a.appendChild(i),a}}let T=null;class S{static getInstance(){return T||(T=new S),T}constructor(){if(T)return T;this._buildModal(),T=this}_buildModal(){this.backdrop=A.create("div",{class:"lc-unlock-backdrop",id:"lc-unlock-backdrop"}),this.modal=A.create("div",{class:"lc-unlock-modal",id:"lc-unlock-modal",role:"dialog","aria-modal":"true"});const e=A.create("button",{class:"lc-unlock-close-btn","aria-label":"Close",id:"lc-unlock-close-btn"},"✕");e.addEventListener("click",()=>this.close()),this.content=A.create("div",{class:"lc-unlock-modal-content"}),this.modal.appendChild(e),this.modal.appendChild(this.content),this.backdrop.appendChild(this.modal),document.body.appendChild(this.backdrop),this.backdrop.addEventListener("click",e=>{e.target===this.backdrop&&this.close()}),document.addEventListener("keydown",e=>{"Escape"===e.key&&this.close()})}open(e){this.content.innerHTML="",this.content.appendChild(e),this.backdrop.classList.add("visible"),document.body.style.overflow="hidden"}openLoading(e="Loading…"){const t=A.create("div",{class:"lc-unlock-loader"},A.create("div",{class:"lc-unlock-spinner"}),A.create("p",{},e));this.open(t)}setContent(e){this.content.innerHTML="",this.content.appendChild(e)}close(){this.backdrop.classList.remove("visible"),document.body.style.overflow="",setTimeout(()=>{this.content.innerHTML=""},300)}isOpen(){return this.backdrop.classList.contains("visible")}}let F=null;class C{static getInstance(){return F||(F=new C),F}constructor(){if(F)return F;this.enabled=!1,F=this}setEnabled(e){this.enabled=!!e}log(e,t={}){if(this.enabled)try{"function"==typeof gtag?gtag("event",e,t):console.debug("[LC-Unlock] Analytics (noOp):",e,t)}catch(e){}}}class L{constructor(){this.modal=S.getInstance(),this.analytics=C.getInstance(),this.problems=null}static matches(){return m.PROBLEM_SET.test(window.location.href)}async init(){try{if(!(await this._getSettings()).enableFrequencyBars)return;const t=await b.getData(e);this.problems=this._parseRows(t),this.slugMap=new Map(this.problems.map(e=>[e.slug,e])),this._patchAllRows(),A.observeDOM(()=>this._patchAllRows())}catch(e){console.error("[LC-Unlock] ProblemTableUnlocker error:",e)}}_patchAllRows(){document.querySelectorAll('tr, [class*="problem-row"]').forEach(e=>{var t;if(e.dataset.lcUnlocked)return;const n=e.querySelector('a[href*="/problems/"]');if(!n)return;const r=null===(t=n.href.match(/\/problems\/([^/]+)\//))||void 0===t?void 0:t[1];if(!r||!this.slugMap.has(r))return;const a=this.slugMap.get(r);y.removeLock(e),y.injectFrequencyBar(e,a.frequency??0),y.rewireLink(n,()=>this._openModal(a)),e.dataset.lcUnlocked="1"})}_openModal(e){var t,n,r,a;this.modal.openLoading("Loading problem data…"),this.analytics.log("problem_table_click",{slug:e.slug}),null===(t=e.companiesByWindow)||void 0===t||t[0],null===(n=e.companiesByWindow)||void 0===n||n[1],null===(r=e.companiesByWindow)||void 0===r||r[2],null===(a=e.companiesByWindow)||void 0===a||a[3];const s=E.build([[e],[e],[e],[e]]);this.modal.setContent(s)}_parseRows(e){if(null==e||!e.length)return[];const[t,...n]=e,r=Object.fromEntries(t.map((e,t)=>[null==e?void 0:e.toLowerCase(),t]));return n.map(e=>({id:Number(e[r.id]??0),name:e[r.name]??"",slug:e[r.slug]??"",difficulty:e[r.difficulty]??"",acceptance:parseFloat(e[r.acceptance]??0),frequency:parseFloat(e[r.frequency]??0),tags:(e[r.tags]??"").split(",").map(e=>e.trim())}))}async _getSettings(){return new Promise(e=>{chrome.storage.local.get([o],t=>{e({...i,...t[o]??{}})})})}}class N{static removeLocks(){document.querySelectorAll('[class*="company-card"], [class*="companyCard"], [class*="swiper-slide"]').forEach(e=>{e.querySelectorAll('[class*="lock"], [class*="premium"]').forEach(e=>e.remove()),e.style.filter="none",e.style.opacity="1",e.style.pointerEvents="auto"})}static injectCounts(e){document.querySelectorAll('[class*="company-card"], [class*="companyCard"]').forEach(t=>{var n;const r=t.querySelector('[class*="name"], [class*="title"]');if(!r)return;const a=null===(n=r.textContent)||void 0===n?void 0:n.trim(),s=e.get(a);if(null==s)return;const o=t.querySelector(".lc-unlock-count-badge");if(o)return void(o.textContent=s);const i=A.create("span",{class:"lc-unlock-count-badge"},String(s));t.appendChild(i)})}}class P{constructor(){this.modal=S.getInstance(),this.analytics=C.getInstance()}static matches(){return m.COMPANY.test(window.location.href)||null!==document.querySelector('[class*="company-tags"], [class*="companyTags"]')}async init(){try{const e=await b.getData(t),n=this._parseRows(e),r=new Map([...n.entries()].map(([e,t])=>{var n;return[e,(null===(n=t.byWindow[3])||void 0===n?void 0:n.length)??0]}));N.removeLocks(),N.injectCounts(r),document.querySelectorAll('[class*="company-card"], [class*="companyCard"]').forEach(e=>{var t;const r=e.querySelector('[class*="name"], [class*="title"]'),a=null==r||null===(t=r.textContent)||void 0===t?void 0:t.trim();a&&n.has(a)&&(e.style.cursor="pointer",e.addEventListener("click",()=>{const e=n.get(a);this._openModal(a,e.byWindow)}))})}catch(e){console.error("[LC-Unlock] CompaniesProblemUnlocker error:",e)}}_openModal(e,t){this.modal.openLoading(`Loading ${e} problems…`),this.analytics.log("company_click",{company:e});const n=E.build(t),r=A.create("h3",{class:"lc-unlock-modal-title"},`${e} — Problems`),a=A.create("div",{});a.appendChild(r),a.appendChild(n),this.modal.setContent(a)}_parseRows(e){if(null==e||!e.length)return new Map;const[t,...n]=e,r=Object.fromEntries(t.map((e,t)=>[null==e?void 0:e.toLowerCase(),t])),a=new Map;for(const e of n){var s;const t=e[r.company]??"",n=Number(e[r.window]??3),o={id:Number(e[r.id]??0),name:e[r.name]??"",slug:e[r.slug]??"",difficulty:e[r.difficulty]??"",acceptance:parseFloat(e[r.acceptance]??0),frequency:parseFloat(e[r.frequency]??0)};a.has(t)||a.set(t,{byWindow:[[],[],[],[]]}),null===(s=a.get(t).byWindow[n])||void 0===s||s.push(o)}return a}}class R{static injectUnlockPrompt(e){const t=['[class*="editorial"]','[class*="solution-content"]','[data-key="editorial"]'];let n=null;for(const e of t)if(n=document.querySelector(e),n)break;if(!n)return void console.warn("[LC-Unlock] EditorialPageElementModifier: editorial container not found.");n.querySelectorAll('[class*="premium"], [class*="lock"], [class*="upgrade"]').forEach(e=>e.remove());const r=A.create("div",{class:"lc-unlock-editorial-prompt"},A.create("p",{},"🔓 Editorial unlocked — click to view."),A.create("button",{class:"lc-unlock-btn",id:"lc-unlock-editorial-btn",onclick:e},"View Editorial"));n.innerHTML="",n.appendChild(r)}static showContent(e){var t;const n=null===(t=document.getElementById("lc-unlock-editorial-btn"))||void 0===t?void 0:t.parentElement,r=(null==n?void 0:n.parentElement)??document.querySelector('[class*="editorial"]');r&&(r.innerHTML="",r.appendChild(e))}}const{entries:M,setPrototypeOf:O,isFrozen:D,getPrototypeOf:$,getOwnPropertyDescriptor:I}=Object;let{freeze:j,seal:q,create:U}=Object,{apply:z,construct:B}="undefined"!=typeof Reflect&&Reflect;j||(j=function(e){return e}),q||(q=function(e){return e}),z||(z=function(e,t){for(var n=arguments.length,r=new Array(n>2?n-2:0),a=2;a<n;a++)r[a-2]=arguments[a];return e.apply(t,r)}),B||(B=function(e){for(var t=arguments.length,n=new Array(t>1?t-1:0),r=1;r<t;r++)n[r-1]=arguments[r];return new e(...n)});const H=se(Array.prototype.forEach),W=se(Array.prototype.lastIndexOf),Z=se(Array.prototype.pop),G=se(Array.prototype.push),Y=se(Array.prototype.splice),K=se(String.prototype.toLowerCase),X=se(String.prototype.toString),V=se(String.prototype.match),J=se(String.prototype.replace),Q=se(String.prototype.indexOf),ee=se(String.prototype.trim),te=se(Object.prototype.hasOwnProperty),ne=se(RegExp.prototype.test),re=(ae=TypeError,function(){for(var e=arguments.length,t=new Array(e),n=0;n<e;n++)t[n]=arguments[n];return B(ae,t)});var ae;function se(e){return function(t){t instanceof RegExp&&(t.lastIndex=0);for(var n=arguments.length,r=new Array(n>1?n-1:0),a=1;a<n;a++)r[a-1]=arguments[a];return z(e,t,r)}}function oe(e,t){let n=arguments.length>2&&void 0!==arguments[2]?arguments[2]:K;O&&O(e,null);let r=t.length;for(;r--;){let a=t[r];if("string"==typeof a){const e=n(a);e!==a&&(D(t)||(t[r]=e),a=e)}e[a]=!0}return e}function ie(e){for(let t=0;t<e.length;t++)te(e,t)||(e[t]=null);return e}function le(e){const t=U(null);for(const[n,r]of M(e))te(e,n)&&(Array.isArray(r)?t[n]=ie(r):r&&"object"==typeof r&&r.constructor===Object?t[n]=le(r):t[n]=r);return t}function ce(e,t){for(;null!==e;){const n=I(e,t);if(n){if(n.get)return se(n.get);if("function"==typeof n.value)return se(n.value)}e=$(e)}return function(){return null}}const ue=j(["a","abbr","acronym","address","area","article","aside","audio","b","bdi","bdo","big","blink","blockquote","body","br","button","canvas","caption","center","cite","code","col","colgroup","content","data","datalist","dd","decorator","del","details","dfn","dialog","dir","div","dl","dt","element","em","fieldset","figcaption","figure","font","footer","form","h1","h2","h3","h4","h5","h6","head","header","hgroup","hr","html","i","img","input","ins","kbd","label","legend","li","main","map","mark","marquee","menu","menuitem","meter","nav","nobr","ol","optgroup","option","output","p","picture","pre","progress","q","rp","rt","ruby","s","samp","search","section","select","shadow","slot","small","source","spacer","span","strike","strong","style","sub","summary","sup","table","tbody","td","template","textarea","tfoot","th","thead","time","tr","track","tt","u","ul","var","video","wbr"]),de=j(["svg","a","altglyph","altglyphdef","altglyphitem","animatecolor","animatemotion","animatetransform","circle","clippath","defs","desc","ellipse","enterkeyhint","exportparts","filter","font","g","glyph","glyphref","hkern","image","inputmode","line","lineargradient","marker","mask","metadata","mpath","part","path","pattern","polygon","polyline","radialgradient","rect","stop","style","switch","symbol","text","textpath","title","tref","tspan","view","vkern"]),ge=j(["feBlend","feColorMatrix","feComponentTransfer","feComposite","feConvolveMatrix","feDiffuseLighting","feDisplacementMap","feDistantLight","feDropShadow","feFlood","feFuncA","feFuncB","feFuncG","feFuncR","feGaussianBlur","feImage","feMerge","feMergeNode","feMorphology","feOffset","fePointLight","feSpecularLighting","feSpotLight","feTile","feTurbulence"]),me=j(["animate","color-profile","cursor","discard","font-face","font-face-format","font-face-name","font-face-src","font-face-uri","foreignobject","hatch","hatchpath","mesh","meshgradient","meshpatch","meshrow","missing-glyph","script","set","solidcolor","unknown","use"]),pe=j(["math","menclose","merror","mfenced","mfrac","mglyph","mi","mlabeledtr","mmultiscripts","mn","mo","mover","mpadded","mphantom","mroot","mrow","ms","mspace","msqrt","mstyle","msub","msup","msubsup","mtable","mtd","mtext","mtr","munder","munderover","mprescripts"]),fe=j(["maction","maligngroup","malignmark","mlongdiv","mscarries","mscarry","msgroup","mstack","msline","msrow","semantics","annotation","annotation-xml","mprescripts","none"]),he=j(["#text"]),be=j(["accept","action","align","alt","autocapitalize","autocomplete","autopictureinpicture","autoplay","background","bgcolor","border","capture","cellpadding","cellspacing","checked","cite","class","clear","color","cols","colspan","controls","controlslist","coords","crossorigin","datetime","decoding","default","dir","disabled","disablepictureinpicture","disableremoteplayback","download","draggable","enctype","enterkeyhint","exportparts","face","for","headers","height","hidden","high","href","hreflang","id","inert","inputmode","integrity","ismap","kind","label","lang","list","loading","loop","low","max","maxlength","media","method","min","minlength","multiple","muted","name","nonce","noshade","novalidate","nowrap","open","optimum","part","pattern","placeholder","playsinline","popover","popovertarget","popovertargetaction","poster","preload","pubdate","radiogroup","readonly","rel","required","rev","reversed","role","rows","rowspan","spellcheck","scope","selected","shape","size","sizes","slot","span","srclang","start","src","srcset","step","style","summary","tabindex","title","translate","type","usemap","valign","value","width","wrap","xmlns","slot"]),Ae=j(["accent-height","accumulate","additive","alignment-baseline","amplitude","ascent","attributename","attributetype","azimuth","basefrequency","baseline-shift","begin","bias","by","class","clip","clippathunits","clip-path","clip-rule","color","color-interpolation","color-interpolation-filters","color-profile","color-rendering","cx","cy","d","dx","dy","diffuseconstant","direction","display","divisor","dur","edgemode","elevation","end","exponent","fill","fill-opacity","fill-rule","filter","filterunits","flood-color","flood-opacity","font-family","font-size","font-size-adjust","font-stretch","font-style","font-variant","font-weight","fx","fy","g1","g2","glyph-name","glyphref","gradientunits","gradienttransform","height","href","id","image-rendering","in","in2","intercept","k","k1","k2","k3","k4","kerning","keypoints","keysplines","keytimes","lang","lengthadjust","letter-spacing","kernelmatrix","kernelunitlength","lighting-color","local","marker-end","marker-mid","marker-start","markerheight","markerunits","markerwidth","maskcontentunits","maskunits","max","mask","mask-type","media","method","mode","min","name","numoctaves","offset","operator","opacity","order","orient","orientation","origin","overflow","paint-order","path","pathlength","patterncontentunits","patterntransform","patternunits","points","preservealpha","preserveaspectratio","primitiveunits","r","rx","ry","radius","refx","refy","repeatcount","repeatdur","restart","result","rotate","scale","seed","shape-rendering","slope","specularconstant","specularexponent","spreadmethod","startoffset","stddeviation","stitchtiles","stop-color","stop-opacity","stroke-dasharray","stroke-dashoffset","stroke-linecap","stroke-linejoin","stroke-miterlimit","stroke-opacity","stroke","stroke-width","style","surfacescale","systemlanguage","tabindex","tablevalues","targetx","targety","transform","transform-origin","text-anchor","text-decoration","text-rendering","textlength","type","u1","u2","unicode","values","viewbox","visibility","version","vert-adv-y","vert-origin-x","vert-origin-y","width","word-spacing","wrap","writing-mode","xchannelselector","ychannelselector","x","x1","x2","xmlns","y","y1","y2","z","zoomandpan"]),ye=j(["accent","accentunder","align","bevelled","close","columnsalign","columnlines","columnspan","denomalign","depth","dir","display","displaystyle","encoding","fence","frame","height","href","id","largeop","length","linethickness","lspace","lquote","mathbackground","mathcolor","mathsize","mathvariant","maxsize","minsize","movablelimits","notation","numalign","open","rowalign","rowlines","rowspacing","rowspan","rspace","rquote","scriptlevel","scriptminsize","scriptsizemultiplier","selection","separator","separators","stretchy","subscriptshift","supscriptshift","symmetric","voffset","width","xmlns"]),we=j(["xlink:href","xml:id","xlink:title","xml:space","xmlns:xlink"]),ve=q(/\{\{[\w\W]*|[\w\W]*\}\}/gm),ke=q(/<%[\w\W]*|[\w\W]*%>/gm),xe=q(/\$\{[\w\W]*/gm),_e=q(/^data-[\-\w.\u00B7-\uFFFF]+$/),Ee=q(/^aria-[\-\w]+$/),Te=q(/^(?:(?:(?:f|ht)tps?|mailto|tel|callto|sms|cid|xmpp|matrix):|[^a-z]|[a-z+.\-]+(?:[^a-z+.\-:]|$))/i),Se=q(/^(?:\w+script|data):/i),Fe=q(/[\u0000-\u0020\u00A0\u1680\u180E\u2000-\u2029\u205F\u3000]/g),Ce=q(/^html$/i),Le=q(/^[a-z][.\w]*(-[.\w]+)+$/i);var Ne=Object.freeze({__proto__:null,ARIA_ATTR:Ee,ATTR_WHITESPACE:Fe,CUSTOM_ELEMENT:Le,DATA_ATTR:_e,DOCTYPE_NAME:Ce,ERB_EXPR:ke,IS_ALLOWED_URI:Te,IS_SCRIPT_OR_DATA:Se,MUSTACHE_EXPR:ve,TMPLIT_EXPR:xe});const Pe=function(){return"undefined"==typeof window?null:window};var Re=function e(){let t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:Pe();const n=t=>e(t);if(n.version="3.3.1",n.removed=[],!t||!t.document||9!==t.document.nodeType||!t.Element)return n.isSupported=!1,n;let{document:r}=t;const a=r,s=a.currentScript,{DocumentFragment:o,HTMLTemplateElement:i,Node:l,Element:c,NodeFilter:u,NamedNodeMap:d=t.NamedNodeMap||t.MozNamedAttrMap,HTMLFormElement:g,DOMParser:m,trustedTypes:p}=t,f=c.prototype,h=ce(f,"cloneNode"),b=ce(f,"remove"),A=ce(f,"nextSibling"),y=ce(f,"childNodes"),w=ce(f,"parentNode");if("function"==typeof i){const e=r.createElement("template");e.content&&e.content.ownerDocument&&(r=e.content.ownerDocument)}let v,k="";const{implementation:x,createNodeIterator:_,createDocumentFragment:E,getElementsByTagName:T}=r,{importNode:S}=a;let F={afterSanitizeAttributes:[],afterSanitizeElements:[],afterSanitizeShadowDOM:[],beforeSanitizeAttributes:[],beforeSanitizeElements:[],beforeSanitizeShadowDOM:[],uponSanitizeAttribute:[],uponSanitizeElement:[],uponSanitizeShadowNode:[]};n.isSupported="function"==typeof M&&"function"==typeof w&&x&&void 0!==x.createHTMLDocument;const{MUSTACHE_EXPR:C,ERB_EXPR:L,TMPLIT_EXPR:N,DATA_ATTR:P,ARIA_ATTR:R,IS_SCRIPT_OR_DATA:O,ATTR_WHITESPACE:D,CUSTOM_ELEMENT:$}=Ne;let{IS_ALLOWED_URI:I}=Ne,q=null;const z=oe({},[...ue,...de,...ge,...pe,...he]);let B=null;const ae=oe({},[...be,...Ae,...ye,...we]);let se=Object.seal(U(null,{tagNameCheck:{writable:!0,configurable:!1,enumerable:!0,value:null},attributeNameCheck:{writable:!0,configurable:!1,enumerable:!0,value:null},allowCustomizedBuiltInElements:{writable:!0,configurable:!1,enumerable:!0,value:!1}})),ie=null,ve=null;const ke=Object.seal(U(null,{tagCheck:{writable:!0,configurable:!1,enumerable:!0,value:null},attributeCheck:{writable:!0,configurable:!1,enumerable:!0,value:null}}));let xe=!0,_e=!0,Ee=!1,Se=!0,Fe=!1,Le=!0,Re=!1,Me=!1,Oe=!1,De=!1,$e=!1,Ie=!1,je=!0,qe=!1,Ue=!0,ze=!1,Be={},He=null;const We=oe({},["annotation-xml","audio","colgroup","desc","foreignobject","head","iframe","math","mi","mn","mo","ms","mtext","noembed","noframes","noscript","plaintext","script","style","svg","template","thead","title","video","xmp"]);let Ze=null;const Ge=oe({},["audio","video","img","source","image","track"]);let Ye=null;const Ke=oe({},["alt","class","for","id","label","name","pattern","placeholder","role","summary","title","value","style","xmlns"]),Xe="http://www.w3.org/1998/Math/MathML",Ve="http://www.w3.org/2000/svg",Je="http://www.w3.org/1999/xhtml";let Qe=Je,et=!1,tt=null;const nt=oe({},[Xe,Ve,Je],X);let rt=oe({},["mi","mo","mn","ms","mtext"]),at=oe({},["annotation-xml"]);const st=oe({},["title","style","font","a","script"]);let ot=null;const it=["application/xhtml+xml","text/html"];let lt=null,ct=null;const ut=r.createElement("form"),dt=function(e){return e instanceof RegExp||e instanceof Function},gt=function(){let e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};if(!ct||ct!==e){if(e&&"object"==typeof e||(e={}),e=le(e),ot=-1===it.indexOf(e.PARSER_MEDIA_TYPE)?"text/html":e.PARSER_MEDIA_TYPE,lt="application/xhtml+xml"===ot?X:K,q=te(e,"ALLOWED_TAGS")?oe({},e.ALLOWED_TAGS,lt):z,B=te(e,"ALLOWED_ATTR")?oe({},e.ALLOWED_ATTR,lt):ae,tt=te(e,"ALLOWED_NAMESPACES")?oe({},e.ALLOWED_NAMESPACES,X):nt,Ye=te(e,"ADD_URI_SAFE_ATTR")?oe(le(Ke),e.ADD_URI_SAFE_ATTR,lt):Ke,Ze=te(e,"ADD_DATA_URI_TAGS")?oe(le(Ge),e.ADD_DATA_URI_TAGS,lt):Ge,He=te(e,"FORBID_CONTENTS")?oe({},e.FORBID_CONTENTS,lt):We,ie=te(e,"FORBID_TAGS")?oe({},e.FORBID_TAGS,lt):le({}),ve=te(e,"FORBID_ATTR")?oe({},e.FORBID_ATTR,lt):le({}),Be=!!te(e,"USE_PROFILES")&&e.USE_PROFILES,xe=!1!==e.ALLOW_ARIA_ATTR,_e=!1!==e.ALLOW_DATA_ATTR,Ee=e.ALLOW_UNKNOWN_PROTOCOLS||!1,Se=!1!==e.ALLOW_SELF_CLOSE_IN_ATTR,Fe=e.SAFE_FOR_TEMPLATES||!1,Le=!1!==e.SAFE_FOR_XML,Re=e.WHOLE_DOCUMENT||!1,De=e.RETURN_DOM||!1,$e=e.RETURN_DOM_FRAGMENT||!1,Ie=e.RETURN_TRUSTED_TYPE||!1,Oe=e.FORCE_BODY||!1,je=!1!==e.SANITIZE_DOM,qe=e.SANITIZE_NAMED_PROPS||!1,Ue=!1!==e.KEEP_CONTENT,ze=e.IN_PLACE||!1,I=e.ALLOWED_URI_REGEXP||Te,Qe=e.NAMESPACE||Je,rt=e.MATHML_TEXT_INTEGRATION_POINTS||rt,at=e.HTML_INTEGRATION_POINTS||at,se=e.CUSTOM_ELEMENT_HANDLING||{},e.CUSTOM_ELEMENT_HANDLING&&dt(e.CUSTOM_ELEMENT_HANDLING.tagNameCheck)&&(se.tagNameCheck=e.CUSTOM_ELEMENT_HANDLING.tagNameCheck),e.CUSTOM_ELEMENT_HANDLING&&dt(e.CUSTOM_ELEMENT_HANDLING.attributeNameCheck)&&(se.attributeNameCheck=e.CUSTOM_ELEMENT_HANDLING.attributeNameCheck),e.CUSTOM_ELEMENT_HANDLING&&"boolean"==typeof e.CUSTOM_ELEMENT_HANDLING.allowCustomizedBuiltInElements&&(se.allowCustomizedBuiltInElements=e.CUSTOM_ELEMENT_HANDLING.allowCustomizedBuiltInElements),Fe&&(_e=!1),$e&&(De=!0),Be&&(q=oe({},he),B=[],!0===Be.html&&(oe(q,ue),oe(B,be)),!0===Be.svg&&(oe(q,de),oe(B,Ae),oe(B,we)),!0===Be.svgFilters&&(oe(q,ge),oe(B,Ae),oe(B,we)),!0===Be.mathMl&&(oe(q,pe),oe(B,ye),oe(B,we))),e.ADD_TAGS&&("function"==typeof e.ADD_TAGS?ke.tagCheck=e.ADD_TAGS:(q===z&&(q=le(q)),oe(q,e.ADD_TAGS,lt))),e.ADD_ATTR&&("function"==typeof e.ADD_ATTR?ke.attributeCheck=e.ADD_ATTR:(B===ae&&(B=le(B)),oe(B,e.ADD_ATTR,lt))),e.ADD_URI_SAFE_ATTR&&oe(Ye,e.ADD_URI_SAFE_ATTR,lt),e.FORBID_CONTENTS&&(He===We&&(He=le(He)),oe(He,e.FORBID_CONTENTS,lt)),e.ADD_FORBID_CONTENTS&&(He===We&&(He=le(He)),oe(He,e.ADD_FORBID_CONTENTS,lt)),Ue&&(q["#text"]=!0),Re&&oe(q,["html","head","body"]),q.table&&(oe(q,["tbody"]),delete ie.tbody),e.TRUSTED_TYPES_POLICY){if("function"!=typeof e.TRUSTED_TYPES_POLICY.createHTML)throw re('TRUSTED_TYPES_POLICY configuration option must provide a "createHTML" hook.');if("function"!=typeof e.TRUSTED_TYPES_POLICY.createScriptURL)throw re('TRUSTED_TYPES_POLICY configuration option must provide a "createScriptURL" hook.');v=e.TRUSTED_TYPES_POLICY,k=v.createHTML("")}else void 0===v&&(v=function(e,t){if("object"!=typeof e||"function"!=typeof e.createPolicy)return null;let n=null;const r="data-tt-policy-suffix";t&&t.hasAttribute(r)&&(n=t.getAttribute(r));const a="dompurify"+(n?"#"+n:"");try{return e.createPolicy(a,{createHTML:e=>e,createScriptURL:e=>e})}catch(e){return console.warn("TrustedTypes policy "+a+" could not be created."),null}}(p,s)),null!==v&&"string"==typeof k&&(k=v.createHTML(""));j&&j(e),ct=e}},mt=oe({},[...de,...ge,...me]),pt=oe({},[...pe,...fe]),ft=function(e){G(n.removed,{element:e});try{w(e).removeChild(e)}catch(t){b(e)}},ht=function(e,t){try{G(n.removed,{attribute:t.getAttributeNode(e),from:t})}catch(e){G(n.removed,{attribute:null,from:t})}if(t.removeAttribute(e),"is"===e)if(De||$e)try{ft(t)}catch(e){}else try{t.setAttribute(e,"")}catch(e){}},bt=function(e){let t=null,n=null;if(Oe)e="<remove></remove>"+e;else{const t=V(e,/^[\r\n\t ]+/);n=t&&t[0]}"application/xhtml+xml"===ot&&Qe===Je&&(e='<html xmlns="http://www.w3.org/1999/xhtml"><head></head><body>'+e+"</body></html>");const a=v?v.createHTML(e):e;if(Qe===Je)try{t=(new m).parseFromString(a,ot)}catch(e){}if(!t||!t.documentElement){t=x.createDocument(Qe,"template",null);try{t.documentElement.innerHTML=et?k:a}catch(e){}}const s=t.body||t.documentElement;return e&&n&&s.insertBefore(r.createTextNode(n),s.childNodes[0]||null),Qe===Je?T.call(t,Re?"html":"body")[0]:Re?t.documentElement:s},At=function(e){return _.call(e.ownerDocument||e,e,u.SHOW_ELEMENT|u.SHOW_COMMENT|u.SHOW_TEXT|u.SHOW_PROCESSING_INSTRUCTION|u.SHOW_CDATA_SECTION,null)},yt=function(e){return e instanceof g&&("string"!=typeof e.nodeName||"string"!=typeof e.textContent||"function"!=typeof e.removeChild||!(e.attributes instanceof d)||"function"!=typeof e.removeAttribute||"function"!=typeof e.setAttribute||"string"!=typeof e.namespaceURI||"function"!=typeof e.insertBefore||"function"!=typeof e.hasChildNodes)},wt=function(e){return"function"==typeof l&&e instanceof l};function vt(e,t,r){H(e,e=>{e.call(n,t,r,ct)})}const kt=function(e){let t=null;if(vt(F.beforeSanitizeElements,e,null),yt(e))return ft(e),!0;const r=lt(e.nodeName);if(vt(F.uponSanitizeElement,e,{tagName:r,allowedTags:q}),Le&&e.hasChildNodes()&&!wt(e.firstElementChild)&&ne(/<[/\w!]/g,e.innerHTML)&&ne(/<[/\w!]/g,e.textContent))return ft(e),!0;if(7===e.nodeType)return ft(e),!0;if(Le&&8===e.nodeType&&ne(/<[/\w]/g,e.data))return ft(e),!0;if(!(ke.tagCheck instanceof Function&&ke.tagCheck(r))&&(!q[r]||ie[r])){if(!ie[r]&&_t(r)){if(se.tagNameCheck instanceof RegExp&&ne(se.tagNameCheck,r))return!1;if(se.tagNameCheck instanceof Function&&se.tagNameCheck(r))return!1}if(Ue&&!He[r]){const t=w(e)||e.parentNode,n=y(e)||e.childNodes;if(n&&t)for(let r=n.length-1;r>=0;--r){const a=h(n[r],!0);a.__removalCount=(e.__removalCount||0)+1,t.insertBefore(a,A(e))}}return ft(e),!0}return e instanceof c&&!function(e){let t=w(e);t&&t.tagName||(t={namespaceURI:Qe,tagName:"template"});const n=K(e.tagName),r=K(t.tagName);return!!tt[e.namespaceURI]&&(e.namespaceURI===Ve?t.namespaceURI===Je?"svg"===n:t.namespaceURI===Xe?"svg"===n&&("annotation-xml"===r||rt[r]):Boolean(mt[n]):e.namespaceURI===Xe?t.namespaceURI===Je?"math"===n:t.namespaceURI===Ve?"math"===n&&at[r]:Boolean(pt[n]):e.namespaceURI===Je?!(t.namespaceURI===Ve&&!at[r])&&!(t.namespaceURI===Xe&&!rt[r])&&!pt[n]&&(st[n]||!mt[n]):!("application/xhtml+xml"!==ot||!tt[e.namespaceURI]))}(e)?(ft(e),!0):"noscript"!==r&&"noembed"!==r&&"noframes"!==r||!ne(/<\/no(script|embed|frames)/i,e.innerHTML)?(Fe&&3===e.nodeType&&(t=e.textContent,H([C,L,N],e=>{t=J(t,e," ")}),e.textContent!==t&&(G(n.removed,{element:e.cloneNode()}),e.textContent=t)),vt(F.afterSanitizeElements,e,null),!1):(ft(e),!0)},xt=function(e,t,n){if(je&&("id"===t||"name"===t)&&(n in r||n in ut))return!1;if(_e&&!ve[t]&&ne(P,t));else if(xe&&ne(R,t));else if(ke.attributeCheck instanceof Function&&ke.attributeCheck(t,e));else if(!B[t]||ve[t]){if(!(_t(e)&&(se.tagNameCheck instanceof RegExp&&ne(se.tagNameCheck,e)||se.tagNameCheck instanceof Function&&se.tagNameCheck(e))&&(se.attributeNameCheck instanceof RegExp&&ne(se.attributeNameCheck,t)||se.attributeNameCheck instanceof Function&&se.attributeNameCheck(t,e))||"is"===t&&se.allowCustomizedBuiltInElements&&(se.tagNameCheck instanceof RegExp&&ne(se.tagNameCheck,n)||se.tagNameCheck instanceof Function&&se.tagNameCheck(n))))return!1}else if(Ye[t]);else if(ne(I,J(n,D,"")));else if("src"!==t&&"xlink:href"!==t&&"href"!==t||"script"===e||0!==Q(n,"data:")||!Ze[e])if(Ee&&!ne(O,J(n,D,"")));else if(n)return!1;return!0},_t=function(e){return"annotation-xml"!==e&&V(e,$)},Et=function(e){vt(F.beforeSanitizeAttributes,e,null);const{attributes:t}=e;if(!t||yt(e))return;const r={attrName:"",attrValue:"",keepAttr:!0,allowedAttributes:B,forceKeepAttr:void 0};let a=t.length;for(;a--;){const s=t[a],{name:o,namespaceURI:i,value:l}=s,c=lt(o),u=l;let d="value"===o?u:ee(u);if(r.attrName=c,r.attrValue=d,r.keepAttr=!0,r.forceKeepAttr=void 0,vt(F.uponSanitizeAttribute,e,r),d=r.attrValue,!qe||"id"!==c&&"name"!==c||(ht(o,e),d="user-content-"+d),Le&&ne(/((--!?|])>)|<\/(style|title|textarea)/i,d)){ht(o,e);continue}if("attributename"===c&&V(d,"href")){ht(o,e);continue}if(r.forceKeepAttr)continue;if(!r.keepAttr){ht(o,e);continue}if(!Se&&ne(/\/>/i,d)){ht(o,e);continue}Fe&&H([C,L,N],e=>{d=J(d,e," ")});const g=lt(e.nodeName);if(xt(g,c,d)){if(v&&"object"==typeof p&&"function"==typeof p.getAttributeType)if(i);else switch(p.getAttributeType(g,c)){case"TrustedHTML":d=v.createHTML(d);break;case"TrustedScriptURL":d=v.createScriptURL(d)}if(d!==u)try{i?e.setAttributeNS(i,o,d):e.setAttribute(o,d),yt(e)?ft(e):Z(n.removed)}catch(t){ht(o,e)}}else ht(o,e)}vt(F.afterSanitizeAttributes,e,null)},Tt=function e(t){let n=null;const r=At(t);for(vt(F.beforeSanitizeShadowDOM,t,null);n=r.nextNode();)vt(F.uponSanitizeShadowNode,n,null),kt(n),Et(n),n.content instanceof o&&e(n.content);vt(F.afterSanitizeShadowDOM,t,null)};return n.sanitize=function(e){let t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},r=null,s=null,i=null,c=null;if(et=!e,et&&(e="\x3c!--\x3e"),"string"!=typeof e&&!wt(e)){if("function"!=typeof e.toString)throw re("toString is not a function");if("string"!=typeof(e=e.toString()))throw re("dirty is not a string, aborting")}if(!n.isSupported)return e;if(Me||gt(t),n.removed=[],"string"==typeof e&&(ze=!1),ze){if(e.nodeName){const t=lt(e.nodeName);if(!q[t]||ie[t])throw re("root node is forbidden and cannot be sanitized in-place")}}else if(e instanceof l)r=bt("\x3c!----\x3e"),s=r.ownerDocument.importNode(e,!0),1===s.nodeType&&"BODY"===s.nodeName||"HTML"===s.nodeName?r=s:r.appendChild(s);else{if(!De&&!Fe&&!Re&&-1===e.indexOf("<"))return v&&Ie?v.createHTML(e):e;if(r=bt(e),!r)return De?null:Ie?k:""}r&&Oe&&ft(r.firstChild);const u=At(ze?e:r);for(;i=u.nextNode();)kt(i),Et(i),i.content instanceof o&&Tt(i.content);if(ze)return e;if(De){if($e)for(c=E.call(r.ownerDocument);r.firstChild;)c.appendChild(r.firstChild);else c=r;return(B.shadowroot||B.shadowrootmode)&&(c=S.call(a,c,!0)),c}let d=Re?r.outerHTML:r.innerHTML;return Re&&q["!doctype"]&&r.ownerDocument&&r.ownerDocument.doctype&&r.ownerDocument.doctype.name&&ne(Ce,r.ownerDocument.doctype.name)&&(d="<!DOCTYPE "+r.ownerDocument.doctype.name+">\n"+d),Fe&&H([C,L,N],e=>{d=J(d,e," ")}),v&&Ie?v.createHTML(d):d},n.setConfig=function(){gt(arguments.length>0&&void 0!==arguments[0]?arguments[0]:{}),Me=!0},n.clearConfig=function(){ct=null,Me=!1},n.isValidAttribute=function(e,t,n){ct||gt({});const r=lt(e),a=lt(t);return xt(r,a,n)},n.addHook=function(e,t){"function"==typeof t&&G(F[e],t)},n.removeHook=function(e,t){if(void 0!==t){const n=W(F[e],t);return-1===n?void 0:Y(F[e],n,1)[0]}return Z(F[e])},n.removeHooks=function(e){F[e]=[]},n.removeAllHooks=function(){F={afterSanitizeAttributes:[],afterSanitizeElements:[],afterSanitizeShadowDOM:[],beforeSanitizeAttributes:[],beforeSanitizeElements:[],beforeSanitizeShadowDOM:[],uponSanitizeAttribute:[],uponSanitizeElement:[],uponSanitizeShadowNode:[]}},n}(),Me=n(848),Oe=n.n(Me);n(342),n(976),n(415),n(723);class De{static build(e){const{title:t,content:n,difficulty:r}=e,a=A.create("div",{class:"lc-unlock-editorial-wrap"}),s=A.create("div",{class:"lc-unlock-editorial-title"},A.create("h2",{},t??"Editorial"),r?A.create("span",{class:`lc-unlock-difficulty lc-diff-${null==r?void 0:r.toLowerCase()}`},r):null),o=A.create("div",{class:"lc-unlock-editorial-body"}),i=Re.sanitize(n??"",{USE_PROFILES:{html:!0},ADD_TAGS:["pre","code"]});return o.innerHTML=i,o.querySelectorAll("pre code").forEach(e=>{Oe().highlightElement(e)}),a.appendChild(s),a.appendChild(o),a}static buildLoader(){return A.create("div",{class:"lc-unlock-loader"},A.create("div",{class:"lc-unlock-spinner"}),A.create("p",{},"Loading editorial…"))}}class $e{constructor(){var e;this.analytics=C.getInstance(),this.slug=(null===(e=window.location.pathname.match(/\/problems\/([^/]+)\//))||void 0===e?void 0:e[1])??null}static matches(){return m.PROBLEM_DETAIL.test(window.location.href)}async init(){if(this.slug)try{if(!(await this._getSettings()).enableEditorials)return;R.injectUnlockPrompt(()=>this._loadAndShow())}catch(e){console.error("[LC-Unlock] EditorialUnlocker error:",e)}}async _loadAndShow(){try{this.analytics.log("editorial_click",{slug:this.slug});const e=await b.getData(r),t=this._findEditorial(e,this.slug);if(!t)return void R.showContent(Object.assign(document.createElement("p"),{textContent:"Editorial not available for this problem.",className:"lc-unlock-empty"}));const n=De.build(t);R.showContent(n)}catch(e){console.error("[LC-Unlock] EditorialUnlocker load error:",e)}}_findEditorial(e,t){if(null==e||!e.length)return null;const[n,...r]=e,a=Object.fromEntries(n.map((e,t)=>[null==e?void 0:e.toLowerCase(),t])),s=r.find(e=>e[a.slug]===t);return s?{title:s[a.title]??t,content:s[a.content]??"",difficulty:s[a.difficulty]??"",slug:t}:null}async _getSettings(){return new Promise(e=>{chrome.storage.local.get([o],t=>{e({...i,...t[o]??{}})})})}}class Ie{static inject(e){const t=['[class*="company-tags"]','[class*="companyTags"]','[class*="tag-container"]','[id*="company"]'];let n=null;for(const e of t)if(n=document.querySelector(e),n)break;n?(n.innerHTML="",n.appendChild(e)):console.warn("[LC-Unlock] ProblemTagsElementModifier: tags container not found.")}static removePaywall(){document.querySelectorAll('[class*="upgrade"], [class*="premium-banner"], [class*="locked-content"]').forEach(e=>e.remove())}}class je{static build(e,t){let n=0;const r=A.create("div",{class:"lc-unlock-tags-wrap"}),a=A.create("input",{class:"lc-unlock-search lc-unlock-search--sm",type:"text",placeholder:"Filter companies…"}),s=k.buildTabStrip(g,n,e=>{n=e,i()}),o=A.create("div",{class:"lc-unlock-chips-area"}),i=()=>{const r=a.value.trim().toLowerCase();let s=[...e[n]??[]];r&&(s=s.filter(e=>e.company.toLowerCase().includes(r))),s.sort((e,t)=>t.count-e.count),o.innerHTML="",0===s.length?o.appendChild(A.create("p",{class:"lc-unlock-empty"},"No companies found.")):o.appendChild(k.buildChipContainer(s,t))};return a.addEventListener("input",i),i(),r.appendChild(a),r.appendChild(s),r.appendChild(o),r}}class qe{constructor(){var e;this.analytics=C.getInstance(),this.slug=(null===(e=window.location.pathname.match(/\/problems\/([^/]+)\//))||void 0===e?void 0:e[1])??null}static matches(){return m.PROBLEM_DETAIL.test(window.location.href)}async init(){if(this.slug)try{if(!(await this._getSettings()).enableCompanyTags)return;Ie.removePaywall();const e=await b.getData(t),n=this._getCompaniesForProblem(e,this.slug),r=je.build(n);Ie.inject(r),this.analytics.log("tags_unlocked",{slug:this.slug})}catch(e){console.error("[LC-Unlock] ProblemTagsUnlocker error:",e)}}_getCompaniesForProblem(e,t){if(null==e||!e.length)return[[],[],[],[]];const[n,...r]=e,a=Object.fromEntries(n.map((e,t)=>[null==e?void 0:e.toLowerCase(),t])),s=[[],[],[],[]];for(const e of r){if(e[a.slug]!==t)continue;const n=Number(e[a.window]??3),r={company:e[a.company]??"",count:Number(e[a.count]??1)};s[Math.min(n,3)].push(r)}return s}async _getSettings(){return new Promise(e=>{chrome.storage.local.get([o],t=>{e({...i,...t[o]??{}})})})}}class Ue{static removeLocks(){document.querySelectorAll('table tr, [class*="problem-row"], [class*="problemRow"]').forEach(e=>{e.querySelectorAll('[class*="lock"], [class*="premium"]').forEach(e=>e.remove()),e.querySelectorAll('[style*="blur"]').forEach(e=>{e.style.filter="none",e.style.opacity="1",e.style.pointerEvents="auto"})})}static injectFrequencyBars(e){document.querySelectorAll('table tr[data-slug], [class*="problem-row"][data-slug]').forEach(t=>{const n=t.dataset.slug,r=e.get(n);if(null==r)return;if(t.querySelector(".lc-unlock-freq-bar-wrap"))return;const a=A.create("div",{class:"lc-unlock-freq-bar-wrap"},A.create("div",{class:"lc-unlock-freq-bar-fill",style:{width:`${Math.min(100,Math.round(r))}%`}})),s=t.querySelector("td:last-child");s&&s.appendChild(a)})}static rewireLockedLinks(e){document.querySelectorAll('table tr a[href*="premium"], [class*="problem-row"] a[href*="premium"]').forEach(t=>{var n;const r=null===(n=t.href.match(/\/problems\/([^/]+)\//))||void 0===n?void 0:n[1];r&&(t.setAttribute("href","javascript:void(0)"),t.addEventListener("click",t=>{t.preventDefault(),t.stopPropagation(),e(r)}))})}}class ze{constructor(){this.modal=S.getInstance(),this.analytics=C.getInstance()}static matches(){return m.TAG.test(window.location.href)}async init(){try{if(!(await this._getSettings()).enableFrequencyBars)return;const t=await b.getData(e),n=this._parseRows(t),r=new Map(n.map(e=>[e.slug,e.frequency??0])),a=new Map(n.map(e=>[e.slug,e]));Ue.removeLocks(),Ue.injectFrequencyBars(r),Ue.rewireLockedLinks(e=>{const t=a.get(e);t&&this._openModal(t)}),A.observeDOM(()=>{Ue.removeLocks(),Ue.injectFrequencyBars(r)}),this.analytics.log("tag_page_unlocked",{url:window.location.href})}catch(e){console.error("[LC-Unlock] TagPageProblemTableUnlocker error:",e)}}_openModal(e){this.modal.openLoading("Loading problem…");const t=E.build([[e],[e],[e],[e]]);this.modal.setContent(t)}_parseRows(e){if(null==e||!e.length)return[];const[t,...n]=e,r=Object.fromEntries(t.map((e,t)=>[null==e?void 0:e.toLowerCase(),t]));return n.map(e=>({id:Number(e[r.id]??0),name:e[r.name]??"",slug:e[r.slug]??"",difficulty:e[r.difficulty]??"",acceptance:parseFloat(e[r.acceptance]??0),frequency:parseFloat(e[r.frequency]??0)}))}async _getSettings(){return new Promise(e=>{chrome.storage.local.get([o],t=>{e({...i,...t[o]??{}})})})}}class Be{static removeLocks(){document.querySelectorAll('[class*="study-plan"], [class*="study_plan"], [class*="top-problem"]').forEach(e=>{e.querySelectorAll('[class*="lock"], [class*="premium"]').forEach(e=>e.remove()),e.querySelectorAll('[style*="blur"]').forEach(e=>{e.style.filter="none",e.style.opacity="1",e.style.pointerEvents="auto"})})}static rewireLinks(e){document.querySelectorAll('[class*="study-plan"] a, [class*="top-problem"] a').forEach(t=>{var n,r;if(!t.href.includes("/problems/"))return;const a=null===(n=t.href.match(/\/problems\/([^/]+)\//))||void 0===n?void 0:n[1],s=null===(r=t.textContent)||void 0===r?void 0:r.trim();a&&(t.setAttribute("href","javascript:void(0)"),t.addEventListener("click",t=>{t.preventDefault(),t.stopPropagation(),e({slug:a,title:s})}))})}static injectUnlockedBadges(e=document){e.querySelectorAll('[class*="plan-item"], [class*="top-problem-item"]').forEach(e=>{if(e.querySelector(".lc-unlock-badge"))return;const t=A.create("span",{class:"lc-unlock-badge"},"🔓");e.insertBefore(t,e.firstChild)})}}class He{constructor(){this.modal=S.getInstance(),this.analytics=C.getInstance()}static matches(){return m.STUDY_PLAN.test(window.location.href)}async init(){try{if(!(await this._getSettings()).enableTopProblems)return;const e=await b.getData("top"),t=this._parseRows(e),n=new Map(t.map(e=>[e.slug,e]));Be.removeLocks(),Be.injectUnlockedBadges(),Be.rewireLinks(({slug:e,title:t})=>{const r=n.get(e);r&&this._openModal(r)}),A.observeDOM(()=>{Be.removeLocks(),Be.injectUnlockedBadges()}),this.analytics.log("top_problem_unlocked",{url:window.location.href})}catch(e){console.error("[LC-Unlock] TopProblemUnlocker error:",e)}}_openModal(e){this.modal.openLoading("Loading problem…");const t=E.build([[e],[e],[e],[e]]),n=A.create("h3",{class:"lc-unlock-modal-title"},e.name),r=A.create("div",{});r.appendChild(n),r.appendChild(t),this.modal.setContent(r),this.analytics.log("top_problem_click",{slug:e.slug})}_parseRows(e){if(null==e||!e.length)return[];const[t,...n]=e,r=Object.fromEntries(t.map((e,t)=>[null==e?void 0:e.toLowerCase(),t]));return n.map(e=>({id:Number(e[r.id]??0),name:e[r.name]??"",slug:e[r.slug]??"",difficulty:e[r.difficulty]??"",acceptance:parseFloat(e[r.acceptance]??0),frequency:parseFloat(e[r.frequency]??0)}))}async _getSettings(){return new Promise(e=>{chrome.storage.local.get([o],t=>{e({...i,...t[o]??{}})})})}}async function We(){(await new Promise(e=>{chrome.storage.local.get([o],t=>{e({...i,...t[o]??{}})})})).enableAnalytics&&C.getInstance().setEnabled(!0);const e=[new L,new P,new $e,new qe,new ze,new He].filter(e=>e.constructor.matches());0!==e.length&&(console.info(`[LC-Unlock] Page matched ${e.length} unlocker(s):`,e.map(e=>e.constructor.name)),await Promise.allSettled(e.map(e=>e.init())))}"loading"===document.readyState?document.addEventListener("DOMContentLoaded",We):We();let Ze=location.href;new MutationObserver(()=>{location.href!==Ze&&(Ze=location.href,setTimeout(We,500))}).observe(document.body,{subtree:!0,childList:!0})})()})();
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
+
+/***/ 680
+(__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) {
+
+
+// EXTERNAL MODULE: ./node_modules/webextension-polyfill/dist/browser-polyfill.js
+var browser_polyfill = __webpack_require__(815);
+;// ./src/modules/Objects.js
+/**
+ * Objects.js — Shared constants, data models, and config used across all modules.
+ */
+
+// ─── Google Sheets Proxy Config ───────────────────────────────────────────────
+// 🔴 Fix: API key is NEVER in extension source — route all requests through a Cloudflare Worker.
+const SHEETS_CONFIG = {
+  PROXY_URL: 'https://lc-sheets-proxy.cheatcode23.workers.dev/sheets',
+  // Replace with your Cloudflare Worker URL
+  SPREADSHEET_ID: '17uIfHiWPFoHVnpy3Ps9KBccr5DG2Y3ZIUC9zODlg1Jo' // Your public Google Sheet
+};
+
+// ─── Sheet Tab Names ──────────────────────────────────────────────────────────
+const SHEETS = {
+  PROBLEM_DATA: 'problems',
+  COMPANY_TAGS: 'companies',
+  EDITORIALS: 'editorial',
+  TOP_PROBLEMS: 'top'
+};
+
+// ─── Cache TTLs ───────────────────────────────────────────────────────────────
+const TTL = {
+  TWO_WEEKS: 14 * 24 * 60 * 60 * 1000,
+  ONE_DAY: 1 * 24 * 60 * 60 * 1000,
+  ONE_HOUR: 60 * 60 * 1000
+};
+
+// ─── Storage Keys ────────────────────────────────────────────────────────────
+const STORAGE_KEYS = {
+  PROBLEM_DATA: 'lc_unlock_problems',
+  COMPANY_DATA: 'lc_unlock_companies',
+  EDITORIAL: 'lc_unlock_editorial',
+  TOP_PROBLEMS: 'lc_unlock_top',
+  SETTINGS: 'lc_unlock_settings',
+  LAST_FETCH: 'lc_unlock_last_fetch'
+};
+
+// ─── Default Settings ────────────────────────────────────────────────────────
+const DEFAULT_SETTINGS = {
+  enableFrequencyBars: true,
+  enableCompanyTags: true,
+  enableEditorials: true,
+  enableTopProblems: true,
+  enableAnalytics: false
+};
+
+// ─── Difficulty ───────────────────────────────────────────────────────────────
+const DIFFICULTY = {
+  EASY: 'Easy',
+  MEDIUM: 'Medium',
+  HARD: 'Hard'
+};
+
+// ─── Sort Fields ─────────────────────────────────────────────────────────────
+const SORT_FIELDS = {
+  FREQUENCY: 'frequency',
+  DIFFICULTY: 'difficulty',
+  NAME: 'name',
+  ID: 'id',
+  ACCEPTANCE: 'acceptance'
+};
+
+// ─── Time Windows ─────────────────────────────────────────────────────────────
+const TIME_WINDOWS = ['6 Months', '1 Year', '2 Years', 'All Time'];
+
+// ─── URL Patterns ────────────────────────────────────────────────────────────
+const URL_PATTERNS = {
+  PROBLEM_SET: /leetcode\.com\/problemset\//,
+  PROBLEM_DETAIL: /leetcode\.com\/problems\/[^/]+\//,
+  COMPANY: /leetcode\.com\/company\//,
+  TAG: /leetcode\.com\/tag\//,
+  STUDY_PLAN: /leetcode\.com\/study-plan\//
+};
+;// ./src/modules/DataFetcher/GoogleSheetsDataFetcher.js
+/**
+ * GoogleSheetsDataFetcher
+ * Fetches rows from Google Sheets via a Cloudflare Worker proxy.
+ *
+ * 🔴 Fix: No API key in extension source — proxy handles auth.
+ * 🔴 Fix: isFetching is ALWAYS reset in a finally block.
+ * 🟡 Fix: fetchAll() batch-fetches all rows in one request (no per-row calls).
+ */
+
+
+class GoogleSheetsDataFetcher {
+  constructor() {
+    this.isFetching = false;
+  }
+
+  /**
+   * Fetch a named range via the proxy.
+   * @param {string} sheetName - Tab name in the spreadsheet
+   * @param {string} [range]   - Optional A1 range notation
+   * @returns {Promise<any[][]>} 2D array of row values
+   */
+  async fetchRange(sheetName, range = '') {
+    if (this.isFetching) {
+      console.warn('[LC-Unlock] Fetch in progress, request dropped.');
+      return null;
+    }
+    this.isFetching = true;
+    try {
+      const rangeParam = range ? `${sheetName}!${range}` : sheetName;
+      const url = new URL(SHEETS_CONFIG.PROXY_URL);
+      url.searchParams.set('spreadsheetId', SHEETS_CONFIG.SPREADSHEET_ID);
+      url.searchParams.set('range', rangeParam);
+      const res = await fetch(url.toString());
+      if (!res.ok) throw new Error(`Proxy error ${res.status}: ${res.statusText}`);
+      const json = await res.json();
+      return json.values ?? [];
+    } catch (err) {
+      console.error('[LC-Unlock] GoogleSheetsDataFetcher:', err);
+      throw err;
+    } finally {
+      this.isFetching = false; // 🔴 Always reset
+    }
+  }
+
+  /**
+   * Batch-fetch ALL rows from a sheet tab in one request.
+   * 🟡 Performance fix: avoids per-row API calls.
+   * @param {string} sheetName
+   * @returns {Promise<any[][]>}
+   */
+  async fetchAll(sheetName) {
+    return this.fetchRange(sheetName);
+  }
+}
+;// ./src/modules/BufferManager/GoogleSheetsBufferManager.js
+/**
+ * GoogleSheetsBufferManager
+ * Cache-Aside pattern — wraps chrome.storage.local with a configurable TTL.
+ * Default TTL: 2 weeks. Company data uses 24h TTL.
+ * 🟡 Fix: Company data is now persisted across sessions with shorter TTL.
+ */
+
+class GoogleSheetsBufferManager {
+  /**
+   * @param {string} storageKey - Unique key in chrome.storage.local
+   * @param {number} ttl        - TTL in milliseconds
+   */
+  constructor(storageKey, ttl) {
+    this.storageKey = storageKey;
+    this.ttl = ttl;
+  }
+
+  /** Read from cache. Returns null if absent or expired. */
+  async get() {
+    return new Promise(resolve => {
+      chrome.storage.local.get([this.storageKey], result => {
+        const entry = result[this.storageKey];
+        if (!entry) return resolve(null);
+        const {
+          data,
+          timestamp
+        } = entry;
+        if (Date.now() - timestamp > this.ttl) {
+          chrome.storage.local.remove(this.storageKey);
+          return resolve(null);
+        }
+        resolve(data);
+      });
+    });
+  }
+
+  /** Write data to cache with current timestamp. */
+  async set(data) {
+    return new Promise(resolve => {
+      chrome.storage.local.set({
+        [this.storageKey]: {
+          data,
+          timestamp: Date.now()
+        }
+      }, resolve);
+    });
+  }
+
+  /** Invalidate the cache entry. */
+  async clear() {
+    return new Promise(resolve => {
+      chrome.storage.local.remove(this.storageKey, resolve);
+    });
+  }
+
+  /** Returns true if a valid (non-expired) cache entry exists. */
+  async has() {
+    const data = await this.get();
+    return data !== null;
+  }
+
+  /** Returns seconds since the last successful cache write, or null. */
+  async getAge() {
+    return new Promise(resolve => {
+      chrome.storage.local.get([this.storageKey], result => {
+        const entry = result[this.storageKey];
+        if (!entry) return resolve(null);
+        resolve(Math.floor((Date.now() - entry.timestamp) / 1000));
+      });
+    });
+  }
+}
+;// ./src/modules/DataFetcher/GoogleSheetsDataGrabber.js
+/**
+ * GoogleSheetsDataGrabber
+ * High-level orchestrator: checks buffer first, fetches from Sheets on miss.
+ * Wraps GoogleSheetsDataFetcher + GoogleSheetsBufferManager.
+ *
+ * 🟡 Fix: Company data persisted with 24h TTL (was lost between sessions).
+ */
+
+
+
+
+const fetcher = new GoogleSheetsDataFetcher();
+
+// Each data type gets its own buffer with appropriate TTL
+const buffers = {
+  [SHEETS.PROBLEM_DATA]: new GoogleSheetsBufferManager(STORAGE_KEYS.PROBLEM_DATA, TTL.TWO_WEEKS),
+  [SHEETS.COMPANY_TAGS]: new GoogleSheetsBufferManager(STORAGE_KEYS.COMPANY_DATA, TTL.ONE_DAY),
+  // 🟡 24h
+  [SHEETS.EDITORIALS]: new GoogleSheetsBufferManager(STORAGE_KEYS.EDITORIAL, TTL.TWO_WEEKS),
+  [SHEETS.TOP_PROBLEMS]: new GoogleSheetsBufferManager(STORAGE_KEYS.TOP_PROBLEMS, TTL.TWO_WEEKS)
+};
+class GoogleSheetsDataGrabber {
+  /**
+   * Get data for a sheet tab — serves from cache if valid, fetches otherwise.
+   * @param {string} sheetName - One of the SHEETS.* constants
+   * @returns {Promise<any[][]>}
+   */
+  static async getData(sheetName) {
+    const buffer = buffers[sheetName];
+    if (!buffer) throw new Error(`[LC-Unlock] No buffer registered for: ${sheetName}`);
+    const cached = await buffer.get();
+    if (cached) {
+      console.info(`[LC-Unlock] Cache hit for "${sheetName}"`);
+      return cached;
+    }
+    console.info(`[LC-Unlock] Cache miss for "${sheetName}" — fetching…`);
+    const rows = await fetcher.fetchAll(sheetName);
+    if (rows && rows.length > 0) {
+      await buffer.set(rows);
+    }
+    return rows;
+  }
+
+  /**
+   * Force-refresh a sheet tab, bypassing cache.
+   * @param {string} sheetName
+   * @returns {Promise<any[][]>}
+   */
+  static async refresh(sheetName) {
+    const buffer = buffers[sheetName];
+    if (buffer) await buffer.clear();
+    return GoogleSheetsDataGrabber.getData(sheetName);
+  }
+
+  /**
+   * Returns the buffer age (in seconds) for a sheet, or null if not cached.
+   * @param {string} sheetName
+   * @returns {Promise<number|null>}
+   */
+  static async getAge(sheetName) {
+    const buffer = buffers[sheetName];
+    return buffer ? buffer.getAge() : null;
+  }
+}
+;// ./src/modules/ElementGenerator/ElementHelperClass.js
+/**
+ * ElementHelperClass
+ * Utility factory and helper methods for DOM element creation.
+ * All ElementModifiers and ContentBuilders use this as their base.
+ * 🟢 Fix: Uses LeetCode CSS custom properties instead of hardcoded hex colors.
+ */
+
+class ElementHelperClass {
+  /**
+   * Create a DOM element with optional attributes and children.
+   * @param {string} tag
+   * @param {Object} [attrs]
+   * @param {...(Node|string)} children
+   * @returns {HTMLElement}
+   */
+  static create(tag, attrs = {}, ...children) {
+    const el = document.createElement(tag);
+    for (const [key, val] of Object.entries(attrs)) {
+      if (key === 'class') {
+        el.className = val;
+      } else if (key === 'style' && typeof val === 'object') {
+        Object.assign(el.style, val);
+      } else if (key.startsWith('on') && typeof val === 'function') {
+        el.addEventListener(key.slice(2).toLowerCase(), val);
+      } else {
+        el.setAttribute(key, val);
+      }
+    }
+    for (const child of children) {
+      if (child == null) continue;
+      el.appendChild(typeof child === 'string' ? document.createTextNode(child) : child);
+    }
+    return el;
+  }
+
+  /**
+   * Find a single element by CSS selector, optionally scoped to a parent.
+   * @param {string} selector
+   * @param {Element} [parent=document]
+   * @returns {Element|null}
+   */
+  static qs(selector, parent = document) {
+    return parent.querySelector(selector);
+  }
+
+  /**
+   * Find all elements matching a CSS selector.
+   * @param {string} selector
+   * @param {Element} [parent=document]
+   * @returns {NodeList}
+   */
+  static qsa(selector, parent = document) {
+    return parent.querySelectorAll(selector);
+  }
+
+  /**
+   * Add one or more CSS classes to an element.
+   * @param {Element} el
+   * @param {...string} classes
+   */
+  static addClass(el, ...classes) {
+    el.classList.add(...classes);
+  }
+
+  /**
+   * Remove one or more CSS classes from an element.
+   * @param {Element} el
+   * @param {...string} classes
+   */
+  static removeClass(el, ...classes) {
+    el.classList.remove(...classes);
+  }
+
+  /**
+   * Remove an element from the DOM.
+   * @param {Element} el
+   */
+  static remove(el) {
+    var _el$parentNode;
+    el === null || el === void 0 || (_el$parentNode = el.parentNode) === null || _el$parentNode === void 0 || _el$parentNode.removeChild(el);
+  }
+
+  /**
+   * Hide an element using inline display:none.
+   * @param {Element} el
+   */
+  static hide(el) {
+    if (el) el.style.display = 'none';
+  }
+
+  /**
+   * Show an element (resets display).
+   * @param {Element} el
+   * @param {string} [display='']
+   */
+  static show(el, display = '') {
+    if (el) el.style.display = display;
+  }
+
+  /**
+   * Observe DOM mutations at the body level with a callback.
+   * @param {Function} callback
+   * @returns {MutationObserver}
+   */
+  static observeDOM(callback) {
+    const observer = new MutationObserver(callback);
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+    return observer;
+  }
+
+  /**
+   * Wait for an element matching selector to appear in the DOM.
+   * @param {string} selector
+   * @param {number} [timeout=10000]
+   * @returns {Promise<Element>}
+   */
+  static waitForElement(selector, timeout = 10000) {
+    return new Promise((resolve, reject) => {
+      const el = document.querySelector(selector);
+      if (el) return resolve(el);
+      const timer = setTimeout(() => {
+        observer.disconnect();
+        reject(new Error(`[LC-Unlock] Timeout waiting for: ${selector}`));
+      }, timeout);
+      const observer = new MutationObserver(() => {
+        const found = document.querySelector(selector);
+        if (found) {
+          clearTimeout(timer);
+          observer.disconnect();
+          resolve(found);
+        }
+      });
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true
+      });
+    });
+  }
+}
+;// ./src/modules/ElementModifier/ProblemTableElementModifier.js
+/**
+ * ProblemTableElementModifier
+ * Patches the /problemset/ page:
+ * - Removes lock icons from premium problem rows
+ * - Injects green frequency progress bars
+ * - Rewires locked links to open our modal on click
+ */
+
+
+class ProblemTableElementModifier {
+  /**
+   * Inject frequency bar into a problem row element.
+   * @param {Element} rowEl      - The <tr> or row container
+   * @param {number}  frequency  - 0-100 normalized score
+   */
+  static injectFrequencyBar(rowEl, frequency) {
+    const existing = rowEl.querySelector('.lc-unlock-freq-bar-wrap');
+    if (existing) return; // Already patched
+
+    const bar = ElementHelperClass.create('div', {
+      class: 'lc-unlock-freq-bar-wrap'
+    }, ElementHelperClass.create('div', {
+      class: 'lc-unlock-freq-bar-fill',
+      style: {
+        width: `${Math.min(100, Math.round(frequency))}%`
+      }
+    }));
+
+    // Try to find a frequency/acceptance cell to place the bar into
+    const cells = rowEl.querySelectorAll('td');
+    const target = cells[cells.length - 1];
+    if (target) target.appendChild(bar);
+  }
+
+  /**
+   * Remove lock/blur indicators from a row.
+   * @param {Element} rowEl
+   */
+  static removeLock(rowEl) {
+    rowEl.querySelectorAll('[class*="lock"], [class*="blur"], [class*="premium"]').forEach(el => el.remove());
+
+    // Remove inline blur filters
+    rowEl.querySelectorAll('[style*="blur"]').forEach(el => {
+      el.style.filter = 'none';
+      el.style.opacity = '1';
+      el.style.pointerEvents = 'auto';
+    });
+  }
+
+  /**
+   * Rewire a locked anchor to fire a click handler instead of navigating.
+   * @param {Element} linkEl
+   * @param {Function} onClick
+   */
+  static rewireLink(linkEl, onClick) {
+    var _linkEl$parentNode;
+    const clone = linkEl.cloneNode(true);
+    clone.setAttribute('href', 'javascript:void(0)');
+    clone.addEventListener('click', e => {
+      e.preventDefault();
+      e.stopPropagation();
+      onClick();
+    });
+    (_linkEl$parentNode = linkEl.parentNode) === null || _linkEl$parentNode === void 0 || _linkEl$parentNode.replaceChild(clone, linkEl);
+  }
+}
+;// ./src/modules/ElementGenerator/TableContentElementGenerator.js
+/**
+ * TableContentElementGenerator
+ * Generates individual HTML table row elements for the problem list table.
+ * Each row represents one LeetCode problem with frequency, difficulty, etc.
+ * 🟢 Fix: Uses LeetCode CSS custom properties instead of hard-coded hex colors.
+ */
+
+
+
+const DIFFICULTY_COLOR = {
+  [DIFFICULTY.EASY]: 'var(--lc-difficulty-easy,   #00b8a3)',
+  [DIFFICULTY.MEDIUM]: 'var(--lc-difficulty-medium, #ffc01e)',
+  [DIFFICULTY.HARD]: 'var(--lc-difficulty-hard,   #ef4743)'
+};
+class TableContentElementGenerator {
+  /**
+   * Build a <tr> element for one problem.
+   * @param {Object} problem
+   * @param {number} problem.id
+   * @param {string} problem.name
+   * @param {string} problem.slug
+   * @param {string} problem.difficulty
+   * @param {number} problem.acceptance
+   * @param {number} problem.frequency  - 0-100 normalized score
+   * @param {Function} onRowClick       - called with problem on click
+   * @returns {HTMLTableRowElement}
+   */
+  static buildRow(problem, onRowClick) {
+    const {
+      id,
+      name,
+      slug,
+      difficulty,
+      acceptance,
+      frequency
+    } = problem;
+    const freqBar = ElementHelperClass.create('div', {
+      class: 'lc-unlock-freq-bar-wrap'
+    }, ElementHelperClass.create('div', {
+      class: 'lc-unlock-freq-bar-fill',
+      style: {
+        width: `${Math.round(frequency)}%`
+      }
+    }));
+    const diffBadge = ElementHelperClass.create('span', {
+      class: 'lc-unlock-difficulty',
+      style: {
+        color: DIFFICULTY_COLOR[difficulty] ?? 'inherit'
+      }
+    }, difficulty);
+    const nameCell = ElementHelperClass.create('a', {
+      class: 'lc-unlock-prob-name',
+      href: `https://leetcode.com/problems/${slug}/`,
+      target: '_blank'
+    }, `${id}. ${name}`);
+    const tr = ElementHelperClass.create('tr', {
+      class: 'lc-unlock-prob-row',
+      'data-slug': slug
+    }, ElementHelperClass.create('td', {}, String(id)), ElementHelperClass.create('td', {}, nameCell), ElementHelperClass.create('td', {}, diffBadge), ElementHelperClass.create('td', {}, `${acceptance}%`), ElementHelperClass.create('td', {}, freqBar));
+    if (typeof onRowClick === 'function') {
+      tr.addEventListener('click', () => onRowClick(problem));
+    }
+    return tr;
+  }
+
+  /**
+   * Build the <thead> for the problem table.
+   * @param {Function} onSort - called with column key when header clicked
+   * @returns {HTMLTableSectionElement}
+   */
+  static buildHeader(onSort) {
+    const cols = [{
+      label: '#',
+      key: 'id'
+    }, {
+      label: 'Title',
+      key: 'name'
+    }, {
+      label: 'Difficulty',
+      key: 'difficulty'
+    }, {
+      label: 'Acceptance',
+      key: 'acceptance'
+    }, {
+      label: 'Frequency',
+      key: 'frequency'
+    }];
+    const thead = document.createElement('thead');
+    const tr = document.createElement('tr');
+    for (const {
+      label,
+      key
+    } of cols) {
+      const th = ElementHelperClass.create('th', {
+        class: 'lc-unlock-th',
+        'data-sort': key
+      }, label);
+      if (typeof onSort === 'function') {
+        th.addEventListener('click', () => onSort(key));
+      }
+      tr.appendChild(th);
+    }
+    thead.appendChild(tr);
+    return thead;
+  }
+}
+;// ./src/modules/ElementGenerator/TagContentElementGenerator.js
+/**
+ * TagContentElementGenerator
+ * Generates company-tag chip elements shown on problem detail pages.
+ * 🟢 Fix: Uses LeetCode CSS custom properties for consistent dark/light mode.
+ */
+
+
+class TagContentElementGenerator {
+  /**
+   * Build a clickable chip for a single company tag.
+   * @param {string} company  - Company name
+   * @param {number} count    - Number of times this company asked the problem
+   * @param {Function} [onClick]
+   * @returns {HTMLElement}
+   */
+  static buildChip(company, count, onClick) {
+    const chip = ElementHelperClass.create('span', {
+      class: 'lc-unlock-company-chip'
+    }, ElementHelperClass.create('span', {
+      class: 'lc-unlock-chip-name'
+    }, company), ElementHelperClass.create('span', {
+      class: 'lc-unlock-chip-count'
+    }, String(count)));
+    if (typeof onClick === 'function') {
+      chip.addEventListener('click', e => {
+        e.stopPropagation();
+        onClick(company);
+      });
+    }
+    return chip;
+  }
+
+  /**
+   * Build a container of company chips.
+   * @param {Array<{company: string, count: number}>} companies
+   * @param {Function} [onChipClick]
+   * @returns {HTMLElement}
+   */
+  static buildChipContainer(companies, onChipClick) {
+    const container = ElementHelperClass.create('div', {
+      class: 'lc-unlock-company-chips'
+    });
+    for (const {
+      company,
+      count
+    } of companies) {
+      container.appendChild(TagContentElementGenerator.buildChip(company, count, onChipClick));
+    }
+    return container;
+  }
+
+  /**
+   * Build a time-window tab strip (6 Months / 1 Year / 2 Years / All Time).
+   * @param {string[]} windows     - Array of label strings
+   * @param {number} activeIndex   - Index of initially active tab
+   * @param {Function} onTabChange - called with index when tab changes
+   * @returns {HTMLElement}
+   */
+  static buildTabStrip(windows, activeIndex, onTabChange) {
+    const strip = ElementHelperClass.create('div', {
+      class: 'lc-unlock-tab-strip'
+    });
+    windows.forEach((label, i) => {
+      const tab = ElementHelperClass.create('button', {
+        class: `lc-unlock-tab${i === activeIndex ? ' active' : ''}`,
+        'data-index': String(i)
+      }, label);
+      tab.addEventListener('click', () => {
+        strip.querySelectorAll('.lc-unlock-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        if (typeof onTabChange === 'function') onTabChange(i);
+      });
+      strip.appendChild(tab);
+    });
+    return strip;
+  }
+}
+;// ./src/modules/ProblemSorter.js
+/**
+ * ProblemSorter
+ * Strategy pattern — interchangeable sort algorithms for problem lists.
+ * Sort field and direction are swappable at runtime.
+ */
+
+
+const DIFFICULTY_ORDER = {
+  [DIFFICULTY.EASY]: 1,
+  [DIFFICULTY.MEDIUM]: 2,
+  [DIFFICULTY.HARD]: 3
+};
+class ProblemSorter {
+  /**
+   * @param {string} field     - One of SORT_FIELDS.*
+   * @param {'asc'|'desc'} dir - Sort direction
+   */
+  constructor(field = SORT_FIELDS.FREQUENCY, dir = 'desc') {
+    this.field = field;
+    this.dir = dir;
+  }
+
+  /** Toggle sort direction. */
+  toggleDir() {
+    this.dir = this.dir === 'asc' ? 'desc' : 'asc';
+  }
+
+  /**
+   * Sort an array of problem objects in-place.
+   * @param {Object[]} problems
+   * @returns {Object[]}
+   */
+  sort(problems) {
+    const mult = this.dir === 'desc' ? -1 : 1;
+    return problems.sort((a, b) => {
+      var _a$name, _b$name;
+      let va, vb;
+      switch (this.field) {
+        case SORT_FIELDS.FREQUENCY:
+          va = a.frequency ?? 0;
+          vb = b.frequency ?? 0;
+          break;
+        case SORT_FIELDS.DIFFICULTY:
+          va = DIFFICULTY_ORDER[a.difficulty] ?? 0;
+          vb = DIFFICULTY_ORDER[b.difficulty] ?? 0;
+          break;
+        case SORT_FIELDS.NAME:
+          va = ((_a$name = a.name) === null || _a$name === void 0 ? void 0 : _a$name.toLowerCase()) ?? '';
+          vb = ((_b$name = b.name) === null || _b$name === void 0 ? void 0 : _b$name.toLowerCase()) ?? '';
+          break;
+        case SORT_FIELDS.ID:
+          va = a.id ?? 0;
+          vb = b.id ?? 0;
+          break;
+        case SORT_FIELDS.ACCEPTANCE:
+          va = a.acceptance ?? 0;
+          vb = b.acceptance ?? 0;
+          break;
+        default:
+          return 0;
+      }
+      if (va < vb) return -1 * mult;
+      if (va > vb) return 1 * mult;
+      return 0;
+    });
+  }
+}
+;// ./src/modules/ContentBuilder/TableContentBuilder.js
+/**
+ * TableContentBuilder
+ * Assembles the full sortable problem table with time-window tabs.
+ * Tabs: 6 Months / 1 Year / 2 Years / All Time
+ * 🟢 Feature: Live search/filter input added to company problem modal.
+ */
+
+
+
+
+
+
+class TableContentBuilder {
+  /**
+   * Build a complete tabbed problem table.
+   * @param {Object[][][]} problemsByWindow - Array of problem arrays, one per time window
+   * @param {Function} [onRowClick]
+   * @returns {HTMLElement}
+   */
+  static build(problemsByWindow, onRowClick) {
+    const sorter = new ProblemSorter(SORT_FIELDS.FREQUENCY, 'desc');
+    let activeTab = 0;
+    const wrapper = ElementHelperClass.create('div', {
+      class: 'lc-unlock-table-wrap'
+    });
+
+    // ── Search Bar ──────────────────────────────────────────────────────────
+    const searchInput = ElementHelperClass.create('input', {
+      class: 'lc-unlock-search',
+      type: 'text',
+      placeholder: 'Search problems…',
+      id: 'lc-unlock-search-input'
+    });
+
+    // ── Tab Strip ────────────────────────────────────────────────────────────
+    const tabStrip = TagContentElementGenerator.buildTabStrip(TIME_WINDOWS, activeTab, idx => {
+      activeTab = idx;
+      rebuildTable();
+    });
+
+    // ── Table ─────────────────────────────────────────────────────────────────
+    const table = ElementHelperClass.create('table', {
+      class: 'lc-unlock-table'
+    });
+    const rebuildTable = () => {
+      const query = searchInput.value.trim().toLowerCase();
+      let problems = [...(problemsByWindow[activeTab] ?? [])];
+      if (query) {
+        problems = problems.filter(p => {
+          var _p$name;
+          return ((_p$name = p.name) === null || _p$name === void 0 ? void 0 : _p$name.toLowerCase().includes(query)) || String(p.id).includes(query);
+        });
+      }
+      sorter.sort(problems);
+      table.innerHTML = '';
+      const thead = TableContentElementGenerator.buildHeader(col => {
+        if (sorter.field === col) sorter.toggleDir();else {
+          sorter.field = col;
+          sorter.dir = 'desc';
+        }
+        rebuildTable();
+      });
+      const tbody = document.createElement('tbody');
+      for (const prob of problems) {
+        tbody.appendChild(TableContentElementGenerator.buildRow(prob, onRowClick));
+      }
+      table.appendChild(thead);
+      table.appendChild(tbody);
+    };
+    searchInput.addEventListener('input', rebuildTable);
+    rebuildTable();
+    wrapper.appendChild(searchInput);
+    wrapper.appendChild(tabStrip);
+    wrapper.appendChild(table);
+    return wrapper;
+  }
+}
+;// ./src/modules/ContainerManager.js
+/**
+ * ContainerManager
+ * Singleton — manages the single in-page overlay modal.
+ * Handles open/close, loading state, and outside-click dismissal.
+ */
+
+
+let instance = null;
+class ContainerManager {
+  static getInstance() {
+    if (!instance) instance = new ContainerManager();
+    return instance;
+  }
+  constructor() {
+    if (instance) return instance;
+    this._buildModal();
+    instance = this;
+  }
+  _buildModal() {
+    // Backdrop
+    this.backdrop = ElementHelperClass.create('div', {
+      class: 'lc-unlock-backdrop',
+      id: 'lc-unlock-backdrop'
+    });
+
+    // Modal box
+    this.modal = ElementHelperClass.create('div', {
+      class: 'lc-unlock-modal',
+      id: 'lc-unlock-modal',
+      role: 'dialog',
+      'aria-modal': 'true'
+    });
+
+    // Close button
+    const closeBtn = ElementHelperClass.create('button', {
+      class: 'lc-unlock-close-btn',
+      'aria-label': 'Close',
+      id: 'lc-unlock-close-btn'
+    }, '✕');
+    closeBtn.addEventListener('click', () => this.close());
+
+    // Content area
+    this.content = ElementHelperClass.create('div', {
+      class: 'lc-unlock-modal-content'
+    });
+    this.modal.appendChild(closeBtn);
+    this.modal.appendChild(this.content);
+    this.backdrop.appendChild(this.modal);
+    document.body.appendChild(this.backdrop);
+
+    // Close on backdrop click (outside modal)
+    this.backdrop.addEventListener('click', e => {
+      if (e.target === this.backdrop) this.close();
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') this.close();
+    });
+  }
+
+  /** Open modal and set content. */
+  open(contentEl) {
+    this.content.innerHTML = '';
+    this.content.appendChild(contentEl);
+    this.backdrop.classList.add('visible');
+    document.body.style.overflow = 'hidden';
+  }
+
+  /** Show a loading spinner inside the modal. */
+  openLoading(message = 'Loading…') {
+    const loader = ElementHelperClass.create('div', {
+      class: 'lc-unlock-loader'
+    }, ElementHelperClass.create('div', {
+      class: 'lc-unlock-spinner'
+    }), ElementHelperClass.create('p', {}, message));
+    this.open(loader);
+  }
+
+  /** Replace modal content (after data loads). */
+  setContent(contentEl) {
+    this.content.innerHTML = '';
+    this.content.appendChild(contentEl);
+  }
+
+  /** Close and clear the modal. */
+  close() {
+    this.backdrop.classList.remove('visible');
+    document.body.style.overflow = '';
+    setTimeout(() => {
+      this.content.innerHTML = '';
+    }, 300);
+  }
+
+  /** Returns true if modal is currently open. */
+  isOpen() {
+    return this.backdrop.classList.contains('visible');
+  }
+}
+;// ./src/modules/AnalyticsManager.js
+/**
+ * AnalyticsManager
+ * Singleton — Firebase GA4 event logger.
+ * Disabled by default (enableAnalytics = false in DEFAULT_SETTINGS).
+ */
+
+let AnalyticsManager_instance = null;
+class AnalyticsManager {
+  static getInstance() {
+    if (!AnalyticsManager_instance) AnalyticsManager_instance = new AnalyticsManager();
+    return AnalyticsManager_instance;
+  }
+  constructor() {
+    if (AnalyticsManager_instance) return AnalyticsManager_instance;
+    this.enabled = false; // off by default
+    AnalyticsManager_instance = this;
+  }
+
+  /**
+   * Enable or disable analytics at runtime.
+   * @param {boolean} enabled
+   */
+  setEnabled(enabled) {
+    this.enabled = !!enabled;
+  }
+
+  /**
+   * Log a named event with optional payload.
+   * @param {string} eventName
+   * @param {Object} [params]
+   */
+  log(eventName, params = {}) {
+    if (!this.enabled) return;
+    try {
+      // If Firebase is loaded on the page, use its gtag
+      if (typeof gtag === 'function') {
+        gtag('event', eventName, params);
+      } else {
+        console.debug('[LC-Unlock] Analytics (noOp):', eventName, params);
+      }
+    } catch (_) {/* fail silently */}
+  }
+}
+;// ./src/modules/Unlocker/ProblemTableUnlocker.js
+/**
+ * ProblemTableUnlocker
+ * Activates on /problemset/ pages.
+ * Batch-fetches all problem data, injects frequency bars, removes locks.
+ */
+
+
+
+
+
+
+
+
+class ProblemTableUnlocker {
+  constructor() {
+    this.modal = ContainerManager.getInstance();
+    this.analytics = AnalyticsManager.getInstance();
+    this.problems = null; // cached parsed problems
+  }
+
+  /** Check if this page should be unlocked. */
+  static matches() {
+    return URL_PATTERNS.PROBLEM_SET.test(window.location.href);
+  }
+
+  /** Entry point — called from main.js */
+  async init() {
+    try {
+      const settings = await this._getSettings();
+      if (!settings.enableFrequencyBars) return;
+
+      // 🟡 Batch-fetch all problems at once
+      const rows = await GoogleSheetsDataGrabber.getData(SHEETS.PROBLEM_DATA);
+      this.problems = this._parseRows(rows);
+
+      // Build a slug→problem map for fast lookup
+      this.slugMap = new Map(this.problems.map(p => [p.slug, p]));
+
+      // Patch existing rows then watch for new ones (virtual scroll)
+      this._patchAllRows();
+      ElementHelperClass.observeDOM(() => this._patchAllRows());
+    } catch (err) {
+      console.error('[LC-Unlock] ProblemTableUnlocker error:', err);
+    }
+  }
+  _patchAllRows() {
+    document.querySelectorAll('tr, [class*="problem-row"]').forEach(row => {
+      var _link$href$match;
+      if (row.dataset.lcUnlocked) return;
+      const link = row.querySelector('a[href*="/problems/"]');
+      if (!link) return;
+      const slug = (_link$href$match = link.href.match(/\/problems\/([^/]+)\//)) === null || _link$href$match === void 0 ? void 0 : _link$href$match[1];
+      if (!slug || !this.slugMap.has(slug)) return;
+      const problem = this.slugMap.get(slug);
+      ProblemTableElementModifier.removeLock(row);
+      ProblemTableElementModifier.injectFrequencyBar(row, problem.frequency ?? 0);
+      ProblemTableElementModifier.rewireLink(link, () => this._openModal(problem));
+      row.dataset.lcUnlocked = '1';
+    });
+  }
+  _openModal(problem) {
+    var _problem$companiesByW, _problem$companiesByW2, _problem$companiesByW3, _problem$companiesByW4;
+    this.modal.openLoading('Loading problem data…');
+    this.analytics.log('problem_table_click', {
+      slug: problem.slug
+    });
+
+    // Group into time windows (all same for table-level data)
+    const byWindow = [((_problem$companiesByW = problem.companiesByWindow) === null || _problem$companiesByW === void 0 ? void 0 : _problem$companiesByW[0]) ?? [], ((_problem$companiesByW2 = problem.companiesByWindow) === null || _problem$companiesByW2 === void 0 ? void 0 : _problem$companiesByW2[1]) ?? [], ((_problem$companiesByW3 = problem.companiesByWindow) === null || _problem$companiesByW3 === void 0 ? void 0 : _problem$companiesByW3[2]) ?? [], ((_problem$companiesByW4 = problem.companiesByWindow) === null || _problem$companiesByW4 === void 0 ? void 0 : _problem$companiesByW4[3]) ?? []];
+    const content = TableContentBuilder.build([[problem], [problem], [problem], [problem]]);
+    this.modal.setContent(content);
+  }
+
+  /** Parse raw Sheets rows into problem objects. */
+  _parseRows(rows) {
+    if (!(rows !== null && rows !== void 0 && rows.length)) return [];
+    const [header, ...data] = rows;
+    const idx = Object.fromEntries(header.map((h, i) => [h === null || h === void 0 ? void 0 : h.toLowerCase(), i]));
+    return data.map(row => ({
+      id: Number(row[idx.id] ?? 0),
+      name: row[idx.name] ?? '',
+      slug: row[idx.slug] ?? '',
+      difficulty: row[idx.difficulty] ?? '',
+      acceptance: parseFloat(row[idx.acceptance] ?? 0),
+      frequency: parseFloat(row[idx.frequency] ?? 0),
+      tags: (row[idx.tags] ?? '').split(',').map(s => s.trim())
+    }));
+  }
+  async _getSettings() {
+    return new Promise(resolve => {
+      chrome.storage.local.get([STORAGE_KEYS.SETTINGS], r => {
+        resolve({
+          ...DEFAULT_SETTINGS,
+          ...(r[STORAGE_KEYS.SETTINGS] ?? {})
+        });
+      });
+    });
+  }
+}
+;// ./src/modules/ElementModifier/CompanySwipperElementModifier.js
+/**
+ * CompanySwipperElementModifier
+ * Patches the company swiper/carousel widget that appears on some LeetCode pages.
+ * Removes locked overlays and injects real company data links.
+ */
+
+
+class CompanySwipperElementModifier {
+  /**
+   * Remove lock overlays from every company card in the swiper.
+   */
+  static removeLocks() {
+    document.querySelectorAll('[class*="company-card"], [class*="companyCard"], [class*="swiper-slide"]').forEach(card => {
+      card.querySelectorAll('[class*="lock"], [class*="premium"]').forEach(el => el.remove());
+      card.style.filter = 'none';
+      card.style.opacity = '1';
+      card.style.pointerEvents = 'auto';
+    });
+  }
+
+  /**
+   * Inject count badges into company cards.
+   * @param {Map<string, number>} companyCountMap - company name → count
+   */
+  static injectCounts(companyCountMap) {
+    document.querySelectorAll('[class*="company-card"], [class*="companyCard"]').forEach(card => {
+      var _nameEl$textContent;
+      const nameEl = card.querySelector('[class*="name"], [class*="title"]');
+      if (!nameEl) return;
+      const company = (_nameEl$textContent = nameEl.textContent) === null || _nameEl$textContent === void 0 ? void 0 : _nameEl$textContent.trim();
+      const count = companyCountMap.get(company);
+      if (count == null) return;
+      const existing = card.querySelector('.lc-unlock-count-badge');
+      if (existing) {
+        existing.textContent = count;
+        return;
+      }
+      const badge = ElementHelperClass.create('span', {
+        class: 'lc-unlock-count-badge'
+      }, String(count));
+      card.appendChild(badge);
+    });
+  }
+}
+;// ./src/modules/Unlocker/CompaniesProblemUnlocker.js
+/**
+ * CompaniesProblemUnlocker
+ * Activates on /company/* pages and the company tag swiper widget.
+ * Fetches company problem lists and injects them into the UI.
+ * 🟡 Fix: Company data cached with 24h TTL (defined in GoogleSheetsDataGrabber).
+ */
+
+
+
+
+
+
+
+
+class CompaniesProblemUnlocker {
+  constructor() {
+    this.modal = ContainerManager.getInstance();
+    this.analytics = AnalyticsManager.getInstance();
+  }
+  static matches() {
+    return URL_PATTERNS.COMPANY.test(window.location.href) || document.querySelector('[class*="company-tags"], [class*="companyTags"]') !== null;
+  }
+  async init() {
+    try {
+      const rows = await GoogleSheetsDataGrabber.getData(SHEETS.COMPANY_TAGS);
+      const companyMap = this._parseRows(rows); // Map<company, {byWindow: Problem[][]}>
+
+      // Patch swiper cards
+      const countMap = new Map([...companyMap.entries()].map(([c, d]) => {
+        var _d$byWindow$;
+        return [c, ((_d$byWindow$ = d.byWindow[3]) === null || _d$byWindow$ === void 0 ? void 0 : _d$byWindow$.length) ?? 0];
+      }));
+      CompanySwipperElementModifier.removeLocks();
+      CompanySwipperElementModifier.injectCounts(countMap);
+
+      // Wire each company card to open a modal
+      document.querySelectorAll('[class*="company-card"], [class*="companyCard"]').forEach(card => {
+        var _nameEl$textContent;
+        const nameEl = card.querySelector('[class*="name"], [class*="title"]');
+        const company = nameEl === null || nameEl === void 0 || (_nameEl$textContent = nameEl.textContent) === null || _nameEl$textContent === void 0 ? void 0 : _nameEl$textContent.trim();
+        if (!company || !companyMap.has(company)) return;
+        card.style.cursor = 'pointer';
+        card.addEventListener('click', () => {
+          const data = companyMap.get(company);
+          this._openModal(company, data.byWindow);
+        });
+      });
+    } catch (err) {
+      console.error('[LC-Unlock] CompaniesProblemUnlocker error:', err);
+    }
+  }
+  _openModal(company, problemsByWindow) {
+    this.modal.openLoading(`Loading ${company} problems…`);
+    this.analytics.log('company_click', {
+      company
+    });
+    const content = TableContentBuilder.build(problemsByWindow);
+    const title = ElementHelperClass.create('h3', {
+      class: 'lc-unlock-modal-title'
+    }, `${company} — Problems`);
+    const wrap = ElementHelperClass.create('div', {});
+    wrap.appendChild(title);
+    wrap.appendChild(content);
+    this.modal.setContent(wrap);
+  }
+
+  /** Parse rows into Map<company, { byWindow: Problem[][] }> */
+  _parseRows(rows) {
+    if (!(rows !== null && rows !== void 0 && rows.length)) return new Map();
+    const [header, ...data] = rows;
+    const idx = Object.fromEntries(header.map((h, i) => [h === null || h === void 0 ? void 0 : h.toLowerCase(), i]));
+    const map = new Map();
+    for (const row of data) {
+      var _map$get$byWindow$win;
+      const company = row[idx.company] ?? '';
+      const windowIdx = Number(row[idx.window] ?? 3); // 0=6m,1=1yr,2=2yr,3=all
+      const problem = {
+        id: Number(row[idx.id] ?? 0),
+        name: row[idx.name] ?? '',
+        slug: row[idx.slug] ?? '',
+        difficulty: row[idx.difficulty] ?? '',
+        acceptance: parseFloat(row[idx.acceptance] ?? 0),
+        frequency: parseFloat(row[idx.frequency] ?? 0)
+      };
+      if (!map.has(company)) map.set(company, {
+        byWindow: [[], [], [], []]
+      });
+      (_map$get$byWindow$win = map.get(company).byWindow[windowIdx]) === null || _map$get$byWindow$win === void 0 || _map$get$byWindow$win.push(problem);
+    }
+    return map;
+  }
+}
+;// ./src/modules/ElementModifier/EditorialPageElementModifier.js
+/**
+ * EditorialPageElementModifier
+ * Patches the editorial tab on a problem detail page.
+ * Replaces the premium paywall with a clickable trigger that opens the editorial modal.
+ */
+
+
+class EditorialPageElementModifier {
+  /**
+   * Replace the premium editorial wall with a styled unlock button.
+   * @param {Function} onUnlock - Called when user clicks the unlock prompt
+   */
+  static injectUnlockPrompt(onUnlock) {
+    // Common containers LeetCode uses for the editorial paywall
+    const selectors = ['[class*="editorial"]', '[class*="solution-content"]', '[data-key="editorial"]'];
+    let target = null;
+    for (const sel of selectors) {
+      target = document.querySelector(sel);
+      if (target) break;
+    }
+    if (!target) {
+      console.warn('[LC-Unlock] EditorialPageElementModifier: editorial container not found.');
+      return;
+    }
+
+    // Remove existing paywall
+    target.querySelectorAll('[class*="premium"], [class*="lock"], [class*="upgrade"]').forEach(el => el.remove());
+    const prompt = ElementHelperClass.create('div', {
+      class: 'lc-unlock-editorial-prompt'
+    }, ElementHelperClass.create('p', {}, '🔓 Editorial unlocked — click to view.'), ElementHelperClass.create('button', {
+      class: 'lc-unlock-btn',
+      id: 'lc-unlock-editorial-btn',
+      onclick: onUnlock
+    }, 'View Editorial'));
+    target.innerHTML = '';
+    target.appendChild(prompt);
+  }
+
+  /**
+   * Replace the prompt with the actual editorial content element.
+   * @param {HTMLElement} contentEl - Built by EditorialContentBuilder
+   */
+  static showContent(contentEl) {
+    var _document$getElementB;
+    const prompt = (_document$getElementB = document.getElementById('lc-unlock-editorial-btn')) === null || _document$getElementB === void 0 ? void 0 : _document$getElementB.parentElement;
+    const target = (prompt === null || prompt === void 0 ? void 0 : prompt.parentElement) ?? document.querySelector('[class*="editorial"]');
+    if (target) {
+      target.innerHTML = '';
+      target.appendChild(contentEl);
+    }
+  }
+}
+// EXTERNAL MODULE: ./node_modules/dompurify/dist/purify.es.mjs
+var purify_es = __webpack_require__(418);
+;// ./src/modules/ContentBuilder/EditorialContentBuilder.js
+/**
+ * EditorialContentBuilder
+ * Assembles the editorial/solution content shown in a modal.
+ * HTML is sanitized via DOMPurify before injection.
+ * 🟢 Feature: Prism.js syntax highlighting for code blocks.
+ * 🔴 Fix: Content sanitized with DOMPurify — no XSS risk.
+ */
+
+
+
+
+let Prism = null;
+async function loadPrism() {
+  if (Prism) return Prism;
+  const base = await __webpack_require__.e(/* import() */ 848).then(__webpack_require__.t.bind(__webpack_require__, 848, 23));
+  Prism = base.default;
+  await __webpack_require__.e(/* import() */ 342).then(__webpack_require__.t.bind(__webpack_require__, 342, 23));
+  await __webpack_require__.e(/* import() */ 976).then(__webpack_require__.t.bind(__webpack_require__, 976, 23));
+  await __webpack_require__.e(/* import() */ 415).then(__webpack_require__.t.bind(__webpack_require__, 415, 23));
+  await __webpack_require__.e(/* import() */ 723).then(__webpack_require__.t.bind(__webpack_require__, 723, 23));
+  return Prism;
+}
+class EditorialContentBuilder {
+  /**
+   * Build a sanitized, syntax-highlighted editorial panel.
+   * @param {Object} editorial
+   * @param {string} editorial.title       - Problem title
+   * @param {string} editorial.content     - Raw HTML editorial content
+   * @param {string} [editorial.difficulty]
+   * @returns {HTMLElement}
+   */
+  static async build(editorial) {
+    const {
+      title,
+      content,
+      difficulty
+    } = editorial;
+    const wrapper = ElementHelperClass.create('div', {
+      class: 'lc-unlock-editorial-wrap'
+    });
+
+    // ── Title bar ─────────────────────────────────────────────────────────────
+    const titleBar = ElementHelperClass.create('div', {
+      class: 'lc-unlock-editorial-title'
+    }, ElementHelperClass.create('h2', {}, title ?? 'Editorial'), difficulty ? ElementHelperClass.create('span', {
+      class: `lc-unlock-difficulty lc-diff-${difficulty === null || difficulty === void 0 ? void 0 : difficulty.toLowerCase()}`
+    }, difficulty) : null);
+
+    // ── Sanitized content body ────────────────────────────────────────────────
+    const body = ElementHelperClass.create('div', {
+      class: 'lc-unlock-editorial-body'
+    });
+    const sanitized = purify_es/* default */.A.sanitize(content ?? '', {
+      USE_PROFILES: {
+        html: true
+      },
+      ADD_TAGS: ['pre', 'code']
+    });
+    body.innerHTML = sanitized;
+
+    // ── Prism.js syntax highlight ─────────────────────────────────────────────
+    const PrismLib = await loadPrism();
+    body.querySelectorAll('pre code').forEach(block => {
+      PrismLib.highlightElement(block);
+    });
+    wrapper.appendChild(titleBar);
+    wrapper.appendChild(body);
+    return wrapper;
+  }
+
+  /**
+   * Build a loading placeholder shown while editorial is being fetched.
+   * @returns {HTMLElement}
+   */
+  static buildLoader() {
+    return ElementHelperClass.create('div', {
+      class: 'lc-unlock-loader'
+    }, ElementHelperClass.create('div', {
+      class: 'lc-unlock-spinner'
+    }), ElementHelperClass.create('p', {}, 'Loading editorial…'));
+  }
+}
+;// ./src/modules/Unlocker/EditorialUnlocker.js
+/**
+ * EditorialUnlocker
+ * Activates on /problems/<slug>/ pages.
+ * Replaces the premium editorial paywall with real editorial content from Sheets.
+ */
+
+
+
+
+
+
+class EditorialUnlocker {
+  constructor() {
+    var _window$location$path;
+    this.analytics = AnalyticsManager.getInstance();
+    this.slug = ((_window$location$path = window.location.pathname.match(/\/problems\/([^/]+)\//)) === null || _window$location$path === void 0 ? void 0 : _window$location$path[1]) ?? null;
+  }
+  static matches() {
+    return URL_PATTERNS.PROBLEM_DETAIL.test(window.location.href);
+  }
+  async init() {
+    if (!this.slug) return;
+    try {
+      const settings = await this._getSettings();
+      if (!settings.enableEditorials) return;
+
+      // Inject unlock prompt immediately, before data loads
+      EditorialPageElementModifier.injectUnlockPrompt(() => this._loadAndShow());
+    } catch (err) {
+      console.error('[LC-Unlock] EditorialUnlocker error:', err);
+    }
+  }
+  async _loadAndShow() {
+    try {
+      this.analytics.log('editorial_click', {
+        slug: this.slug
+      });
+      const rows = await GoogleSheetsDataGrabber.getData(SHEETS.EDITORIALS);
+      const editorial = this._findEditorial(rows, this.slug);
+      if (!editorial) {
+        EditorialPageElementModifier.showContent(Object.assign(document.createElement('p'), {
+          textContent: 'Editorial not available for this problem.',
+          className: 'lc-unlock-empty'
+        }));
+        return;
+      }
+      const contentEl = await EditorialContentBuilder.build(editorial);
+      EditorialPageElementModifier.showContent(contentEl);
+    } catch (err) {
+      console.error('[LC-Unlock] EditorialUnlocker load error:', err);
+    }
+  }
+  _findEditorial(rows, slug) {
+    if (!(rows !== null && rows !== void 0 && rows.length)) return null;
+    const [header, ...data] = rows;
+    const idx = Object.fromEntries(header.map((h, i) => [h === null || h === void 0 ? void 0 : h.toLowerCase(), i]));
+    const row = data.find(r => r[idx.slug] === slug);
+    if (!row) return null;
+    return {
+      title: row[idx.title] ?? slug,
+      content: row[idx.content] ?? '',
+      difficulty: row[idx.difficulty] ?? '',
+      slug
+    };
+  }
+  async _getSettings() {
+    return new Promise(resolve => {
+      chrome.storage.local.get([STORAGE_KEYS.SETTINGS], r => {
+        resolve({
+          ...DEFAULT_SETTINGS,
+          ...(r[STORAGE_KEYS.SETTINGS] ?? {})
+        });
+      });
+    });
+  }
+}
+;// ./src/modules/ElementModifier/ProblemTagsElementModifier.js
+/**
+ * ProblemTagsElementModifier
+ * Patches the company-tags section on a problem detail page.
+ * Replaces premium-locked tag placeholders with real chip elements.
+ */
+
+
+class ProblemTagsElementModifier {
+  /**
+   * Find and replace the locked tags container with real content.
+   * @param {HTMLElement} realContent - Built by TagsContentBuilder
+   */
+  static inject(realContent) {
+    // Selectors that LeetCode uses for the premium tags wall
+    const selectors = ['[class*="company-tags"]', '[class*="companyTags"]', '[class*="tag-container"]', '[id*="company"]'];
+    let target = null;
+    for (const sel of selectors) {
+      target = document.querySelector(sel);
+      if (target) break;
+    }
+    if (!target) {
+      console.warn('[LC-Unlock] ProblemTagsElementModifier: tags container not found.');
+      return;
+    }
+    target.innerHTML = '';
+    target.appendChild(realContent);
+  }
+
+  /**
+   * Remove a premium upgrade prompt / paywall banner near tags.
+   */
+  static removePaywall() {
+    document.querySelectorAll('[class*="upgrade"], [class*="premium-banner"], [class*="locked-content"]').forEach(el => el.remove());
+  }
+}
+;// ./src/modules/ContentBuilder/TagsContentBuilder.js
+/**
+ * TagsContentBuilder
+ * Assembles the company-tags section shown on a problem detail page.
+ * Renders chips grouped by time window with a tab strip.
+ * 🟢 Feature: Live search filter for company chips.
+ */
+
+
+
+
+class TagsContentBuilder {
+  /**
+   * Build the tags section.
+   * @param {Object[][]} companiesByWindow - Array per time window, each: [{company, count}]
+   * @param {Function} [onChipClick]
+   * @returns {HTMLElement}
+   */
+  static build(companiesByWindow, onChipClick) {
+    let activeTab = 0;
+    const wrapper = ElementHelperClass.create('div', {
+      class: 'lc-unlock-tags-wrap'
+    });
+
+    // ── Search filter ─────────────────────────────────────────────────────────
+    const searchInput = ElementHelperClass.create('input', {
+      class: 'lc-unlock-search lc-unlock-search--sm',
+      type: 'text',
+      placeholder: 'Filter companies…'
+    });
+
+    // ── Tab strip ─────────────────────────────────────────────────────────────
+    const tabStrip = TagContentElementGenerator.buildTabStrip(TIME_WINDOWS, activeTab, idx => {
+      activeTab = idx;
+      renderChips();
+    });
+    const chipsArea = ElementHelperClass.create('div', {
+      class: 'lc-unlock-chips-area'
+    });
+    const renderChips = () => {
+      const query = searchInput.value.trim().toLowerCase();
+      let companies = [...(companiesByWindow[activeTab] ?? [])];
+      if (query) {
+        companies = companies.filter(c => c.company.toLowerCase().includes(query));
+      }
+
+      // Sort by count desc
+      companies.sort((a, b) => b.count - a.count);
+      chipsArea.innerHTML = '';
+      if (companies.length === 0) {
+        chipsArea.appendChild(ElementHelperClass.create('p', {
+          class: 'lc-unlock-empty'
+        }, 'No companies found.'));
+      } else {
+        chipsArea.appendChild(TagContentElementGenerator.buildChipContainer(companies, onChipClick));
+      }
+    };
+    searchInput.addEventListener('input', renderChips);
+    renderChips();
+    wrapper.appendChild(searchInput);
+    wrapper.appendChild(tabStrip);
+    wrapper.appendChild(chipsArea);
+    return wrapper;
+  }
+}
+;// ./src/modules/Unlocker/ProblemTagsUnlocker.js
+/**
+ * ProblemTagsUnlocker
+ * Activates on /problems/<slug>/ pages.
+ * Replaces the premium company-tags section with real chip data from Sheets.
+ */
+
+
+
+
+
+
+class ProblemTagsUnlocker {
+  constructor() {
+    var _window$location$path;
+    this.analytics = AnalyticsManager.getInstance();
+    this.slug = ((_window$location$path = window.location.pathname.match(/\/problems\/([^/]+)\//)) === null || _window$location$path === void 0 ? void 0 : _window$location$path[1]) ?? null;
+  }
+  static matches() {
+    return URL_PATTERNS.PROBLEM_DETAIL.test(window.location.href);
+  }
+  async init() {
+    if (!this.slug) return;
+    try {
+      const settings = await this._getSettings();
+      if (!settings.enableCompanyTags) return;
+      ProblemTagsElementModifier.removePaywall();
+      const rows = await GoogleSheetsDataGrabber.getData(SHEETS.COMPANY_TAGS);
+      const companiesByWindow = this._getCompaniesForProblem(rows, this.slug);
+      const contentEl = TagsContentBuilder.build(companiesByWindow);
+      ProblemTagsElementModifier.inject(contentEl);
+      this.analytics.log('tags_unlocked', {
+        slug: this.slug
+      });
+    } catch (err) {
+      console.error('[LC-Unlock] ProblemTagsUnlocker error:', err);
+    }
+  }
+
+  /** Returns a 4-element array: [6m, 1yr, 2yr, all] of [{company, count}] */
+  _getCompaniesForProblem(rows, slug) {
+    if (!(rows !== null && rows !== void 0 && rows.length)) return [[], [], [], []];
+    const [header, ...data] = rows;
+    const idx = Object.fromEntries(header.map((h, i) => [h === null || h === void 0 ? void 0 : h.toLowerCase(), i]));
+    const byWindow = [[], [], [], []];
+    for (const row of data) {
+      if (row[idx.slug] !== slug) continue;
+      const windowIdx = Number(row[idx.window] ?? 3);
+      const entry = {
+        company: row[idx.company] ?? '',
+        count: Number(row[idx.count] ?? 1)
+      };
+      byWindow[Math.min(windowIdx, 3)].push(entry);
+    }
+    return byWindow;
+  }
+  async _getSettings() {
+    return new Promise(resolve => {
+      chrome.storage.local.get([STORAGE_KEYS.SETTINGS], r => {
+        resolve({
+          ...DEFAULT_SETTINGS,
+          ...(r[STORAGE_KEYS.SETTINGS] ?? {})
+        });
+      });
+    });
+  }
+}
+;// ./src/modules/ElementModifier/TagPageProblemTableElementModifier.js
+/**
+ * TagPageProblemTableElementModifier
+ * Patches the problem table on tag-filtered pages (e.g. /tag/array/).
+ * Previously a stub — now fully implemented.
+ * 🟢 Fix: Complete implementation (was 130-byte stub).
+ */
+
+
+class TagPageProblemTableElementModifier {
+  /**
+   * Remove premium lock overlays from all rows in the tag page table.
+   */
+  static removeLocks() {
+    document.querySelectorAll('table tr, [class*="problem-row"], [class*="problemRow"]').forEach(row => {
+      row.querySelectorAll('[class*="lock"], [class*="premium"]').forEach(el => el.remove());
+      row.querySelectorAll('[style*="blur"]').forEach(el => {
+        el.style.filter = 'none';
+        el.style.opacity = '1';
+        el.style.pointerEvents = 'auto';
+      });
+    });
+  }
+
+  /**
+   * Inject frequency bars into the tag-page problem table rows.
+   * @param {Map<string, number>} slugFreqMap - slug → frequency score
+   */
+  static injectFrequencyBars(slugFreqMap) {
+    document.querySelectorAll('table tr[data-slug], [class*="problem-row"][data-slug]').forEach(row => {
+      const slug = row.dataset.slug;
+      const freq = slugFreqMap.get(slug);
+      if (freq == null) return;
+      const existing = row.querySelector('.lc-unlock-freq-bar-wrap');
+      if (existing) return;
+      const bar = ElementHelperClass.create('div', {
+        class: 'lc-unlock-freq-bar-wrap'
+      }, ElementHelperClass.create('div', {
+        class: 'lc-unlock-freq-bar-fill',
+        style: {
+          width: `${Math.min(100, Math.round(freq))}%`
+        }
+      }));
+      const lastCell = row.querySelector('td:last-child');
+      if (lastCell) lastCell.appendChild(bar);
+    });
+  }
+
+  /**
+   * Rewire locked links in tag-page rows.
+   * @param {Function} onLinkClick - called with slug string
+   */
+  static rewireLockedLinks(onLinkClick) {
+    document.querySelectorAll('table tr a[href*="premium"], [class*="problem-row"] a[href*="premium"]').forEach(link => {
+      var _link$href$match;
+      const slug = (_link$href$match = link.href.match(/\/problems\/([^/]+)\//)) === null || _link$href$match === void 0 ? void 0 : _link$href$match[1];
+      if (!slug) return;
+      link.setAttribute('href', 'javascript:void(0)');
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        e.stopPropagation();
+        onLinkClick(slug);
+      });
+    });
+  }
+}
+;// ./src/modules/Unlocker/TagPageProblemTableUnlocker.js
+/**
+ * TagPageProblemTableUnlocker
+ * Activates on /tag/* pages.
+ * Injects frequency bars and removes locks from tag-filtered problem tables.
+ * 🟢 Fix: Full implementation replacing the original 130-byte stub.
+ */
+
+
+
+
+
+
+
+
+class TagPageProblemTableUnlocker {
+  constructor() {
+    this.modal = ContainerManager.getInstance();
+    this.analytics = AnalyticsManager.getInstance();
+  }
+  static matches() {
+    return URL_PATTERNS.TAG.test(window.location.href);
+  }
+  async init() {
+    try {
+      const settings = await this._getSettings();
+      if (!settings.enableFrequencyBars) return;
+      const rows = await GoogleSheetsDataGrabber.getData(SHEETS.PROBLEM_DATA);
+      const problems = this._parseRows(rows);
+      const slugFreqMap = new Map(problems.map(p => [p.slug, p.frequency ?? 0]));
+      const slugProbMap = new Map(problems.map(p => [p.slug, p]));
+      TagPageProblemTableElementModifier.removeLocks();
+      TagPageProblemTableElementModifier.injectFrequencyBars(slugFreqMap);
+      TagPageProblemTableElementModifier.rewireLockedLinks(slug => {
+        const problem = slugProbMap.get(slug);
+        if (!problem) return;
+        this._openModal(problem);
+      });
+      ElementHelperClass.observeDOM(() => {
+        TagPageProblemTableElementModifier.removeLocks();
+        TagPageProblemTableElementModifier.injectFrequencyBars(slugFreqMap);
+      });
+      this.analytics.log('tag_page_unlocked', {
+        url: window.location.href
+      });
+    } catch (err) {
+      console.error('[LC-Unlock] TagPageProblemTableUnlocker error:', err);
+    }
+  }
+  _openModal(problem) {
+    this.modal.openLoading('Loading problem…');
+    const content = TableContentBuilder.build([[problem], [problem], [problem], [problem]]);
+    this.modal.setContent(content);
+  }
+  _parseRows(rows) {
+    if (!(rows !== null && rows !== void 0 && rows.length)) return [];
+    const [header, ...data] = rows;
+    const idx = Object.fromEntries(header.map((h, i) => [h === null || h === void 0 ? void 0 : h.toLowerCase(), i]));
+    return data.map(row => ({
+      id: Number(row[idx.id] ?? 0),
+      name: row[idx.name] ?? '',
+      slug: row[idx.slug] ?? '',
+      difficulty: row[idx.difficulty] ?? '',
+      acceptance: parseFloat(row[idx.acceptance] ?? 0),
+      frequency: parseFloat(row[idx.frequency] ?? 0)
+    }));
+  }
+  async _getSettings() {
+    return new Promise(resolve => {
+      chrome.storage.local.get([STORAGE_KEYS.SETTINGS], r => {
+        resolve({
+          ...DEFAULT_SETTINGS,
+          ...(r[STORAGE_KEYS.SETTINGS] ?? {})
+        });
+      });
+    });
+  }
+}
+;// ./src/modules/ElementModifier/TopProblemFoldoutElementModifier.js
+/**
+ * TopProblemFoldoutElementModifier
+ * Patches the curated top-problem foldout sections in study plans.
+ * Removes lock icons and rewires premium-gated items.
+ */
+
+
+class TopProblemFoldoutElementModifier {
+  /**
+   * Remove lock icons and premium gates from all foldout items.
+   */
+  static removeLocks() {
+    document.querySelectorAll('[class*="study-plan"], [class*="study_plan"], [class*="top-problem"]').forEach(section => {
+      section.querySelectorAll('[class*="lock"], [class*="premium"]').forEach(el => el.remove());
+      section.querySelectorAll('[style*="blur"]').forEach(el => {
+        el.style.filter = 'none';
+        el.style.opacity = '1';
+        el.style.pointerEvents = 'auto';
+      });
+    });
+  }
+
+  /**
+   * Rewire locked problem links in foldouts.
+   * @param {Function} onLinkClick - called with { slug, title }
+   */
+  static rewireLinks(onLinkClick) {
+    document.querySelectorAll('[class*="study-plan"] a, [class*="top-problem"] a').forEach(link => {
+      var _link$href$match, _link$textContent;
+      if (!link.href.includes('/problems/')) return;
+      const slug = (_link$href$match = link.href.match(/\/problems\/([^/]+)\//)) === null || _link$href$match === void 0 ? void 0 : _link$href$match[1];
+      const title = (_link$textContent = link.textContent) === null || _link$textContent === void 0 ? void 0 : _link$textContent.trim();
+      if (!slug) return;
+      link.setAttribute('href', 'javascript:void(0)');
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        e.stopPropagation();
+        onLinkClick({
+          slug,
+          title
+        });
+      });
+    });
+  }
+
+  /**
+   * Inject a "Unlocked" badge next to each study-plan problem item.
+   * @param {Element} [container=document]
+   */
+  static injectUnlockedBadges(container = document) {
+    container.querySelectorAll('[class*="plan-item"], [class*="top-problem-item"]').forEach(item => {
+      if (item.querySelector('.lc-unlock-badge')) return;
+      const badge = ElementHelperClass.create('span', {
+        class: 'lc-unlock-badge'
+      }, '🔓');
+      item.insertBefore(badge, item.firstChild);
+    });
+  }
+}
+;// ./src/modules/Unlocker/TopProblemUnlocker.js
+/**
+ * TopProblemUnlocker
+ * Activates on /study-plan/* pages.
+ * Unlocks curated top-problem foldouts by removing locks and wiring click handlers.
+ */
+
+
+
+
+
+
+
+
+class TopProblemUnlocker {
+  constructor() {
+    this.modal = ContainerManager.getInstance();
+    this.analytics = AnalyticsManager.getInstance();
+  }
+  static matches() {
+    return URL_PATTERNS.STUDY_PLAN.test(window.location.href);
+  }
+  async init() {
+    try {
+      const settings = await this._getSettings();
+      if (!settings.enableTopProblems) return;
+      const rows = await GoogleSheetsDataGrabber.getData(SHEETS.TOP_PROBLEMS);
+      const problems = this._parseRows(rows);
+      const slugMap = new Map(problems.map(p => [p.slug, p]));
+      TopProblemFoldoutElementModifier.removeLocks();
+      TopProblemFoldoutElementModifier.injectUnlockedBadges();
+      TopProblemFoldoutElementModifier.rewireLinks(({
+        slug,
+        title
+      }) => {
+        const problem = slugMap.get(slug);
+        if (!problem) return;
+        this._openModal(problem);
+      });
+
+      // Watch for lazy-loaded sections
+      ElementHelperClass.observeDOM(() => {
+        TopProblemFoldoutElementModifier.removeLocks();
+        TopProblemFoldoutElementModifier.injectUnlockedBadges();
+      });
+      this.analytics.log('top_problem_unlocked', {
+        url: window.location.href
+      });
+    } catch (err) {
+      console.error('[LC-Unlock] TopProblemUnlocker error:', err);
+    }
+  }
+  _openModal(problem) {
+    this.modal.openLoading('Loading problem…');
+    const content = TableContentBuilder.build([[problem], [problem], [problem], [problem]]);
+    const title = ElementHelperClass.create('h3', {
+      class: 'lc-unlock-modal-title'
+    }, problem.name);
+    const wrap = ElementHelperClass.create('div', {});
+    wrap.appendChild(title);
+    wrap.appendChild(content);
+    this.modal.setContent(wrap);
+    this.analytics.log('top_problem_click', {
+      slug: problem.slug
+    });
+  }
+  _parseRows(rows) {
+    if (!(rows !== null && rows !== void 0 && rows.length)) return [];
+    const [header, ...data] = rows;
+    const idx = Object.fromEntries(header.map((h, i) => [h === null || h === void 0 ? void 0 : h.toLowerCase(), i]));
+    return data.map(row => ({
+      id: Number(row[idx.id] ?? 0),
+      name: row[idx.name] ?? '',
+      slug: row[idx.slug] ?? '',
+      difficulty: row[idx.difficulty] ?? '',
+      acceptance: parseFloat(row[idx.acceptance] ?? 0),
+      frequency: parseFloat(row[idx.frequency] ?? 0)
+    }));
+  }
+  async _getSettings() {
+    return new Promise(resolve => {
+      chrome.storage.local.get([STORAGE_KEYS.SETTINGS], r => {
+        resolve({
+          ...DEFAULT_SETTINGS,
+          ...(r[STORAGE_KEYS.SETTINGS] ?? {})
+        });
+      });
+    });
+  }
+}
+;// ./src/main.js
+/**
+ * main.js — Content Script Entry Point
+ * Detects the current LeetCode page and initialises the matching Unlocker(s).
+ * Loaded on every https://leetcode.com/* page via manifest.json.
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+// ─── Bootstrap ───────────────────────────────────────────────────────────────
+
+async function bootstrap() {
+  // Load user settings
+  const settings = await getSettings();
+
+  // Enable analytics if opted in
+  if (settings.enableAnalytics) {
+    AnalyticsManager.getInstance().setEnabled(true);
+  }
+
+  // All registered unlockers — each self-selects via .matches()
+  const unlockers = [new ProblemTableUnlocker(), new CompaniesProblemUnlocker(), new EditorialUnlocker(), new ProblemTagsUnlocker(), new TagPageProblemTableUnlocker(), new TopProblemUnlocker()];
+
+  // Check static class .matches() to determine which are relevant for this page
+  const matched = unlockers.filter(u => u.constructor.matches());
+  if (matched.length === 0) return;
+  console.info(`[LC-Unlock] Page matched ${matched.length} unlocker(s):`, matched.map(u => u.constructor.name));
+
+  // Run all matched unlockers (they handle their own errors internally)
+  await Promise.allSettled(matched.map(u => u.init()));
+}
+function getSettings() {
+  return new Promise(resolve => {
+    chrome.storage.local.get([STORAGE_KEYS.SETTINGS], r => {
+      resolve({
+        ...DEFAULT_SETTINGS,
+        ...(r[STORAGE_KEYS.SETTINGS] ?? {})
+      });
+    });
+  });
+}
+
+// ─── Run ─────────────────────────────────────────────────────────────────────
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', bootstrap);
+} else {
+  bootstrap();
+}
+
+// Re-boot on LeetCode's SPA navigation (pushState/replaceState)
+let lastUrl = location.href;
+if (document.body) {
+  new MutationObserver(() => {
+    if (location.href !== lastUrl) {
+      lastUrl = location.href;
+      setTimeout(bootstrap, 500);
+    }
+  }).observe(document.body, {
+    subtree: true,
+    childList: true
+  });
+}
+
+/***/ }
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = __webpack_modules__;
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/chunk loaded */
+/******/ 	(() => {
+/******/ 		var deferred = [];
+/******/ 		__webpack_require__.O = (result, chunkIds, fn, priority) => {
+/******/ 			if(chunkIds) {
+/******/ 				priority = priority || 0;
+/******/ 				for(var i = deferred.length; i > 0 && deferred[i - 1][2] > priority; i--) deferred[i] = deferred[i - 1];
+/******/ 				deferred[i] = [chunkIds, fn, priority];
+/******/ 				return;
+/******/ 			}
+/******/ 			var notFulfilled = Infinity;
+/******/ 			for (var i = 0; i < deferred.length; i++) {
+/******/ 				var [chunkIds, fn, priority] = deferred[i];
+/******/ 				var fulfilled = true;
+/******/ 				for (var j = 0; j < chunkIds.length; j++) {
+/******/ 					if ((priority & 1 === 0 || notFulfilled >= priority) && Object.keys(__webpack_require__.O).every((key) => (__webpack_require__.O[key](chunkIds[j])))) {
+/******/ 						chunkIds.splice(j--, 1);
+/******/ 					} else {
+/******/ 						fulfilled = false;
+/******/ 						if(priority < notFulfilled) notFulfilled = priority;
+/******/ 					}
+/******/ 				}
+/******/ 				if(fulfilled) {
+/******/ 					deferred.splice(i--, 1)
+/******/ 					var r = fn();
+/******/ 					if (r !== undefined) result = r;
+/******/ 				}
+/******/ 			}
+/******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/create fake namespace object */
+/******/ 	(() => {
+/******/ 		var getProto = Object.getPrototypeOf ? (obj) => (Object.getPrototypeOf(obj)) : (obj) => (obj.__proto__);
+/******/ 		var leafPrototypes;
+/******/ 		// create a fake namespace object
+/******/ 		// mode & 1: value is a module id, require it
+/******/ 		// mode & 2: merge all properties of value into the ns
+/******/ 		// mode & 4: return value when already ns object
+/******/ 		// mode & 16: return value when it's Promise-like
+/******/ 		// mode & 8|1: behave like require
+/******/ 		__webpack_require__.t = function(value, mode) {
+/******/ 			if(mode & 1) value = this(value);
+/******/ 			if(mode & 8) return value;
+/******/ 			if(typeof value === 'object' && value) {
+/******/ 				if((mode & 4) && value.__esModule) return value;
+/******/ 				if((mode & 16) && typeof value.then === 'function') return value;
+/******/ 			}
+/******/ 			var ns = Object.create(null);
+/******/ 			__webpack_require__.r(ns);
+/******/ 			var def = {};
+/******/ 			leafPrototypes = leafPrototypes || [null, getProto({}), getProto([]), getProto(getProto)];
+/******/ 			for(var current = mode & 2 && value; (typeof current == 'object' || typeof current == 'function') && !~leafPrototypes.indexOf(current); current = getProto(current)) {
+/******/ 				Object.getOwnPropertyNames(current).forEach((key) => (def[key] = () => (value[key])));
+/******/ 			}
+/******/ 			def['default'] = () => (value);
+/******/ 			__webpack_require__.d(ns, def);
+/******/ 			return ns;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/ensure chunk */
+/******/ 	(() => {
+/******/ 		__webpack_require__.f = {};
+/******/ 		// This file contains only the entry chunk.
+/******/ 		// The chunk loading function for additional chunks
+/******/ 		__webpack_require__.e = (chunkId) => {
+/******/ 			return Promise.all(Object.keys(__webpack_require__.f).reduce((promises, key) => {
+/******/ 				__webpack_require__.f[key](chunkId, promises);
+/******/ 				return promises;
+/******/ 			}, []));
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/get javascript chunk filename */
+/******/ 	(() => {
+/******/ 		// This function allow to reference async chunks
+/******/ 		__webpack_require__.u = (chunkId) => {
+/******/ 			// return url for filenames based on template
+/******/ 			return "" + chunkId + ".js";
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/get mini-css chunk filename */
+/******/ 	(() => {
+/******/ 		// This function allow to reference async chunks
+/******/ 		__webpack_require__.miniCssF = (chunkId) => {
+/******/ 			// return url for filenames based on template
+/******/ 			return undefined;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/load script */
+/******/ 	(() => {
+/******/ 		var inProgress = {};
+/******/ 		var dataWebpackPrefix = "lc-main:";
+/******/ 		// loadScript function to load a script via script tag
+/******/ 		__webpack_require__.l = (url, done, key, chunkId) => {
+/******/ 			if(inProgress[url]) { inProgress[url].push(done); return; }
+/******/ 			var script, needAttach;
+/******/ 			if(key !== undefined) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				for(var i = 0; i < scripts.length; i++) {
+/******/ 					var s = scripts[i];
+/******/ 					if(s.getAttribute("src") == url || s.getAttribute("data-webpack") == dataWebpackPrefix + key) { script = s; break; }
+/******/ 				}
+/******/ 			}
+/******/ 			if(!script) {
+/******/ 				needAttach = true;
+/******/ 				script = document.createElement('script');
+/******/ 		
+/******/ 				script.charset = 'utf-8';
+/******/ 				if (__webpack_require__.nc) {
+/******/ 					script.setAttribute("nonce", __webpack_require__.nc);
+/******/ 				}
+/******/ 				script.setAttribute("data-webpack", dataWebpackPrefix + key);
+/******/ 		
+/******/ 				script.src = url;
+/******/ 			}
+/******/ 			inProgress[url] = [done];
+/******/ 			var onScriptComplete = (prev, event) => {
+/******/ 				// avoid mem leaks in IE.
+/******/ 				script.onerror = script.onload = null;
+/******/ 				clearTimeout(timeout);
+/******/ 				var doneFns = inProgress[url];
+/******/ 				delete inProgress[url];
+/******/ 				script.parentNode && script.parentNode.removeChild(script);
+/******/ 				doneFns && doneFns.forEach((fn) => (fn(event)));
+/******/ 				if(prev) return prev(event);
+/******/ 			}
+/******/ 			var timeout = setTimeout(onScriptComplete.bind(null, undefined, { type: 'timeout', target: script }), 120000);
+/******/ 			script.onerror = onScriptComplete.bind(null, script.onerror);
+/******/ 			script.onload = onScriptComplete.bind(null, script.onload);
+/******/ 			needAttach && document.head.appendChild(script);
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript && document.currentScript.tagName.toUpperCase() === 'SCRIPT')
+/******/ 				scriptUrl = document.currentScript.src;
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) {
+/******/ 					var i = scripts.length - 1;
+/******/ 					while (i > -1 && (!scriptUrl || !/^http(s?):/.test(scriptUrl))) scriptUrl = scripts[i--].src;
+/******/ 				}
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/^blob:/, "").replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl;
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/jsonp chunk loading */
+/******/ 	(() => {
+/******/ 		// no baseURI
+/******/ 		
+/******/ 		// object to store loaded and loading chunks
+/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
+/******/ 		var installedChunks = {
+/******/ 			792: 0
+/******/ 		};
+/******/ 		
+/******/ 		__webpack_require__.f.j = (chunkId, promises) => {
+/******/ 				// JSONP chunk loading for javascript
+/******/ 				var installedChunkData = __webpack_require__.o(installedChunks, chunkId) ? installedChunks[chunkId] : undefined;
+/******/ 				if(installedChunkData !== 0) { // 0 means "already installed".
+/******/ 		
+/******/ 					// a Promise means "currently loading".
+/******/ 					if(installedChunkData) {
+/******/ 						promises.push(installedChunkData[2]);
+/******/ 					} else {
+/******/ 						if(true) { // all chunks have JS
+/******/ 							// setup Promise in chunk cache
+/******/ 							var promise = new Promise((resolve, reject) => (installedChunkData = installedChunks[chunkId] = [resolve, reject]));
+/******/ 							promises.push(installedChunkData[2] = promise);
+/******/ 		
+/******/ 							// start chunk loading
+/******/ 							var url = __webpack_require__.p + __webpack_require__.u(chunkId);
+/******/ 							// create error before stack unwound to get useful stacktrace later
+/******/ 							var error = new Error();
+/******/ 							var loadingEnded = (event) => {
+/******/ 								if(__webpack_require__.o(installedChunks, chunkId)) {
+/******/ 									installedChunkData = installedChunks[chunkId];
+/******/ 									if(installedChunkData !== 0) installedChunks[chunkId] = undefined;
+/******/ 									if(installedChunkData) {
+/******/ 										var errorType = event && (event.type === 'load' ? 'missing' : event.type);
+/******/ 										var realSrc = event && event.target && event.target.src;
+/******/ 										error.message = 'Loading chunk ' + chunkId + ' failed.\n(' + errorType + ': ' + realSrc + ')';
+/******/ 										error.name = 'ChunkLoadError';
+/******/ 										error.type = errorType;
+/******/ 										error.request = realSrc;
+/******/ 										installedChunkData[1](error);
+/******/ 									}
+/******/ 								}
+/******/ 							};
+/******/ 							__webpack_require__.l(url, loadingEnded, "chunk-" + chunkId, chunkId);
+/******/ 						}
+/******/ 					}
+/******/ 				}
+/******/ 		};
+/******/ 		
+/******/ 		// no prefetching
+/******/ 		
+/******/ 		// no preloaded
+/******/ 		
+/******/ 		// no HMR
+/******/ 		
+/******/ 		// no HMR manifest
+/******/ 		
+/******/ 		__webpack_require__.O.j = (chunkId) => (installedChunks[chunkId] === 0);
+/******/ 		
+/******/ 		// install a JSONP callback for chunk loading
+/******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
+/******/ 			var [chunkIds, moreModules, runtime] = data;
+/******/ 			// add "moreModules" to the modules object,
+/******/ 			// then flag all "chunkIds" as loaded and fire callback
+/******/ 			var moduleId, chunkId, i = 0;
+/******/ 			if(chunkIds.some((id) => (installedChunks[id] !== 0))) {
+/******/ 				for(moduleId in moreModules) {
+/******/ 					if(__webpack_require__.o(moreModules, moduleId)) {
+/******/ 						__webpack_require__.m[moduleId] = moreModules[moduleId];
+/******/ 					}
+/******/ 				}
+/******/ 				if(runtime) var result = runtime(__webpack_require__);
+/******/ 			}
+/******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
+/******/ 			for(;i < chunkIds.length; i++) {
+/******/ 				chunkId = chunkIds[i];
+/******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
+/******/ 					installedChunks[chunkId][0]();
+/******/ 				}
+/******/ 				installedChunks[chunkId] = 0;
+/******/ 			}
+/******/ 			return __webpack_require__.O(result);
+/******/ 		}
+/******/ 		
+/******/ 		var chunkLoadingGlobal = self["webpackChunklc_main"] = self["webpackChunklc_main"] || [];
+/******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
+/******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [815,418], () => (__webpack_require__(680)))
+/******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
+/******/ 	
+/******/ })()
+;
+//# sourceMappingURL=main.js.map

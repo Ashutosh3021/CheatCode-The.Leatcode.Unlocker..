@@ -1,5 +1,6 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -36,12 +37,25 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: '[name].css',
         }),
+        new HtmlWebpackPlugin({
+            template: './src/popup.html',
+            filename: 'index.html',
+            chunks: ['extensionPopupManager'],
+        }),
     ],
     resolve: {
         extensions: ['.js'],
     },
     optimization: {
-        minimize: true,
+        minimize: false,
+        splitChunks: {
+            chunks: 'all',
+            cacheGroups: {
+                default: false,
+                vendors: false,
+            },
+        },
+        runtimeChunk: false,
     },
-    devtool: false,
+    devtool: 'source-map',
 };

@@ -49,13 +49,19 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             );
             return true;
 
-        case 'CLEAR_CACHE':
-            chrome.storage.local.clear(() => {
-                // Re-write settings after clearing
-                chrome.storage.local.set({ [STORAGE_KEYS.SETTINGS]: DEFAULT_SETTINGS });
+        case 'CLEAR_CACHE': {
+            const keysToRemove = [
+                STORAGE_KEYS.PROBLEM_DATA,
+                STORAGE_KEYS.COMPANY_DATA,
+                STORAGE_KEYS.EDITORIAL,
+                STORAGE_KEYS.TOP_PROBLEMS,
+                STORAGE_KEYS.LAST_FETCH,
+            ];
+            chrome.storage.local.remove(keysToRemove, () => {
                 sendResponse({ ok: true });
             });
             return true;
+        }
 
         case 'GET_CACHE_AGE': {
             const keys = Object.values(STORAGE_KEYS);

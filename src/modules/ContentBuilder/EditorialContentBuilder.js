@@ -7,14 +7,22 @@
  */
 
 import DOMPurify from 'dompurify';
-import Prism from 'prismjs';
 import 'prismjs/themes/prism-tomorrow.css';
-import 'prismjs/components/prism-python';
-import 'prismjs/components/prism-java';
-import 'prismjs/components/prism-cpp';
-import 'prismjs/components/prism-javascript';
 
 import { ElementHelperClass as H } from '../ElementGenerator/ElementHelperClass.js';
+
+let Prism = null;
+
+async function loadPrism() {
+    if (Prism) return Prism;
+    const base = await import('prismjs');
+    Prism = base.default;
+    await import('prismjs/components/prism-python');
+    await import('prismjs/components/prism-java');
+    await import('prismjs/components/prism-cpp');
+    await import('prismjs/components/prism-javascript');
+    return Prism;
+}
 
 export class EditorialContentBuilder {
     /**
@@ -25,7 +33,7 @@ export class EditorialContentBuilder {
      * @param {string} [editorial.difficulty]
      * @returns {HTMLElement}
      */
-    static build(editorial) {
+    static async build(editorial) {
         const { title, content, difficulty } = editorial;
 
         const wrapper = H.create('div', { class: 'lc-unlock-editorial-wrap' });
@@ -47,8 +55,9 @@ export class EditorialContentBuilder {
         body.innerHTML = sanitized;
 
         // ── Prism.js syntax highlight ─────────────────────────────────────────────
+        const PrismLib = await loadPrism();
         body.querySelectorAll('pre code').forEach((block) => {
-            Prism.highlightElement(block);
+            PrismLib.highlightElement(block);
         });
 
         wrapper.appendChild(titleBar);

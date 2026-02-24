@@ -69,9 +69,11 @@ if (document.readyState === 'loading') {
 
 // Re-boot on LeetCode's SPA navigation (pushState/replaceState)
 let lastUrl = location.href;
-new MutationObserver(() => {
-    if (location.href !== lastUrl) {
-        lastUrl = location.href;
-        setTimeout(bootstrap, 500); // short delay for React to mount
-    }
-}).observe(document.body, { subtree: true, childList: true });
+if (document.body) {
+    new MutationObserver(() => {
+        if (location.href !== lastUrl) {
+            lastUrl = location.href;
+            setTimeout(bootstrap, 500);
+        }
+    }).observe(document.body, { subtree: true, childList: true });
+}

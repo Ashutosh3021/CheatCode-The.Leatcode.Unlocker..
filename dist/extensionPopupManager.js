@@ -1,1 +1,285 @@
-(()=>{var e={815(e,r){var s,n;"undefined"!=typeof globalThis?globalThis:"undefined"!=typeof self&&self,s=function(e){"use strict";if(!globalThis.chrome?.runtime?.id)throw new Error("This script should only be loaded in a browser extension.");if(void 0===globalThis.browser||Object.getPrototypeOf(globalThis.browser)!==Object.prototype){const r="The message port closed before a response was received.",s=e=>{const s={alarms:{clear:{minArgs:0,maxArgs:1},clearAll:{minArgs:0,maxArgs:0},get:{minArgs:0,maxArgs:1},getAll:{minArgs:0,maxArgs:0}},bookmarks:{create:{minArgs:1,maxArgs:1},get:{minArgs:1,maxArgs:1},getChildren:{minArgs:1,maxArgs:1},getRecent:{minArgs:1,maxArgs:1},getSubTree:{minArgs:1,maxArgs:1},getTree:{minArgs:0,maxArgs:0},move:{minArgs:2,maxArgs:2},remove:{minArgs:1,maxArgs:1},removeTree:{minArgs:1,maxArgs:1},search:{minArgs:1,maxArgs:1},update:{minArgs:2,maxArgs:2}},browserAction:{disable:{minArgs:0,maxArgs:1,fallbackToNoCallback:!0},enable:{minArgs:0,maxArgs:1,fallbackToNoCallback:!0},getBadgeBackgroundColor:{minArgs:1,maxArgs:1},getBadgeText:{minArgs:1,maxArgs:1},getPopup:{minArgs:1,maxArgs:1},getTitle:{minArgs:1,maxArgs:1},openPopup:{minArgs:0,maxArgs:0},setBadgeBackgroundColor:{minArgs:1,maxArgs:1,fallbackToNoCallback:!0},setBadgeText:{minArgs:1,maxArgs:1,fallbackToNoCallback:!0},setIcon:{minArgs:1,maxArgs:1},setPopup:{minArgs:1,maxArgs:1,fallbackToNoCallback:!0},setTitle:{minArgs:1,maxArgs:1,fallbackToNoCallback:!0}},browsingData:{remove:{minArgs:2,maxArgs:2},removeCache:{minArgs:1,maxArgs:1},removeCookies:{minArgs:1,maxArgs:1},removeDownloads:{minArgs:1,maxArgs:1},removeFormData:{minArgs:1,maxArgs:1},removeHistory:{minArgs:1,maxArgs:1},removeLocalStorage:{minArgs:1,maxArgs:1},removePasswords:{minArgs:1,maxArgs:1},removePluginData:{minArgs:1,maxArgs:1},settings:{minArgs:0,maxArgs:0}},commands:{getAll:{minArgs:0,maxArgs:0}},contextMenus:{remove:{minArgs:1,maxArgs:1},removeAll:{minArgs:0,maxArgs:0},update:{minArgs:2,maxArgs:2}},cookies:{get:{minArgs:1,maxArgs:1},getAll:{minArgs:1,maxArgs:1},getAllCookieStores:{minArgs:0,maxArgs:0},remove:{minArgs:1,maxArgs:1},set:{minArgs:1,maxArgs:1}},devtools:{inspectedWindow:{eval:{minArgs:1,maxArgs:2,singleCallbackArg:!1}},panels:{create:{minArgs:3,maxArgs:3,singleCallbackArg:!0},elements:{createSidebarPane:{minArgs:1,maxArgs:1}}}},downloads:{cancel:{minArgs:1,maxArgs:1},download:{minArgs:1,maxArgs:1},erase:{minArgs:1,maxArgs:1},getFileIcon:{minArgs:1,maxArgs:2},open:{minArgs:1,maxArgs:1,fallbackToNoCallback:!0},pause:{minArgs:1,maxArgs:1},removeFile:{minArgs:1,maxArgs:1},resume:{minArgs:1,maxArgs:1},search:{minArgs:1,maxArgs:1},show:{minArgs:1,maxArgs:1,fallbackToNoCallback:!0}},extension:{isAllowedFileSchemeAccess:{minArgs:0,maxArgs:0},isAllowedIncognitoAccess:{minArgs:0,maxArgs:0}},history:{addUrl:{minArgs:1,maxArgs:1},deleteAll:{minArgs:0,maxArgs:0},deleteRange:{minArgs:1,maxArgs:1},deleteUrl:{minArgs:1,maxArgs:1},getVisits:{minArgs:1,maxArgs:1},search:{minArgs:1,maxArgs:1}},i18n:{detectLanguage:{minArgs:1,maxArgs:1},getAcceptLanguages:{minArgs:0,maxArgs:0}},identity:{launchWebAuthFlow:{minArgs:1,maxArgs:1}},idle:{queryState:{minArgs:1,maxArgs:1}},management:{get:{minArgs:1,maxArgs:1},getAll:{minArgs:0,maxArgs:0},getSelf:{minArgs:0,maxArgs:0},setEnabled:{minArgs:2,maxArgs:2},uninstallSelf:{minArgs:0,maxArgs:1}},notifications:{clear:{minArgs:1,maxArgs:1},create:{minArgs:1,maxArgs:2},getAll:{minArgs:0,maxArgs:0},getPermissionLevel:{minArgs:0,maxArgs:0},update:{minArgs:2,maxArgs:2}},pageAction:{getPopup:{minArgs:1,maxArgs:1},getTitle:{minArgs:1,maxArgs:1},hide:{minArgs:1,maxArgs:1,fallbackToNoCallback:!0},setIcon:{minArgs:1,maxArgs:1},setPopup:{minArgs:1,maxArgs:1,fallbackToNoCallback:!0},setTitle:{minArgs:1,maxArgs:1,fallbackToNoCallback:!0},show:{minArgs:1,maxArgs:1,fallbackToNoCallback:!0}},permissions:{contains:{minArgs:1,maxArgs:1},getAll:{minArgs:0,maxArgs:0},remove:{minArgs:1,maxArgs:1},request:{minArgs:1,maxArgs:1}},runtime:{getBackgroundPage:{minArgs:0,maxArgs:0},getPlatformInfo:{minArgs:0,maxArgs:0},openOptionsPage:{minArgs:0,maxArgs:0},requestUpdateCheck:{minArgs:0,maxArgs:0},sendMessage:{minArgs:1,maxArgs:3},sendNativeMessage:{minArgs:2,maxArgs:2},setUninstallURL:{minArgs:1,maxArgs:1}},sessions:{getDevices:{minArgs:0,maxArgs:1},getRecentlyClosed:{minArgs:0,maxArgs:1},restore:{minArgs:0,maxArgs:1}},storage:{local:{clear:{minArgs:0,maxArgs:0},get:{minArgs:0,maxArgs:1},getBytesInUse:{minArgs:0,maxArgs:1},remove:{minArgs:1,maxArgs:1},set:{minArgs:1,maxArgs:1}},managed:{get:{minArgs:0,maxArgs:1},getBytesInUse:{minArgs:0,maxArgs:1}},sync:{clear:{minArgs:0,maxArgs:0},get:{minArgs:0,maxArgs:1},getBytesInUse:{minArgs:0,maxArgs:1},remove:{minArgs:1,maxArgs:1},set:{minArgs:1,maxArgs:1}}},tabs:{captureVisibleTab:{minArgs:0,maxArgs:2},create:{minArgs:1,maxArgs:1},detectLanguage:{minArgs:0,maxArgs:1},discard:{minArgs:0,maxArgs:1},duplicate:{minArgs:1,maxArgs:1},executeScript:{minArgs:1,maxArgs:2},get:{minArgs:1,maxArgs:1},getCurrent:{minArgs:0,maxArgs:0},getZoom:{minArgs:0,maxArgs:1},getZoomSettings:{minArgs:0,maxArgs:1},goBack:{minArgs:0,maxArgs:1},goForward:{minArgs:0,maxArgs:1},highlight:{minArgs:1,maxArgs:1},insertCSS:{minArgs:1,maxArgs:2},move:{minArgs:2,maxArgs:2},query:{minArgs:1,maxArgs:1},reload:{minArgs:0,maxArgs:2},remove:{minArgs:1,maxArgs:1},removeCSS:{minArgs:1,maxArgs:2},sendMessage:{minArgs:2,maxArgs:3},setZoom:{minArgs:1,maxArgs:2},setZoomSettings:{minArgs:1,maxArgs:2},update:{minArgs:1,maxArgs:2}},topSites:{get:{minArgs:0,maxArgs:0}},webNavigation:{getAllFrames:{minArgs:1,maxArgs:1},getFrame:{minArgs:1,maxArgs:1}},webRequest:{handlerBehaviorChanged:{minArgs:0,maxArgs:0}},windows:{create:{minArgs:0,maxArgs:1},get:{minArgs:1,maxArgs:2},getAll:{minArgs:0,maxArgs:1},getCurrent:{minArgs:0,maxArgs:1},getLastFocused:{minArgs:0,maxArgs:1},remove:{minArgs:1,maxArgs:1},update:{minArgs:2,maxArgs:2}}};if(0===Object.keys(s).length)throw new Error("api-metadata.json has not been included in browser-polyfill");class n extends WeakMap{constructor(e,r=void 0){super(r),this.createItem=e}get(e){return this.has(e)||this.set(e,this.createItem(e)),super.get(e)}}const a=(r,s)=>(...n)=>{e.runtime.lastError?r.reject(new Error(e.runtime.lastError.message)):s.singleCallbackArg||n.length<=1&&!1!==s.singleCallbackArg?r.resolve(n[0]):r.resolve(n)},g=e=>1==e?"argument":"arguments",t=(e,r,s)=>new Proxy(r,{apply:(r,n,a)=>s.call(n,e,...a)});let m=Function.call.bind(Object.prototype.hasOwnProperty);const i=(e,r={},s={})=>{let n=Object.create(null),o={has:(r,s)=>s in e||s in n,get(o,A,l){if(A in n)return n[A];if(!(A in e))return;let c=e[A];if("function"==typeof c)if("function"==typeof r[A])c=t(e,e[A],r[A]);else if(m(s,A)){let r=((e,r)=>function(s,...n){if(n.length<r.minArgs)throw new Error(`Expected at least ${r.minArgs} ${g(r.minArgs)} for ${e}(), got ${n.length}`);if(n.length>r.maxArgs)throw new Error(`Expected at most ${r.maxArgs} ${g(r.maxArgs)} for ${e}(), got ${n.length}`);return new Promise((g,t)=>{if(r.fallbackToNoCallback)try{s[e](...n,a({resolve:g,reject:t},r))}catch(a){console.warn(`${e} API method doesn't seem to support the callback parameter, falling back to call it without a callback: `,a),s[e](...n),r.fallbackToNoCallback=!1,r.noCallback=!0,g()}else r.noCallback?(s[e](...n),g()):s[e](...n,a({resolve:g,reject:t},r))})})(A,s[A]);c=t(e,e[A],r)}else c=c.bind(e);else if("object"==typeof c&&null!==c&&(m(r,A)||m(s,A)))c=i(c,r[A],s[A]);else{if(!m(s,"*"))return Object.defineProperty(n,A,{configurable:!0,enumerable:!0,get:()=>e[A],set(r){e[A]=r}}),c;c=i(c,r[A],s["*"])}return n[A]=c,c},set:(r,s,a,g)=>(s in n?n[s]=a:e[s]=a,!0),defineProperty:(e,r,s)=>Reflect.defineProperty(n,r,s),deleteProperty:(e,r)=>Reflect.deleteProperty(n,r)},A=Object.create(e);return new Proxy(A,o)},o=e=>({addListener(r,s,...n){r.addListener(e.get(s),...n)},hasListener:(r,s)=>r.hasListener(e.get(s)),removeListener(r,s){r.removeListener(e.get(s))}}),A=new n(e=>"function"!=typeof e?e:function(r){const s=i(r,{},{getContent:{minArgs:0,maxArgs:0}});e(s)}),l=new n(e=>"function"!=typeof e?e:function(r,s,n){let a,g,t=!1,m=new Promise(e=>{a=function(r){t=!0,e(r)}});try{g=e(r,s,a)}catch(e){g=Promise.reject(e)}const i=!0!==g&&((o=g)&&"object"==typeof o&&"function"==typeof o.then);var o;if(!0!==g&&!i&&!t)return!1;return(i?g:m).then(e=>{n(e)},e=>{let r;r=e&&(e instanceof Error||"string"==typeof e.message)?e.message:"An unexpected error occurred",n({__mozWebExtensionPolyfillReject__:!0,message:r})}).catch(e=>{console.error("Failed to send onMessage rejected reply",e)}),!0}),c=({reject:s,resolve:n},a)=>{e.runtime.lastError?e.runtime.lastError.message===r?n():s(new Error(e.runtime.lastError.message)):a&&a.__mozWebExtensionPolyfillReject__?s(new Error(a.message)):n(a)},x=(e,r,s,...n)=>{if(n.length<r.minArgs)throw new Error(`Expected at least ${r.minArgs} ${g(r.minArgs)} for ${e}(), got ${n.length}`);if(n.length>r.maxArgs)throw new Error(`Expected at most ${r.maxArgs} ${g(r.maxArgs)} for ${e}(), got ${n.length}`);return new Promise((e,r)=>{const a=c.bind(null,{resolve:e,reject:r});n.push(a),s.sendMessage(...n)})},d={devtools:{network:{onRequestFinished:o(A)}},runtime:{onMessage:o(l),onMessageExternal:o(l),sendMessage:x.bind(null,"sendMessage",{minArgs:1,maxArgs:3})},tabs:{sendMessage:x.bind(null,"sendMessage",{minArgs:2,maxArgs:3})}},u={clear:{minArgs:1,maxArgs:1},get:{minArgs:1,maxArgs:1},set:{minArgs:1,maxArgs:1}};return s.privacy={network:{"*":u},services:{"*":u},websites:{"*":u}},i(e,d,s)};e.exports=s(chrome)}else e.exports=globalThis.browser},void 0===(n=s.apply(r,[e]))||(e.exports=n)}},r={};function s(n){var a=r[n];if(void 0!==a)return a.exports;var g=r[n]={exports:{}};return e[n].call(g.exports,g,g.exports,s),g.exports}s.n=e=>{var r=e&&e.__esModule?()=>e.default:()=>e;return s.d(r,{a:r}),r},s.d=(e,r)=>{for(var n in r)s.o(r,n)&&!s.o(e,n)&&Object.defineProperty(e,n,{enumerable:!0,get:r[n]})},s.o=(e,r)=>Object.prototype.hasOwnProperty.call(e,r),(()=>{"use strict";s(815);const e={enableFrequencyBars:"Frequency Bars",enableCompanyTags:"Company Tags",enableEditorials:"Editorials",enableTopProblems:"Top Problems",enableAnalytics:"Anonymous Analytics"};let r={};async function n(){return new Promise(e=>{chrome.runtime.sendMessage({type:"SAVE_SETTINGS",settings:r},e)})}async function a(){return new Promise(e=>{chrome.runtime.sendMessage({type:"GET_CACHE_AGE"},r=>{const s=(null==r?void 0:r.ages)??{},n=document.getElementById("cache-info");if(!n)return e();const a=Object.entries(s).filter(([,e])=>null!==e).map(([e,r])=>{const s=Math.floor(r/60),n=Math.floor(s/60),a=n>0?`${n}h ago`:s>0?`${s}m ago`:"just now";return`<span class="cache-key">${e.replace("lc_unlock_","")}</span>: ${a}`});n.innerHTML=a.length?a.join("<br>"):"<em>No cached data yet.</em>",e()})})}document.addEventListener("DOMContentLoaded",async()=>{await async function(){return new Promise(e=>{chrome.runtime.sendMessage({type:"GET_SETTINGS"},s=>{r=(null==s?void 0:s.settings)??{},e()})})}(),await a(),function(){const s=document.getElementById("toggles-container");if(s){s.innerHTML="";for(const[a,g]of Object.entries(e)){const e=document.createElement("label");e.className="toggle-row";const t=document.createElement("span");t.textContent=g;const m=document.createElement("input");m.type="checkbox",m.id=`toggle-${a}`,m.checked=!!r[a],m.addEventListener("change",async()=>{r[a]=m.checked,await n()});const i=document.createElement("span");i.className="toggle-pill",e.appendChild(t),e.appendChild(m),e.appendChild(i),s.appendChild(e)}}}(),function(){const e=document.getElementById("btn-refresh");e&&e.addEventListener("click",async()=>{e.disabled=!0,e.textContent="Clearing…",await new Promise(e=>{chrome.runtime.sendMessage({type:"CLEAR_CACHE"},e)}),e.textContent="✓ Cache cleared!",await a(),setTimeout(()=>{e.textContent="Refresh Cache",e.disabled=!1},2e3)})}()})})()})();
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
+
+/***/ 46
+(__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) {
+
+/* harmony import */ var webextension_polyfill__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(815);
+/* harmony import */ var webextension_polyfill__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(webextension_polyfill__WEBPACK_IMPORTED_MODULE_0__);
+/**
+ * extensionPopupManager.js
+ * Controls the extension popup UI:
+ * - Settings toggles (frequency bars, company tags, editorials, top problems, analytics)
+ * - Manual cache refresh button
+ * - Last-fetch timestamp per data type
+ * 🟢 Feature: Full settings UI (was previously near-empty).
+ */
+
+
+
+const LABEL_MAP = {
+  enableFrequencyBars: 'Frequency Bars',
+  enableCompanyTags: 'Company Tags',
+  enableEditorials: 'Editorials',
+  enableTopProblems: 'Top Problems',
+  enableAnalytics: 'Anonymous Analytics'
+};
+let currentSettings = {};
+
+// ─── Init ─────────────────────────────────────────────────────────────────────
+
+document.addEventListener('DOMContentLoaded', async () => {
+  await loadSettings();
+  await loadCacheAge();
+  renderToggles();
+  bindRefreshButton();
+});
+
+// ─── Settings ─────────────────────────────────────────────────────────────────
+
+async function loadSettings() {
+  return new Promise(resolve => {
+    chrome.runtime.sendMessage({
+      type: 'GET_SETTINGS'
+    }, res => {
+      currentSettings = (res === null || res === void 0 ? void 0 : res.settings) ?? {};
+      resolve();
+    });
+  });
+}
+async function saveSettings() {
+  return new Promise(resolve => {
+    chrome.runtime.sendMessage({
+      type: 'SAVE_SETTINGS',
+      settings: currentSettings
+    }, resolve);
+  });
+}
+function renderToggles() {
+  const container = document.getElementById('toggles-container');
+  if (!container) return;
+  container.innerHTML = '';
+  for (const [key, label] of Object.entries(LABEL_MAP)) {
+    const row = document.createElement('label');
+    row.className = 'toggle-row';
+    const span = document.createElement('span');
+    span.textContent = label;
+    const input = document.createElement('input');
+    input.type = 'checkbox';
+    input.id = `toggle-${key}`;
+    input.checked = !!currentSettings[key];
+    input.addEventListener('change', async () => {
+      currentSettings[key] = input.checked;
+      await saveSettings();
+    });
+    const pill = document.createElement('span');
+    pill.className = 'toggle-pill';
+    row.appendChild(span);
+    row.appendChild(input);
+    row.appendChild(pill);
+    container.appendChild(row);
+  }
+}
+
+// ─── Cache Age ────────────────────────────────────────────────────────────────
+
+async function loadCacheAge() {
+  return new Promise(resolve => {
+    chrome.runtime.sendMessage({
+      type: 'GET_CACHE_AGE'
+    }, res => {
+      const ages = (res === null || res === void 0 ? void 0 : res.ages) ?? {};
+      const el = document.getElementById('cache-info');
+      if (!el) return resolve();
+      const lines = Object.entries(ages).filter(([, age]) => age !== null).map(([key, age]) => {
+        const mins = Math.floor(age / 60);
+        const hrs = Math.floor(mins / 60);
+        const time = hrs > 0 ? `${hrs}h ago` : mins > 0 ? `${mins}m ago` : 'just now';
+        return `<span class="cache-key">${key.replace('lc_unlock_', '')}</span>: ${time}`;
+      });
+      el.innerHTML = lines.length ? lines.join('<br>') : '<em>No cached data yet.</em>';
+      resolve();
+    });
+  });
+}
+
+// ─── Refresh ──────────────────────────────────────────────────────────────────
+
+function bindRefreshButton() {
+  const btn = document.getElementById('btn-refresh');
+  if (!btn) return;
+  btn.addEventListener('click', async () => {
+    btn.disabled = true;
+    btn.textContent = 'Clearing…';
+    await new Promise(resolve => {
+      chrome.runtime.sendMessage({
+        type: 'CLEAR_CACHE'
+      }, resolve);
+    });
+    btn.textContent = '✓ Cache cleared!';
+    await loadCacheAge();
+    setTimeout(() => {
+      btn.textContent = 'Refresh Cache';
+      btn.disabled = false;
+    }, 2000);
+  });
+}
+
+/***/ }
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = __webpack_modules__;
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/chunk loaded */
+/******/ 	(() => {
+/******/ 		var deferred = [];
+/******/ 		__webpack_require__.O = (result, chunkIds, fn, priority) => {
+/******/ 			if(chunkIds) {
+/******/ 				priority = priority || 0;
+/******/ 				for(var i = deferred.length; i > 0 && deferred[i - 1][2] > priority; i--) deferred[i] = deferred[i - 1];
+/******/ 				deferred[i] = [chunkIds, fn, priority];
+/******/ 				return;
+/******/ 			}
+/******/ 			var notFulfilled = Infinity;
+/******/ 			for (var i = 0; i < deferred.length; i++) {
+/******/ 				var [chunkIds, fn, priority] = deferred[i];
+/******/ 				var fulfilled = true;
+/******/ 				for (var j = 0; j < chunkIds.length; j++) {
+/******/ 					if ((priority & 1 === 0 || notFulfilled >= priority) && Object.keys(__webpack_require__.O).every((key) => (__webpack_require__.O[key](chunkIds[j])))) {
+/******/ 						chunkIds.splice(j--, 1);
+/******/ 					} else {
+/******/ 						fulfilled = false;
+/******/ 						if(priority < notFulfilled) notFulfilled = priority;
+/******/ 					}
+/******/ 				}
+/******/ 				if(fulfilled) {
+/******/ 					deferred.splice(i--, 1)
+/******/ 					var r = fn();
+/******/ 					if (r !== undefined) result = r;
+/******/ 				}
+/******/ 			}
+/******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/jsonp chunk loading */
+/******/ 	(() => {
+/******/ 		// no baseURI
+/******/ 		
+/******/ 		// object to store loaded and loading chunks
+/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
+/******/ 		var installedChunks = {
+/******/ 			385: 0
+/******/ 		};
+/******/ 		
+/******/ 		// no chunk on demand loading
+/******/ 		
+/******/ 		// no prefetching
+/******/ 		
+/******/ 		// no preloaded
+/******/ 		
+/******/ 		// no HMR
+/******/ 		
+/******/ 		// no HMR manifest
+/******/ 		
+/******/ 		__webpack_require__.O.j = (chunkId) => (installedChunks[chunkId] === 0);
+/******/ 		
+/******/ 		// install a JSONP callback for chunk loading
+/******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
+/******/ 			var [chunkIds, moreModules, runtime] = data;
+/******/ 			// add "moreModules" to the modules object,
+/******/ 			// then flag all "chunkIds" as loaded and fire callback
+/******/ 			var moduleId, chunkId, i = 0;
+/******/ 			if(chunkIds.some((id) => (installedChunks[id] !== 0))) {
+/******/ 				for(moduleId in moreModules) {
+/******/ 					if(__webpack_require__.o(moreModules, moduleId)) {
+/******/ 						__webpack_require__.m[moduleId] = moreModules[moduleId];
+/******/ 					}
+/******/ 				}
+/******/ 				if(runtime) var result = runtime(__webpack_require__);
+/******/ 			}
+/******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
+/******/ 			for(;i < chunkIds.length; i++) {
+/******/ 				chunkId = chunkIds[i];
+/******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
+/******/ 					installedChunks[chunkId][0]();
+/******/ 				}
+/******/ 				installedChunks[chunkId] = 0;
+/******/ 			}
+/******/ 			return __webpack_require__.O(result);
+/******/ 		}
+/******/ 		
+/******/ 		var chunkLoadingGlobal = self["webpackChunklc_main"] = self["webpackChunklc_main"] || [];
+/******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
+/******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [815], () => (__webpack_require__(46)))
+/******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
+/******/ 	
+/******/ })()
+;
+//# sourceMappingURL=extensionPopupManager.js.map

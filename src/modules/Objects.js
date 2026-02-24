@@ -5,7 +5,7 @@
 // ─── Google Sheets Proxy Config ───────────────────────────────────────────────
 // 🔴 Fix: API key is NEVER in extension source — route all requests through a Cloudflare Worker.
 export const SHEETS_CONFIG = {
-    PROXY_URL: 'https://your-worker.workers.dev/sheets', // Replace with your Cloudflare Worker URL
+    PROXY_URL: 'https://lc-sheets-proxy.cheatcode23.workers.dev/sheets', // Replace with your Cloudflare Worker URL
     SPREADSHEET_ID: '17uIfHiWPFoHVnpy3Ps9KBccr5DG2Y3ZIUC9zODlg1Jo', // Your public Google Sheet
 };
 
